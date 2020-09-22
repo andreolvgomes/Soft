@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Data
+namespace Soft.Infra.Data
 {
     public class Settings
     {

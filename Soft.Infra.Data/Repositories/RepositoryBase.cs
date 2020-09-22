@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Soft.Data.Mapper;
+using Soft.Infra.Data.Mapper;
 using Soft.Domain.Interfaces.Repositories;
 using Soft.Domain.Models;
 using System;
@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Data.Repositories
+namespace Soft.Infra.Data.Repositories
 {
     /// <summary>
     /// Repository base

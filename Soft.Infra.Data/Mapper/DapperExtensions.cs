@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Data.Mapper
+namespace Soft.Infra.Data.Mapper
 {
     public static class DapperExtensions
     {

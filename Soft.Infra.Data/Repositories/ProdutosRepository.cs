@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Data.Repositories
+namespace Soft.Infra.Data.Repositories
 {
     /// <summary>
     /// Repository of Produtos

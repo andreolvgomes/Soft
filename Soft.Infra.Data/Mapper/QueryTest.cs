@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Data.Mapper
+namespace Soft.Infra.Data.Mapper
 {
     public class QueryTest
     {

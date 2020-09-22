@@ -7,8 +7,8 @@
     <ProjectGuid>{AA5258A4-278A-4704-9B53-811787034CD4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Soft.Data</RootNamespace>
-    <AssemblyName>Soft.Data</AssemblyName>
+    <RootNamespace>Soft.Infra.Data</RootNamespace>
+    <AssemblyName>Soft.Infra.Data</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

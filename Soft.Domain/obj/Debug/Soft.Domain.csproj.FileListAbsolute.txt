@@ -4,3 +4,9 @@ C:\Users\André\source\repos\Soft\Soft.Domain\obj\Debug\Soft.Domain.csprojAssemb
 C:\Users\André\source\repos\Soft\Soft.Domain\obj\Debug\Soft.Domain.csproj.CoreCompileInputs.cache
 C:\Users\André\source\repos\Soft\Soft.Domain\obj\Debug\Soft.Domain.dll
 C:\Users\André\source\repos\Soft\Soft.Domain\obj\Debug\Soft.Domain.pdb
+C:\projects\Soft\Soft.Domain\bin\Debug\Soft.Domain.dll
+C:\projects\Soft\Soft.Domain\bin\Debug\Soft.Domain.pdb
+C:\projects\Soft\Soft.Domain\obj\Debug\Soft.Domain.csprojAssemblyReference.cache
+C:\projects\Soft\Soft.Domain\obj\Debug\Soft.Domain.csproj.CoreCompileInputs.cache
+C:\projects\Soft\Soft.Domain\obj\Debug\Soft.Domain.dll
+C:\projects\Soft\Soft.Domain\obj\Debug\Soft.Domain.pdb

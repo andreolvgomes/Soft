@@ -49,9 +49,9 @@
       <Project>{baf52f04-07d1-4284-8a37-78a9c77e96a2}</Project>
       <Name>Soft.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Soft.Repositories\Soft.Data.csproj">
+    <ProjectReference Include="..\Soft.Infra.Data\Soft.Infra.Data.csproj">
       <Project>{aa5258a4-278a-4704-9b53-811787034cd4}</Project>
-      <Name>Soft.Data</Name>
+      <Name>Soft.Infra.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

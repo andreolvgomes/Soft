@@ -1,0 +1,11 @@
+C:\projects\Soft\Soft.Repositories\bin\Debug\Soft.Infra.Data.dll
+C:\projects\Soft\Soft.Repositories\bin\Debug\Soft.Infra.Data.pdb
+C:\projects\Soft\Soft.Repositories\bin\Debug\Dapper.dll
+C:\projects\Soft\Soft.Repositories\bin\Debug\Soft.Domain.dll
+C:\projects\Soft\Soft.Repositories\bin\Debug\Soft.Domain.pdb
+C:\projects\Soft\Soft.Repositories\bin\Debug\Dapper.xml
+C:\projects\Soft\Soft.Repositories\obj\Debug\Soft.Infra.Data.csprojAssemblyReference.cache
+C:\projects\Soft\Soft.Repositories\obj\Debug\Soft.Infra.Data.csproj.CoreCompileInputs.cache
+C:\projects\Soft\Soft.Repositories\obj\Debug\Soft.Infra.Data.csproj.CopyComplete
+C:\projects\Soft\Soft.Repositories\obj\Debug\Soft.Infra.Data.dll
+C:\projects\Soft\Soft.Repositories\obj\Debug\Soft.Infra.Data.pdb

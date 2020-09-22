@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Domain", "Soft.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Application", "Soft.Application\Soft.Application.csproj", "{174CA2B5-82AE-431F-BF5C-DBD01C0AFC93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Data", "Soft.Repositories\Soft.Data.csproj", "{AA5258A4-278A-4704-9B53-811787034CD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Infra.Data", "Soft.Infra.Data\Soft.Infra.Data.csproj", "{AA5258A4-278A-4704-9B53-811787034CD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
