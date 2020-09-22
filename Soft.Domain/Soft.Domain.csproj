@@ -44,7 +44,7 @@
     <Compile Include="Interfaces\Repositories\IProdutosRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\ColumnModelAttribute.cs" />
+    <Compile Include="Common\ColumnModelAttribute.cs" />
     <Compile Include="Models\Produtos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

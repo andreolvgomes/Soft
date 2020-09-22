@@ -21,24 +21,28 @@ namespace Soft.Domain.Interfaces.Repositories
         /// <param name="model"></param>
         /// <returns></returns>
         long Insert(TModel model, IDbTransaction transaction = null);
+
         /// <summary>
         /// Update model to database
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         int Update(TModel model, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
+
         /// <summary>
         /// Delete model from database
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         int Delete(TModel model, IDbTransaction transaction = null);
+
         /// <summary>
         /// Find model from database
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         TModel Find(object param = null, IDbTransaction transaction = null);
+
         /// <summary>
         /// Find all model's from database
         /// </summary>
