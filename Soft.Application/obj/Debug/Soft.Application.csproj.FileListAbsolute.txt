@@ -24,3 +24,16 @@ C:\projects\Soft\Soft.Application\obj\Debug\Soft.Application.csproj.CoreCompileI
 C:\projects\Soft\Soft.Application\obj\Debug\Soft.Application.csproj.CopyComplete
 C:\projects\Soft\Soft.Application\obj\Debug\Soft.Application.dll
 C:\projects\Soft\Soft.Application\obj\Debug\Soft.Application.pdb
+C:\Soft\Soft.Application\bin\Debug\Soft.Application.dll
+C:\Soft\Soft.Application\bin\Debug\Soft.Application.pdb
+C:\Soft\Soft.Application\bin\Debug\Soft.Domain.dll
+C:\Soft\Soft.Application\bin\Debug\Soft.Infra.Data.dll
+C:\Soft\Soft.Application\bin\Debug\Dapper.dll
+C:\Soft\Soft.Application\bin\Debug\Soft.Domain.pdb
+C:\Soft\Soft.Application\bin\Debug\Soft.Infra.Data.pdb
+C:\Soft\Soft.Application\bin\Debug\Dapper.xml
+C:\Soft\Soft.Application\obj\Debug\Soft.Application.csprojAssemblyReference.cache
+C:\Soft\Soft.Application\obj\Debug\Soft.Application.csproj.CoreCompileInputs.cache
+C:\Soft\Soft.Application\obj\Debug\Soft.Application.csproj.CopyComplete
+C:\Soft\Soft.Application\obj\Debug\Soft.Application.dll
+C:\Soft\Soft.Application\obj\Debug\Soft.Application.pdb

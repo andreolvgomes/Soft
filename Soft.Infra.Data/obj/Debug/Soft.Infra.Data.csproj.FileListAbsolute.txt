@@ -9,3 +9,14 @@ C:\projects\Soft\Soft.Repositories\obj\Debug\Soft.Infra.Data.csproj.CoreCompileI
 C:\projects\Soft\Soft.Repositories\obj\Debug\Soft.Infra.Data.csproj.CopyComplete
 C:\projects\Soft\Soft.Repositories\obj\Debug\Soft.Infra.Data.dll
 C:\projects\Soft\Soft.Repositories\obj\Debug\Soft.Infra.Data.pdb
+C:\Soft\Soft.Infra.Data\bin\Debug\Soft.Infra.Data.dll
+C:\Soft\Soft.Infra.Data\bin\Debug\Soft.Infra.Data.pdb
+C:\Soft\Soft.Infra.Data\bin\Debug\Dapper.dll
+C:\Soft\Soft.Infra.Data\bin\Debug\Soft.Domain.dll
+C:\Soft\Soft.Infra.Data\bin\Debug\Soft.Domain.pdb
+C:\Soft\Soft.Infra.Data\bin\Debug\Dapper.xml
+C:\Soft\Soft.Infra.Data\obj\Debug\Soft.Infra.Data.csprojAssemblyReference.cache
+C:\Soft\Soft.Infra.Data\obj\Debug\Soft.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Soft\Soft.Infra.Data\obj\Debug\Soft.Infra.Data.csproj.CopyComplete
+C:\Soft\Soft.Infra.Data\obj\Debug\Soft.Infra.Data.dll
+C:\Soft\Soft.Infra.Data\obj\Debug\Soft.Infra.Data.pdb

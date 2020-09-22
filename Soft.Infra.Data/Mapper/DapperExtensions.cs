@@ -26,7 +26,7 @@ namespace Soft.Infra.Data.Mapper
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>> IdentiyProperties
             = new ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>>();
 
-        public static TModel Get<TModel>(this IDbConnection cnn, dynamic param, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
+        public static TModel Find<TModel>(this IDbConnection cnn, dynamic param, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
         {
             QueryTest query = GetQuery(true, param, selector);
             return cnn.Query<TModel>(query.Query, query.Param, transaction: transaction).FirstOrDefault();
@@ -35,12 +35,6 @@ namespace Soft.Infra.Data.Mapper
         public static IEnumerable<TModel> All<TModel>(this IDbConnection cnn, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
         {
             QueryTest query = GetQuery<TModel>(false, param as object, selector);
-            return cnn.Query<TModel>(query.Query, query.Param, transaction: transaction);
-        }
-
-        public static IEnumerable<TModel> All<TModel>(this IDbConnection cnn, object param = null, IDbTransaction transaction = null) where TModel : BaseModel
-        {
-            QueryTest query = GetQuery<TModel>(false, param as object, null);
             return cnn.Query<TModel>(query.Query, query.Param, transaction: transaction);
         }
 
@@ -143,7 +137,7 @@ namespace Soft.Infra.Data.Mapper
             return 0;
         }
 
-        public static int Update<TEntity>(this IDbConnection cnn, TEntity model, IDbTransaction transaction = null) where TEntity : BaseModel
+        public static int Update<TEntity>(this IDbConnection connection, TEntity model, Expression<Func<TEntity, object>> selector = null, IDbTransaction transaction = null, int? commandTimeout = null) where TEntity : BaseModel
         {
             Type type = typeof(TEntity);
 
@@ -158,10 +152,21 @@ namespace Soft.Infra.Data.Mapper
             IEnumerable<PropertyInfo> identyProperties = IdentyPropertiesCache(type);
             IEnumerable<PropertyInfo> fields = allProperties.Except(identyProperties);
 
+            List<string> list_selector = new List<string>();
+            if (selector != null)
+            {
+                string s = ExpressionToSql.Select<TEntity>(selector);
+                foreach (string item in s.Split(','))
+                    list_selector.Add(item.Trim().Replace("[", "").Replace("]", ""));
+            }
+
             int j = 0;
             foreach (PropertyInfo property in fields)
             {
                 string property_name = Name(property);
+
+                if (list_selector.Count > 0 && !list_selector.Contains(property_name))
+                    continue;
 
                 if (j > 0)
                     sb.AppendFormat(", ");
@@ -181,7 +186,7 @@ namespace Soft.Infra.Data.Mapper
                 if (i < keyProperties.Count() - 1)
                     sb.AppendFormat(" and ");
             }
-            return cnn.Execute(sb.ToString(), model, transaction: transaction);
+            return connection.Execute(sb.ToString(), model, commandTimeout: commandTimeout, transaction: transaction);
         }
 
         public static int Delete<TEntity>(this IDbConnection cnn, TEntity model, IDbTransaction transaction = null) where TEntity : BaseModel
@@ -204,6 +209,92 @@ namespace Soft.Infra.Data.Mapper
                     sb.AppendFormat(" and ");
             }
             return cnn.Execute(sb.ToString(), model, transaction: transaction);
+        }
+
+        public static bool Exists<TEntity>(this IDbConnection cnn, TEntity modelExists, IDbTransaction transaction = null) where TEntity : BaseModel
+        {
+            return cnn.Count<TEntity>(modelExists, transaction) > 0;
+        }
+
+        public static int Count<TEntity>(this IDbConnection cnn, object param = null, IDbTransaction transaction = null) where TEntity : BaseModel
+        {
+            QueryTest query = GetPredicate<TEntity>(param);
+
+            IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(typeof(TEntity));
+            string sql = string.Format("select top 1 count(1) from dbo.[{0}]", GetTableName<TEntity>());
+            if (!string.IsNullOrEmpty(query.Condition))
+                sql += " where " + query.Condition;
+            return cnn.Query<int>(sql, query.Param, transaction: transaction).FirstOrDefault();
+        }
+
+        public static int Count<TEntity>(this IDbConnection cnn, TEntity model, IDbTransaction transaction = null) where TEntity : BaseModel
+        {
+            Type type = typeof(TEntity);
+
+            IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(type);
+            if (keyProperties.Count() == 0)
+                throw new ArgumentException("O modelo deve ter pelo menos uma propriedade [Key]");
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("select top 1 count(1) from dbo.[{0}] where ", GetTableName<TEntity>());
+
+            for (var i = 0; i < keyProperties.Count(); i++)
+            {
+                PropertyInfo property = keyProperties.ElementAt(i);
+
+                object value = property.GetValue(model, null);
+                if (value == null || string.IsNullOrEmpty(value.ToString()))
+                    throw new Exception(string.Format("Uma das propriedades definida como [Key] está no formato incorreto. Value = Null ou Empty: \"{0}\"", property.Name));
+
+                sb.AppendFormat("[{0}] = @{0}", Name(property));
+                if (i < keyProperties.Count() - 1)
+                    sb.AppendFormat(" and ");
+            }
+            return cnn.Query<int>(sb.ToString(), model, transaction: transaction).FirstOrDefault();
+        }
+
+        private static QueryTest GetPredicate<TEntity>(dynamic param) where TEntity : BaseModel
+        {
+            QueryTest query = new QueryTest();
+
+            Type type = typeof(TEntity);
+
+            IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(type);
+            query.Param = null;
+
+            if (param != null)
+            {
+                object parameters = param;
+                IEnumerable<PropertyInfo> properties = parameters.GetType().GetProperties();
+
+                int j = 0;
+                if (properties.Count() > 0 && !(parameters is string))
+                {
+                    foreach (PropertyInfo property in properties)
+                    {
+                        if (j > 0)
+                            query.Condition += " and ";
+                        query.Condition += string.Format("[{0}] = @{0}", property.Name);
+                        j++;
+                    }
+                    query.Param = param;
+                }
+                else
+                {
+                    properties = KeyPropertiesCache(typeof(TEntity));
+                    if (properties.Count() > 1)
+                        throw new ArgumentException(string.Format("O modelo ({0}) tem mais de uma propriedade [Key], não é possível localizar o registro com uma única informação [Key]", GetTableName<TEntity>()));
+
+                    PropertyInfo property = properties.FirstOrDefault();
+                    query.Condition += string.Format("[{0}] = @{0}", property.Name);
+
+                    DynamicParameters dynamicParameters = new DynamicParameters();
+                    dynamicParameters.Add(string.Format("@{0}", property.Name), parameters);
+
+                    query.Param = dynamicParameters;
+                }
+            }
+            return query;
         }
 
         private static object CastValue(PropertyInfo identity, long ident_current)
