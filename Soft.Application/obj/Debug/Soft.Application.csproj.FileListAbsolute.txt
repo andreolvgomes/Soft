@@ -1,0 +1,13 @@
+C:\Users\André\source\repos\Soft\Soft.Application\obj\Debug\Soft.Application.csproj.CoreCompileInputs.cache
+C:\Users\André\source\repos\Soft\Soft.Application\bin\Debug\Soft.Application.dll
+C:\Users\André\source\repos\Soft\Soft.Application\bin\Debug\Soft.Application.pdb
+C:\Users\André\source\repos\Soft\Soft.Application\bin\Debug\Soft.Data.dll
+C:\Users\André\source\repos\Soft\Soft.Application\bin\Debug\Soft.Domain.dll
+C:\Users\André\source\repos\Soft\Soft.Application\bin\Debug\Dapper.dll
+C:\Users\André\source\repos\Soft\Soft.Application\bin\Debug\Soft.Domain.pdb
+C:\Users\André\source\repos\Soft\Soft.Application\bin\Debug\Soft.Data.pdb
+C:\Users\André\source\repos\Soft\Soft.Application\bin\Debug\Dapper.xml
+C:\Users\André\source\repos\Soft\Soft.Application\obj\Debug\Soft.Application.csprojAssemblyReference.cache
+C:\Users\André\source\repos\Soft\Soft.Application\obj\Debug\Soft.Application.csproj.CopyComplete
+C:\Users\André\source\repos\Soft\Soft.Application\obj\Debug\Soft.Application.dll
+C:\Users\André\source\repos\Soft\Soft.Application\obj\Debug\Soft.Application.pdb

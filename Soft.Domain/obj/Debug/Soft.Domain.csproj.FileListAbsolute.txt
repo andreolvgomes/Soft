@@ -1,0 +1,6 @@
+C:\Users\André\source\repos\Soft\Soft.Domain\bin\Debug\Soft.Domain.dll
+C:\Users\André\source\repos\Soft\Soft.Domain\bin\Debug\Soft.Domain.pdb
+C:\Users\André\source\repos\Soft\Soft.Domain\obj\Debug\Soft.Domain.csprojAssemblyReference.cache
+C:\Users\André\source\repos\Soft\Soft.Domain\obj\Debug\Soft.Domain.csproj.CoreCompileInputs.cache
+C:\Users\André\source\repos\Soft\Soft.Domain\obj\Debug\Soft.Domain.dll
+C:\Users\André\source\repos\Soft\Soft.Domain\obj\Debug\Soft.Domain.pdb
