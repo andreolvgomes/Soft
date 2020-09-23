@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Security\Constants.cs" />
+    <Compile Include="Common\Security\Crypto.cs" />
     <Compile Include="Interfaces\Repositories\IProdutosRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Models\BaseModel.cs" />
