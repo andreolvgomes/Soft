@@ -13,40 +13,56 @@ namespace Soft.Domain.Interfaces.Repositories
     /// Respository base
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public interface IRespositoryBase<TModel> where TModel : BaseModel
+    public interface IRepositoryBase<TModel> where TModel : BaseModel
     {
         /// <summary>
-        /// Insert model into database
+        /// Insert object into database
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         long Insert(TModel model, IDbTransaction transaction = null);
 
         /// <summary>
-        /// Update model to database
+        /// Update object in the database
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         int Update(TModel model, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
 
         /// <summary>
-        /// Delete model from database
+        /// Delete object from database
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         int Delete(TModel model, IDbTransaction transaction = null);
 
         /// <summary>
-        /// Find model from database
+        /// Find object from database
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        TModel Find(object param = null, IDbTransaction transaction = null);
+        TModel Find(object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
 
         /// <summary>
-        /// Find all model's from database
+        /// Get all objetct from database
         /// </summary>
         /// <returns></returns>
         IEnumerable<TModel> All(object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
+
+        /// <summary>
+        /// Check if there is a record in the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        bool Exists(TModel model, IDbTransaction transaction = null);
+
+        /// <summary>
+        /// Returns the number of records
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        int Count(object param = null, IDbTransaction transaction = null);
     }
 }

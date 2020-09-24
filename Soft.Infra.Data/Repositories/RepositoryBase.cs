@@ -17,7 +17,7 @@ namespace Soft.Infra.Data.Repositories
     /// Repository base
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class RepositoryBase<TModel> : IRespositoryBase<TModel> where TModel : BaseModel
+    public class RepositoryBase<TModel> : IRepositoryBase<TModel> where TModel : BaseModel
     {
         /// <summary>
         /// Get all objetct from database
@@ -33,7 +33,7 @@ namespace Soft.Infra.Data.Repositories
         }
 
         /// <summary>
-        /// Delete object in the database
+        /// Delete object from database
         /// </summary>
         /// <param name="model"></param>
         /// <param name="transaction"></param>
@@ -50,9 +50,10 @@ namespace Soft.Infra.Data.Repositories
         /// <param name="condition"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public TModel Find(dynamic condition = null, IDbTransaction transaction = null)
+        public TModel Find(object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            throw new NotImplementedException();
+            using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
+                return cnn.Find<TModel>(param, selector, transaction);
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Soft.Infra.Data.Repositories
         }
 
         /// <summary>
-        /// Update object int the database
+        /// Update object in the database
         /// </summary>
         /// <param name="model"></param>
         /// <param name="selector"></param>
@@ -78,6 +79,30 @@ namespace Soft.Infra.Data.Repositories
         {
             using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
                 return cnn.Update<TModel>(model, transaction: transaction);
+        }
+
+        /// <summary>
+        /// Check if there is a record in the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public bool Exists(TModel model, IDbTransaction transaction = null)
+        {
+            using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
+                return cnn.Exists<TModel>(model, transaction: transaction);
+        }
+
+        /// <summary>
+        /// Returns the number of records
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public int Count(object param = null, IDbTransaction transaction = null)
+        {
+            using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
+                return cnn.Count<TModel>(param, transaction: transaction);
         }
     }
 }

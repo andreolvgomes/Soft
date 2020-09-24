@@ -26,7 +26,7 @@ namespace Soft.Infra.Data.Mapper
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>> IdentiyProperties
             = new ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>>();
 
-        public static TModel Find<TModel>(this IDbConnection cnn, dynamic param, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
+        public static TModel Find<TModel>(this IDbConnection cnn, object param, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
         {
             QueryTest query = GetQuery(true, param, selector);
             return cnn.Query<TModel>(query.Query, query.Param, transaction: transaction).FirstOrDefault();
@@ -38,7 +38,7 @@ namespace Soft.Infra.Data.Mapper
             return cnn.Query<TModel>(query.Query, query.Param, transaction: transaction);
         }
 
-        private static QueryTest GetQuery<TModel>(bool is_topOne, dynamic param = null, Expression<Func<TModel, object>> selector = null) where TModel : BaseModel
+        private static QueryTest GetQuery<TModel>(bool is_topOne, object param = null, Expression<Func<TModel, object>> selector = null) where TModel : BaseModel
         {
             QueryTest query = new QueryTest();
             string _selector = "*";
@@ -86,9 +86,9 @@ namespace Soft.Infra.Data.Mapper
             return query;
         }
 
-        public static long Insert<TEntity>(this IDbConnection cnn, TEntity model, IDbTransaction transaction = null) where TEntity : BaseModel
+        public static long Insert<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : BaseModel
         {
-            Type type = typeof(TEntity);
+            Type type = typeof(TModel);
 
             StringBuilder sbColumnList = new StringBuilder(null);
 
@@ -118,10 +118,10 @@ namespace Soft.Infra.Data.Mapper
                     sbParameterList.Append(", ");
             }
 
-            return Insert<TEntity>(cnn, model, transaction, GetTableName<TEntity>(), sbColumnList.ToString(), sbParameterList.ToString(), fields, field_identity);
+            return Insert<TModel>(cnn, model, transaction, GetTableName<TModel>(), sbColumnList.ToString(), sbParameterList.ToString(), fields, field_identity);
         }
 
-        private static long Insert<TEntity>(IDbConnection cnn, TEntity model, IDbTransaction transaction, String tableName, string columnList, string parameterList, IEnumerable<PropertyInfo> fields, IEnumerable<PropertyInfo> field_identity) where TEntity : BaseModel
+        private static long Insert<TModel>(IDbConnection cnn, TModel model, IDbTransaction transaction, String tableName, string columnList, string parameterList, IEnumerable<PropertyInfo> fields, IEnumerable<PropertyInfo> field_identity) where TModel : BaseModel
         {
             string cmd = String.Format("insert into dbo.[{0}] ({1}) values ({2})", tableName, columnList, parameterList);
             cnn.Execute(cmd, model, transaction: transaction);
@@ -137,16 +137,16 @@ namespace Soft.Infra.Data.Mapper
             return 0;
         }
 
-        public static int Update<TEntity>(this IDbConnection connection, TEntity model, Expression<Func<TEntity, object>> selector = null, IDbTransaction transaction = null, int? commandTimeout = null) where TEntity : BaseModel
+        public static int Update<TModel>(this IDbConnection connection, TModel model, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null, int? commandTimeout = null) where TModel : BaseModel
         {
-            Type type = typeof(TEntity);
+            Type type = typeof(TModel);
 
             IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(type);
             if (keyProperties.Count() == 0)
                 throw new ArgumentException("O modelo deve ter pelo menos uma propriedade [Key]");
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("update dbo.[{0}] set ", GetTableName<TEntity>());
+            sb.AppendFormat("update dbo.[{0}] set ", GetTableName<TModel>());
 
             IEnumerable<PropertyInfo> allProperties = TypePropertiesCache(type);
             IEnumerable<PropertyInfo> identyProperties = IdentyPropertiesCache(type);
@@ -155,7 +155,7 @@ namespace Soft.Infra.Data.Mapper
             List<string> list_selector = new List<string>();
             if (selector != null)
             {
-                string s = ExpressionToSql.Select<TEntity>(selector);
+                string s = ExpressionToSql.Select<TModel>(selector);
                 foreach (string item in s.Split(','))
                     list_selector.Add(item.Trim().Replace("[", "").Replace("]", ""));
             }
@@ -189,17 +189,17 @@ namespace Soft.Infra.Data.Mapper
             return connection.Execute(sb.ToString(), model, commandTimeout: commandTimeout, transaction: transaction);
         }
 
-        public static int Delete<TEntity>(this IDbConnection cnn, TEntity model, IDbTransaction transaction = null) where TEntity : BaseModel
+        public static int Delete<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : BaseModel
         {
             if (model == null)
                 throw new ArgumentException("Cannot Delete null Object", "model");
 
-            IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(typeof(TEntity));
+            IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(typeof(TModel));
             if (keyProperties.Count() == 0)
                 throw new ArgumentException("O modelo deve ter pelo menos uma propriedade [Key]");
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("delete from dbo.[{0}] where ", GetTableName<TEntity>());
+            sb.AppendFormat("delete from dbo.[{0}] where ", GetTableName<TModel>());
 
             for (var i = 0; i < keyProperties.Count(); i++)
             {
@@ -211,32 +211,32 @@ namespace Soft.Infra.Data.Mapper
             return cnn.Execute(sb.ToString(), model, transaction: transaction);
         }
 
-        public static bool Exists<TEntity>(this IDbConnection cnn, TEntity modelExists, IDbTransaction transaction = null) where TEntity : BaseModel
+        public static bool Exists<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : BaseModel
         {
-            return cnn.Count<TEntity>(modelExists, transaction) > 0;
+            return cnn.Count<TModel>(model, transaction) > 0;
         }
 
-        public static int Count<TEntity>(this IDbConnection cnn, object param = null, IDbTransaction transaction = null) where TEntity : BaseModel
+        public static int Count<TModel>(this IDbConnection cnn, object param = null, IDbTransaction transaction = null) where TModel : BaseModel
         {
-            QueryTest query = GetPredicate<TEntity>(param);
+            QueryTest query = GetPredicate<TModel>(param);
 
-            IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(typeof(TEntity));
-            string sql = string.Format("select top 1 count(1) from dbo.[{0}]", GetTableName<TEntity>());
+            IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(typeof(TModel));
+            string sql = string.Format("select top 1 count(1) from dbo.[{0}]", GetTableName<TModel>());
             if (!string.IsNullOrEmpty(query.Condition))
                 sql += " where " + query.Condition;
             return cnn.Query<int>(sql, query.Param, transaction: transaction).FirstOrDefault();
         }
 
-        public static int Count<TEntity>(this IDbConnection cnn, TEntity model, IDbTransaction transaction = null) where TEntity : BaseModel
+        public static int Count<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : BaseModel
         {
-            Type type = typeof(TEntity);
+            Type type = typeof(TModel);
 
             IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(type);
             if (keyProperties.Count() == 0)
                 throw new ArgumentException("O modelo deve ter pelo menos uma propriedade [Key]");
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("select top 1 count(1) from dbo.[{0}] where ", GetTableName<TEntity>());
+            sb.AppendFormat("select top 1 count(1) from dbo.[{0}] where ", GetTableName<TModel>());
 
             for (var i = 0; i < keyProperties.Count(); i++)
             {
@@ -253,11 +253,11 @@ namespace Soft.Infra.Data.Mapper
             return cnn.Query<int>(sb.ToString(), model, transaction: transaction).FirstOrDefault();
         }
 
-        private static QueryTest GetPredicate<TEntity>(dynamic param) where TEntity : BaseModel
+        private static QueryTest GetPredicate<TModel>(dynamic param) where TModel : BaseModel
         {
             QueryTest query = new QueryTest();
 
-            Type type = typeof(TEntity);
+            Type type = typeof(TModel);
 
             IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(type);
             query.Param = null;
@@ -281,9 +281,9 @@ namespace Soft.Infra.Data.Mapper
                 }
                 else
                 {
-                    properties = KeyPropertiesCache(typeof(TEntity));
+                    properties = KeyPropertiesCache(typeof(TModel));
                     if (properties.Count() > 1)
-                        throw new ArgumentException(string.Format("O modelo ({0}) tem mais de uma propriedade [Key], não é possível localizar o registro com uma única informação [Key]", GetTableName<TEntity>()));
+                        throw new ArgumentException(string.Format("O modelo ({0}) tem mais de uma propriedade [Key], não é possível localizar o registro com uma única informação [Key]", GetTableName<TModel>()));
 
                     PropertyInfo property = properties.FirstOrDefault();
                     query.Condition += string.Format("[{0}] = @{0}", property.Name);
@@ -335,14 +335,14 @@ namespace Soft.Infra.Data.Mapper
             return "";
         }
 
-        private static string GetTableName<TEntity>() where TEntity : BaseModel
+        private static string GetTableName<TModel>() where TModel : BaseModel
         {
-            Type type = typeof(TEntity);
+            Type type = typeof(TModel);
 
             string name = "";
             if (!TypeTableName.TryGetValue(type.TypeHandle, out name))
             {
-                name = ((TEntity)Activator.CreateInstance(typeof(TEntity)) as BaseModel).TableName;
+                name = ((TModel)Activator.CreateInstance(typeof(TModel)) as BaseModel).TableName;
                 TypeTableName[type.TypeHandle] = name;
             }
             return name;

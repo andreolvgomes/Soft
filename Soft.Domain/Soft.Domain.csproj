@@ -43,10 +43,16 @@
   <ItemGroup>
     <Compile Include="Common\Security\Constants.cs" />
     <Compile Include="Common\Security\Crypto.cs" />
+    <Compile Include="Interfaces\Repositories\IClientesRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPedidosRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPeitensRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProdutosRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Common\ColumnModelAttribute.cs" />
+    <Compile Include="Models\Clientes.cs" />
+    <Compile Include="Models\Pedidos.cs" />
+    <Compile Include="Models\Peitens.cs" />
     <Compile Include="Models\Produtos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

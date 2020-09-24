@@ -22,7 +22,7 @@ namespace Soft.Domain.Models
         }
 
         [ColumnModel("Pro_id", IsPrimaryKey = true, IsIdentity = true)]
-        public string Pro_id { get; set; }
+        public Int64 Pro_id { get; set; }
         [ColumnModel("Pro_descricao")]
         public string Pro_descricao { get; set; }
         [ColumnModel("Pro_pvenda")]

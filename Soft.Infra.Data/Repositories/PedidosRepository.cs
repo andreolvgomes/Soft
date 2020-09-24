@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace Soft.Infra.Data.Repositories
 {
     /// <summary>
-    /// Repository of Produtos
+    /// Repository of Pedidos
     /// </summary>
-    public class ProdutosRepository : RepositoryBase<Produtos>, IProdutosRepository
+    public class PedidosRepository : RepositoryBase<Pedidos>, IPedidosRepository
     {
     }
 }
