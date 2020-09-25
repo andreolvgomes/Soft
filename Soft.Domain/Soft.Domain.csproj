@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Base\Command.cs" />
+    <Compile Include="Commands\Base\ICommandHandler.cs" />
+    <Compile Include="Commands\PedidosCommands\CreatePedidosCommandHandler.cs" />
+    <Compile Include="Commands\PedidosCommands\PedidosCommand.cs" />
+    <Compile Include="Commands\PedidosCommands\UpdatePedidosCommandHandler.cs" />
     <Compile Include="Common\Security\Constants.cs" />
     <Compile Include="Common\Security\Crypto.cs" />
     <Compile Include="Interfaces\Repositories\IClientesRepository.cs" />

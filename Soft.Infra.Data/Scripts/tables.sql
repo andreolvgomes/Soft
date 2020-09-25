@@ -64,18 +64,27 @@ create unique index [Cli_nomeUnique] on Clientes
 go
 
 --
--- Orcamentos
+-- Pedidos
 --
 create table Pedidos (
-	Ped_id				bigint			identity(1, 1)	not null
-	,Cli_id				bigint			default(0)		not null
-	,Ped_totgeral		varchar(100)	default('')		not null
+	Ped_id							bigint			identity(1, 1)	not null
+	,Cli_id							bigint			default(0)		not null
+	,Ped_totgeralsdesc				decimal(10, 2)	default(0)		not null
+	,Ped_totgeralcdesc				decimal(10, 2)	default(0)		not null
+	,Ped_totgeralsdesc_prod			decimal(10, 2)	default(0)		not null
+	,Ped_totgeralcdesc_prod			decimal(10, 2)	default(0)		not null
+	,Ped_totgeralsdesc_serv			decimal(10, 2)	default(0)		not null
+	,Ped_totgeralcdesc_serv			decimal(10, 2)	default(0)		not null
+	,Ped_desc_acresc_prod			decimal(10, 2)	default(0)		not null
+	,Ped_desc_acres_tipo_prod		smallint		default(0)		not null
+	,Ped_desc_acresc_serv			decimal(10, 2)	default(0)		not null
+	,Ped_desc_acres_tipo_serv		smallint		default(0)		not null
 
-	,CreateUser			varchar(50)		default('')		not null
-	,UpdateUser			varchar(50)		default('')		not null
-	,CreateAt			datetime
-	,UpdateAt			datetime
-	,Uniq				timestamp
+	,CreateUser						varchar(50)		default('')		not null
+	,UpdateUser						varchar(50)		default('')		not null
+	,CreateAt						datetime
+	,UpdateAt						datetime
+	,Uniq							timestamp
 
 	constraint [PK_Pedidos] primary key (Ped_id)
 	,constraint [FK_Pedidos_Clientes] foreign key ([Cli_id]) references Clientes([Cli_id])
