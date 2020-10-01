@@ -1,3 +1,5 @@
 Soft.Application/obj/
 Soft.Domain/obj/
 Soft.Infra.Data/obj/
+Soft.Infra.IoC/obj/
+Test.Domain/obj/

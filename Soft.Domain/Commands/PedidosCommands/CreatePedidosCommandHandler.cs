@@ -18,10 +18,9 @@ namespace Soft.Domain.Commands.PedidosCommands
             _pedidosRepository = pedidosRepository;
         }
 
-        public override void Handler(PedidosCommand command)
+        public void Handle(PedidosCommand command)
         {
             Pedidos pedidos = command.Pedidos;
-            base.SetChangesAt<Pedidos>(pedidos);
             _pedidosRepository.Insert(pedidos);
         }
     }
