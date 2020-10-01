@@ -17,7 +17,7 @@ namespace Soft.Infra.IoC
             container.Register<IProdutosRepository, ProdutosRepository>();
 
             //container.RegisterCollection(typeof(ICommandHandler<>), typeof(ICommandHandler<>).Assembly);
-            container.Register(typeof(ICommandHandler<>), new[] { typeof(ICommandHandler<>).Assembly });
+            //container.Register(typeof(ICommandHandler<>), new[] { typeof(ICommandHandler<>).Assembly });
 
             container.Register<ICommandDispatcher, CommandDispatcher>();
             //container.Register<IDatabase, InMemoryDatabase>(Lifestyle.Singleton);

@@ -8,6 +8,6 @@ namespace Soft.Infra.Data
 {
     public class Settings
     {
-        public const string ConnectionString = @"server=.\SQLEXPRESS;database=soft;user id;pwd=sic742";
+        public const string ConnectionString = @"server=.\SQLEXPRESS;database=soft;user id=sa;pwd=sic742";
     }
 }

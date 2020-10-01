@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,19 @@ namespace Soft.Domain.Models
 
         public BaseModel()
         {
+            // teste temporário
+            CreateAt = DateTime.Now;
+            UpdateAt = DateTime.Now;
+            this.DefinesEmpty();
+        }
+
+        private void DefinesEmpty()
+        {
+            foreach (PropertyInfo item in this.GetType().GetProperties().Where(c => c.CanWrite))
+            {
+                if (item.PropertyType == typeof(string))
+                    item.SetValue(this, string.Empty);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
