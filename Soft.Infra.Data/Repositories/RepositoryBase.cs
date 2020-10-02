@@ -104,5 +104,10 @@ namespace Soft.Infra.Data.Repositories
             using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
                 return cnn.Count<TModel>(param, transaction: transaction);
         }
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
     }
 }

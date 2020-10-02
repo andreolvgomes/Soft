@@ -59,6 +59,7 @@
     <Compile Include="Repositories\ClientesRepository.cs" />
     <Compile Include="Repositories\PedidosRepository.cs" />
     <Compile Include="Repositories\PeitensRepository.cs" />
+    <Compile Include="Repositories\VendedoresRepository.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Mapper\DapperExtensions.cs" />
     <Compile Include="Mapper\ExpressionToSql.cs" />

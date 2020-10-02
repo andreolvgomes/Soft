@@ -22,6 +22,8 @@ namespace Soft.Domain.Models
         public Int64 Ped_id { get; set; }
         [ColumnModel("Pro_id")]
         public Int64 Pro_id { get; set; }
+        [ColumnModel("Ven_id")]
+        public Int64 Ven_id { get; set; }
         [ColumnModel("Pei_vlunitario")]
         public decimal Pei_vlunitario { get; set; }
         [ColumnModel("Pei_quantidade")]

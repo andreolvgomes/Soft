@@ -14,7 +14,7 @@ namespace Test.Domain
 {
     public class ClientesRepositoryTests
     {
-        private readonly Container _container = null;
+        //private readonly Container _container = null;
 
         public ClientesRepositoryTests()
         {
@@ -35,12 +35,14 @@ namespace Test.Domain
         {
             try
             {
-                IClientesRepository clientesRepository = new ClientesRepository();
-                var result = clientesRepository.Insert(new Clientes()
+                using (IClientesRepository clientesRepository = new ClientesRepository())
                 {
-                    Cli_nome = "Programador 123"
-                });
-                Assert.True(result > 0);
+                    var result = clientesRepository.Insert(new Clientes()
+                    {
+                        Cli_nome = "Programador 123"
+                    });
+                    Assert.True(result > 0);
+                }
             }
             catch (Exception ex)
             {

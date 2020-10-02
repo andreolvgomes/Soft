@@ -17,6 +17,26 @@ go
 --exec sp_bindefault 'defZero', 'Produtos.Pro_pvenda'
 
 --
+-- Vendedores
+--
+create table Vendedores (
+	Ven_id				bigint				not null		identity(1, 1)
+	,Ven_nome			varchar(20)		default('')		not null
+
+	,CreateUser			varchar(50)		default('')		not null
+	,UpdateUser			varchar(50)		default('')		not null
+	,CreateAt			datetime
+	,UpdateAt			datetime
+	,Uniq				timestamp
+
+	constraint [PK_Vendedores] primary key (Ven_id)
+)
+go
+create unique index [Ven_nomeUnique] ON Vendedores
+       (Ven_nome) with fillfactor = 90
+go
+
+--
 -- Produtos
 --
 create table Produtos (
@@ -99,6 +119,7 @@ create table Peitens (
 	Pei_id				bigint			identity(1, 1)	not null
 	,Ped_id				bigint			default(0)		not null
 	,Pro_id				bigint			default(0)		not null
+	,Ven_id				bigint			default(0)		not null
 	,Pei_vlunitario		decimal(10, 3)	default(0)		not null
 	,Pei_quantidade		decimal(10, 3)	default(0)		not null
 
@@ -110,6 +131,8 @@ create table Peitens (
 
 	constraint [PK_Peitens] primary key (Pei_id)
 	,constraint [FK_Peitens_Pedidos] foreign key (Ped_id) references Pedidos(Ped_id)
+		on delete cascade
+	,constraint [FK_Peitens_Vendedores] foreign key (Ven_id) references Vendedores(Ven_id)
 		on delete cascade
 	,constraint [FK_Peitens_Produtos] foreign key ([Pro_id]) references Produtos([Pro_id])
 )

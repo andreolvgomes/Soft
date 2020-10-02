@@ -65,12 +65,14 @@
     <Compile Include="Interfaces\Repositories\IPeitensRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProdutosRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\IVendedoresRepository.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Common\ColumnModelAttribute.cs" />
     <Compile Include="Models\Clientes.cs" />
     <Compile Include="Models\Pedidos.cs" />
     <Compile Include="Models\Peitens.cs" />
     <Compile Include="Models\Produtos.cs" />
+    <Compile Include="Models\Vendedores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
