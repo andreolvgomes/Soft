@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Soft.Infra.IoC;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,10 @@ namespace Soft.Wpf
     /// </summary>
     public partial class App : System.Windows.Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            Ioc.Instance.Init();
+        }
     }
 }

@@ -99,18 +99,6 @@
       <Project>{174ca2b5-82ae-431f-bf5c-dbd01c0afc93}</Project>
       <Name>Soft.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Soft.Domain.Boostrapper\Soft.Domain.Boostrapper.csproj">
-      <Project>{680c9e03-1ea3-4a60-be7a-136236297772}</Project>
-      <Name>Soft.Domain.Boostrapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Soft.Domain\Soft.Domain.csproj">
-      <Project>{baf52f04-07d1-4284-8a37-78a9c77e96a2}</Project>
-      <Name>Soft.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Soft.Infra.Data\Soft.Infra.Data.csproj">
-      <Project>{aa5258a4-278a-4704-9b53-811787034cd4}</Project>
-      <Name>Soft.Infra.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Soft.Infra.IoC\Soft.Infra.IoC.csproj">
       <Project>{a8278834-1ec0-4d97-922b-92143cf928be}</Project>
       <Name>Soft.Infra.IoC</Name>

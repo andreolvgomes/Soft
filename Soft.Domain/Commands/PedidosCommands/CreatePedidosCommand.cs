@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace Soft.Domain.Commands.PedidosCommands
 {
-    public class PedidosCommand : Command
+    public class CreatePedidosCommand //: Command
     {
-        public Pedidos Pedidos { get; private set; }
+        //public Pedidos Pedidos { get; private set; }
 
-        public PedidosCommand(Pedidos pedidos)
+        //public PedidosCommand(Pedidos pedidos)
+        public CreatePedidosCommand()
         {
-            this.Pedidos = pedidos;
+            //this.Pedidos = pedidos;
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Domain.Commands.PedidosCommands
 {
-    public class CreatePedidosCommandHandler : ICommandHandler<PedidosCommand>
+    public class CreatePedidosCommandHandler : ICommandHandler<CreatePedidosCommand>
     {
         private readonly IPedidosRepository _pedidosRepository;
 
@@ -18,10 +18,10 @@ namespace Soft.Domain.Commands.PedidosCommands
             _pedidosRepository = pedidosRepository;
         }
 
-        public void Handle(PedidosCommand command)
+        public void Handle(CreatePedidosCommand command)
         {
-            Pedidos pedidos = command.Pedidos;
-            _pedidosRepository.Insert(pedidos);
+            //Pedidos pedidos = command.Pedidos;
+            //_pedidosRepository.Insert(pedidos);
         }
     }
 }
