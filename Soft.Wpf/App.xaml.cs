@@ -17,7 +17,8 @@ namespace Soft.Wpf
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            Ioc.Instance.Init();
+            //Ioc.Instance.Init();
+            new Startup().Register();
         }
     }
 }

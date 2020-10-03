@@ -1,5 +1,6 @@
 ﻿using SimpleInjector;
 using Soft.Infra.IoC;
+using Soft.Wpf.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,12 @@ namespace Soft.Wpf
 {
     public class Startup
     {
-        public void Start()
+        public void Register()
         {
-            
+            Ioc.Instance.Init();
+
+            Container container = Ioc.Instance.Container();
+            container.Register<ProdutosController>();
         }
     }
 }

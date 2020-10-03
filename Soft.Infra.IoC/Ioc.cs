@@ -8,27 +8,10 @@ using Soft.Domain.Boostrapper;
 using Soft.Domain.Commands.Base;
 using Soft.Domain.Interfaces.Repositories;
 using Soft.Infra.Data.Repositories;
+using System;
 
 namespace Soft.Infra.IoC
 {
-    //public class Ioc
-    //{
-    //    public static void Register(Container container)
-    //    {
-    //        // Repositories
-    //        container.Register<IClientesRepository, ClientesRepository>();
-    //        container.Register<IPedidosRepository, PedidosRepository>();
-    //        container.Register<IPeitensRepository, PeitensRepository>();
-    //        container.Register<IProdutosRepository, ProdutosRepository>();
-
-    //        //container.RegisterCollection(typeof(ICommandHandler<>), typeof(ICommandHandler<>).Assembly);
-    //        container.Register(typeof(ICommandHandler<>), new[] { typeof(ICommandHandler<>).Assembly });
-
-    //        container.Register<ICommandDispatcher, CommandDispatcher>();
-    //        //container.Register<IDatabase, InMemoryDatabase>(Lifestyle.Singleton);
-    //    }
-    //}
-
     public class Ioc
     {
         private static Ioc _instance = null;
@@ -50,26 +33,41 @@ namespace Soft.Infra.IoC
             _container = new Container();
         }
 
+        public Container Container()
+        {
+            return _container;
+        }
+
         public void Init()
         {
-            // Application
-            _container.Register<IProdutosAppService, ProdutosAppService>();
+            Application();
+            Validations();
+            Repositories();
 
-            // Validations
-            _container.Register<IProdutosValidation, ProdutosValidation>();
+            //container.RegisterCollection(typeof(ICommandHandler<>), typeof(ICommandHandler<>).Assembly);
+            _container.Register(typeof(ICommandHandler<>), new[] { typeof(ICommandHandler<>).Assembly });
+            _container.Register<ICommandDispatcher, CommandDispatcher>();
 
+            //container.Register<IDatabase, InMemoryDatabase>(Lifestyle.Singleton);
+            //_container.Verify();
+        }
+
+        private void Repositories()
+        {
             _container.Register<IClientesRepository, ClientesRepository>();
             _container.Register<IPedidosRepository, PedidosRepository>();
             _container.Register<IPeitensRepository, PeitensRepository>();
             _container.Register<IProdutosRepository, ProdutosRepository>();
+        }
 
-            //_container.Register(typeof(IRepository<>), new[] { typeof(IRepository<>).Assembly });
+        private void Validations()
+        {
+            _container.Register<IProdutosValidation, ProdutosValidation>();
+        }
 
-            //container.RegisterCollection(typeof(ICommandHandler<>), typeof(ICommandHandler<>).Assembly);
-            _container.Register(typeof(ICommandHandler<>), new[] { typeof(ICommandHandler<>).Assembly });
-
-            _container.Register<ICommandDispatcher, CommandDispatcher>();
-            //container.Register<IDatabase, InMemoryDatabase>(Lifestyle.Singleton);
+        private void Application()
+        {
+            _container.Register<IProdutosAppService, ProdutosAppService>();
         }
 
         public T GetInstance<T>() where T : class
