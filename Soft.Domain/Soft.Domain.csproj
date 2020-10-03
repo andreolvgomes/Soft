@@ -61,11 +61,12 @@
     <Compile Include="Commands\PedidosCommands\UpdatePedidosCommandHandler.cs" />
     <Compile Include="Common\Security\Constants.cs" />
     <Compile Include="Common\Security\Crypto.cs" />
+    <Compile Include="Extensions\StringExteions.cs" />
     <Compile Include="Interfaces\Repositories\IClientesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPedidosRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPeitensRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProdutosRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\IRepository.cs" />
     <Compile Include="Interfaces\Repositories\IVendedoresRepository.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Common\ColumnModelAttribute.cs" />

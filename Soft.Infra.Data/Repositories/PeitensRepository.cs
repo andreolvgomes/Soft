@@ -11,7 +11,7 @@ namespace Soft.Infra.Data.Repositories
     /// <summary>
     /// Repository of Peitens
     /// </summary>
-    public class PeitensRepository : RepositoryBase<Peitens>, IPeitensRepository
+    public class PeitensRepository : Repository<Peitens>, IPeitensRepository
     {
     }
 }

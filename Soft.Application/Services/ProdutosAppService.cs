@@ -1,4 +1,6 @@
 ﻿using Soft.Application.Interfaces;
+using Soft.Application.Interfaces.Services;
+using Soft.Application.ViewModels;
 using Soft.Domain.Interfaces.Repositories;
 using Soft.Domain.Models;
 using System;
@@ -18,19 +20,41 @@ namespace Soft.Application.Services
             _produtosRepository = produtosRepository;
         }
 
-        public void Create(Produtos produtos)
+        public void Create(ProdutosViewModel produtos)
+        {
+            _produtosRepository.Insert(new Produtos()
+            {
+                Pro_codigo = produtos.Pro_codigo,
+                Pro_descricao = produtos.Pro_descricao
+            });
+        }
+
+        public void Remove(long pro_id)
         {
 
         }
 
-        public void Delete(long pro_id)
+        public ProdutosViewModel FindById(long pro_id)
         {
+            Produtos produto = _produtosRepository.Find(new { Pro_id = pro_id });
+            if (produto == null) return null;
 
+            return new ProdutosViewModel()
+            {
+                Pro_id = produto.Pro_id,
+                Pro_codigo = produto.Pro_codigo,
+                Pro_descricao = produto.Pro_descricao
+            };
         }
 
-        public Produtos FindById(long pro_id)
+        public void Update(ProdutosViewModel produtos)
         {
-            return _produtosRepository.Find(new { Pro_id = pro_id });
+            _produtosRepository.Update(new Produtos()
+            {
+                Pro_id = produtos.Pro_id,
+                Pro_codigo = produtos.Pro_codigo,
+                Pro_descricao = produtos.Pro_descricao
+            });
         }
     }
 }

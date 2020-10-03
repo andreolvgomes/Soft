@@ -17,7 +17,7 @@ namespace Soft.Infra.Data.Repositories
     /// Repository base
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class RepositoryBase<TModel> : IRepositoryBase<TModel> where TModel : BaseModel
+    public class Repository<TModel> : IRepository<TModel> where TModel : BaseModel
     {
         /// <summary>
         /// Get all objetct from database

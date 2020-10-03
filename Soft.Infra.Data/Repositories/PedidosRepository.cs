@@ -11,7 +11,7 @@ namespace Soft.Infra.Data.Repositories
     /// <summary>
     /// Repository of Pedidos
     /// </summary>
-    public class PedidosRepository : RepositoryBase<Pedidos>, IPedidosRepository
+    public class PedidosRepository : Repository<Pedidos>, IPedidosRepository
     {
     }
 }

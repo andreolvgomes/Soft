@@ -22,7 +22,7 @@ go
 create table Vendedores (
 	Ven_id				bigint				not null		identity(1, 1)
 	,Ven_nome			varchar(20)		default('')		not null
-
+	,Ven_inativo		bit				default(0)		not null
 	,CreateUser			varchar(50)		default('')		not null
 	,UpdateUser			varchar(50)		default('')		not null
 	,CreateAt			datetime
@@ -44,7 +44,7 @@ create table Produtos (
 	,Pro_codigo			varchar(20)		default('')		not null
 	,Pro_descricao		varchar(100)	default('')		not null
 	,Pro_pvenda			decimal(10, 2)	default(0)		not null
-
+	,Pro_inativo		bit				default(0)		not null
 	,CreateUser			varchar(50)		default('')		not null
 	,UpdateUser			varchar(50)		default('')		not null
 	,CreateAt			datetime
@@ -68,7 +68,7 @@ go
 create table Clientes (
 	Cli_id				bigint			identity(1, 1)	not null		
 	,Cli_nome			varchar(100)	default('')		not null
-
+	,Cli_inativo		bit				default(0)		not null
 	,CreateUser			varchar(50)		default('')		not null
 	,UpdateUser			varchar(50)		default('')		not null
 	,CreateAt			datetime
@@ -99,7 +99,7 @@ create table Pedidos (
 	,Ped_desc_acres_tipo_prod		smallint		default(0)		not null
 	,Ped_desc_acresc_serv			decimal(10, 2)	default(0)		not null
 	,Ped_desc_acres_tipo_serv		smallint		default(0)		not null
-
+	,Ped_canc						bit				default(0)		not null
 	,CreateUser						varchar(50)		default('')		not null
 	,UpdateUser						varchar(50)		default('')		not null
 	,CreateAt						datetime
@@ -122,7 +122,8 @@ create table Peitens (
 	,Ven_id				bigint			default(0)		not null
 	,Pei_vlunitario		decimal(10, 3)	default(0)		not null
 	,Pei_quantidade		decimal(10, 3)	default(0)		not null
-
+	,Pei_canc			bit				default(0)		not null
+	,Pei_canc_indiv		bit				default(0)		not null
 	,CreateUser			varchar(50)		default('')		not null
 	,UpdateUser			varchar(50)		default('')		not null
 	,CreateAt			datetime

@@ -11,7 +11,7 @@ namespace Soft.Infra.Data.Repositories
     /// <summary>
     /// Repository of Clientes
     /// </summary>
-    public class ClientesRepository : RepositoryBase<Clientes>, IClientesRepository
+    public class ClientesRepository : Repository<Clientes>, IClientesRepository
     {
     }
 }

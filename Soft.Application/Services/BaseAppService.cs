@@ -1,4 +1,4 @@
-﻿using Soft.Application.Interfaces;
+﻿using Soft.Application.Interfaces.Services;
 using Soft.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Application.Services
 {
-    public class BaseAppService<TModel> : IBaseAppService<TModel> where TModel : BaseModel
+    public class BaseAppService<TModel> : IAppService<TModel> where TModel : BaseModel
     {
         public BaseAppService()
         {

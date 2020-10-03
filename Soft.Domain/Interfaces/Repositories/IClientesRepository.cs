@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Domain.Interfaces.Repositories
 {
-    public interface IClientesRepository : IRepositoryBase<Clientes>
+    public interface IClientesRepository : IRepository<Clientes>
     {
     }
 }

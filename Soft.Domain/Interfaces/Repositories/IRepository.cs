@@ -14,7 +14,7 @@ namespace Soft.Domain.Interfaces.Repositories
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
     //public interface IRepositoryBase<TModel> : IDisposable where TModel : BaseModel
-    public interface IRepositoryBase<TModel> where TModel : BaseModel
+    public interface IRepository<TModel> where TModel : BaseModel
     {
         /// <summary>
         /// Insert object into database

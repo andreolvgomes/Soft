@@ -1,6 +1,9 @@
 ﻿using SimpleInjector;
 using Soft.Application.Interfaces;
+using Soft.Application.Interfaces.Services;
+using Soft.Application.Interfaces.Validations;
 using Soft.Application.Services;
+using Soft.Application.Validations;
 using Soft.Domain.Boostrapper;
 using Soft.Domain.Commands.Base;
 using Soft.Domain.Interfaces.Repositories;
@@ -52,10 +55,15 @@ namespace Soft.Infra.IoC
             // Application
             _container.Register<IProdutosAppService, ProdutosAppService>();
 
+            // Validations
+            _container.Register<IProdutosValidation, ProdutosValidation>();
+
             _container.Register<IClientesRepository, ClientesRepository>();
             _container.Register<IPedidosRepository, PedidosRepository>();
             _container.Register<IPeitensRepository, PeitensRepository>();
             _container.Register<IProdutosRepository, ProdutosRepository>();
+
+            //_container.Register(typeof(IRepository<>), new[] { typeof(IRepository<>).Assembly });
 
             //container.RegisterCollection(typeof(ICommandHandler<>), typeof(ICommandHandler<>).Assembly);
             _container.Register(typeof(ICommandHandler<>), new[] { typeof(ICommandHandler<>).Assembly });

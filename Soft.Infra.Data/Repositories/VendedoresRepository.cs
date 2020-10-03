@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Infra.Data.Repositories
 {
-    public class VendedoresRepository : RepositoryBase<Vendedores>, IVendedoresRepository
+    public class VendedoresRepository : Repository<Vendedores>, IVendedoresRepository
     {
     }
 }

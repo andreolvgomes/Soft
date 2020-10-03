@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Domain.Interfaces.Repositories
 {
-    public interface IPedidosRepository : IRepositoryBase<Pedidos>
+    public interface IPedidosRepository : IRepository<Pedidos>
     {
     }
 }

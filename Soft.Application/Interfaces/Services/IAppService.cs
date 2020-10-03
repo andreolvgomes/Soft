@@ -7,9 +7,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Application.Interfaces
+namespace Soft.Application.Interfaces.Services
 {
-    public interface IBaseAppService<TModel> where TModel : BaseModel
+    public interface IAppService<TModel> where TModel : BaseModel
     {
         long Create(TModel model, IDbTransaction transaction = null);
 

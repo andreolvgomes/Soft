@@ -11,7 +11,7 @@ namespace Soft.Infra.Data.Repositories
     /// <summary>
     /// Repository of Produtos
     /// </summary>
-    public class ProdutosRepository : RepositoryBase<Produtos>, IProdutosRepository
+    public class ProdutosRepository : Repository<Produtos>, IProdutosRepository
     {
     }
 }

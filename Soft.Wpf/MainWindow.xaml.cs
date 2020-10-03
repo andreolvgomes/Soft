@@ -1,6 +1,11 @@
 ﻿using Soft.Application.Interfaces;
+using Soft.Application.Interfaces.Services;
+using Soft.Application.Interfaces.Validations;
 using Soft.Application.Services;
+using Soft.Application.Validations;
+using Soft.Application.ViewModels;
 using Soft.Infra.IoC;
+using Soft.Wpf.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +28,49 @@ namespace Soft.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IProdutosAppService produtosAppService = null;
+        private ProdutosController controller = null;
 
         public MainWindow()
         {
             InitializeComponent();
-            produtosAppService = Ioc.Instance.GetInstance<IProdutosAppService>();
+            controller = new ProdutosController(
+                Ioc.Instance.GetInstance<IProdutosAppService>()
+                , Ioc.Instance.GetInstance<IProdutosValidation>());
+
+            this.DataContext = controller;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.Valid())
+            {
+                controller.Register();
+                Find();
+            }
+        }
+
+        private bool Valid()
+        {
+            if (!MessageValid(controller.ValidPro_codigo())) return false;
+            if (!MessageValid(controller.ValidPro_descricao())) return false;
+            return true;
+        }
+
+        private bool MessageValid(ValidationReturn result)
+        {
+            if (result.Valid) return true;
+            MessageBox.Show(result.Message);
+            return false;
+        }
+
+        private void Find()
+        {
+            controller.Find();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Find();
         }
     }
 }
