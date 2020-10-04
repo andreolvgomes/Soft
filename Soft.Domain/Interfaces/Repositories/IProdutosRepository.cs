@@ -10,7 +10,7 @@ namespace Soft.Domain.Interfaces.Repositories
     /// <summary>
     /// Inteface repository of the Produtos
     /// </summary>
-    public interface IProdutosRepository : IRepository<Produtos>
+    public interface IProdutosRepository : IRepository<Produto>
     {
     }
 }

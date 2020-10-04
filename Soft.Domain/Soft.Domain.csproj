@@ -53,31 +53,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Base\Command.cs" />
+    <Compile Include="Commands\Base\CommandCore.cs" />
     <Compile Include="Commands\Base\ICommandHandler.cs" />
-    <Compile Include="Commands\PedidosCommands\UpdatePedidosCommand.cs" />
-    <Compile Include="Commands\PedidosCommands\CreatePedidosCommandHandler.cs" />
-    <Compile Include="Commands\PedidosCommands\CreatePedidosCommand.cs" />
-    <Compile Include="Commands\PedidosCommands\UpdatePedidosCommandHandler.cs" />
+    <Compile Include="Commands\Pedidos\Command\CancelPedidoCommand.cs" />
+    <Compile Include="Commands\Pedidos\Command\PedidoCommand.cs" />
+    <Compile Include="Commands\Pedidos\Command\UpdatePedidoCommand.cs" />
+    <Compile Include="Commands\Pedidos\Handler\CancelPedidoCommandHandler.cs" />
+    <Compile Include="Commands\Pedidos\Handler\CreatePedidoCommandHandler.cs" />
+    <Compile Include="Commands\Pedidos\Command\CreatePedidoCommand.cs" />
+    <Compile Include="Commands\Pedidos\Handler\UpdatePedidoCommandHandler.cs" />
+    <Compile Include="Commands\Produtos\Command\CreateProdutoCommand.cs" />
+    <Compile Include="Commands\Produtos\Command\ProdutoCommand.cs" />
+    <Compile Include="Commands\Produtos\Command\UpdateProdutoCommand.cs" />
     <Compile Include="Common\Security\Constants.cs" />
     <Compile Include="Common\Security\Crypto.cs" />
     <Compile Include="Extensions\StringExteions.cs" />
     <Compile Include="Interfaces\Repositories\IClientesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPedidosRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IPeitensRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPeitemRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProdutosRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepository.cs" />
     <Compile Include="Interfaces\Repositories\IVendedoresRepository.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Common\ColumnModelAttribute.cs" />
-    <Compile Include="Models\Clientes.cs" />
-    <Compile Include="Models\Pedidos.cs" />
-    <Compile Include="Models\Peitens.cs" />
-    <Compile Include="Models\Produtos.cs" />
-    <Compile Include="Models\Vendedores.cs" />
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Pedido.cs" />
+    <Compile Include="Models\Peitem.cs" />
+    <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Vendedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\Produtos\Handler\" />
     <Folder Include="Interfaces\Services\" />
     <Folder Include="Services\" />
   </ItemGroup>

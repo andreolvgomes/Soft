@@ -29,9 +29,9 @@ namespace Soft.Wpf.Controllers
             }
         }
 
-        private ProdutosViewModel _Produto;
+        private ProdutoViewModel _Produto;
 
-        public ProdutosViewModel Produto
+        public ProdutoViewModel Produto
         {
             get { return _Produto; }
             set
@@ -44,15 +44,15 @@ namespace Soft.Wpf.Controllers
             }
         }
 
-        private readonly IProdutosAppService _produtosAppService;
-        private readonly IProdutosValidation _produtosValidation;
+        private readonly IProdutoAppService _produtosAppService;
+        private readonly IProdutoValidation _produtosValidation;
 
-        public ProdutosController(IProdutosAppService produtosAppService, IProdutosValidation produtosValidation)
+        public ProdutosController(IProdutoAppService produtosAppService, IProdutoValidation produtosValidation)
         {
             _produtosAppService = produtosAppService;
             _produtosValidation = produtosValidation;
 
-            this.Produto = new ProdutosViewModel();
+            this.Produto = new ProdutoViewModel();
         }
 
         internal void Register()
@@ -65,9 +65,9 @@ namespace Soft.Wpf.Controllers
 
         internal void Find()
         {
-            ProdutosViewModel find = _produtosAppService.FindById(Produto.Pro_id);
+            ProdutoViewModel find = _produtosAppService.FindById(Produto.Pro_id);
             if (find == null)
-                Produto = new ProdutosViewModel();
+                Produto = new ProdutoViewModel();
             else
                 Produto = find;
         }

@@ -1,7 +1,8 @@
-﻿using SimpleInjector;
+﻿using AutoMapper;
+using SimpleInjector;
+using Soft.Application.AutoMapper;
 using Soft.Infra.IoC;
 using Soft.Wpf.Controllers;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,10 @@ namespace Soft.Wpf
 
             Container container = Ioc.Instance.Container();
             container.Register<ProdutosController>();
+
+            // register automapper
+            MapperConfiguration config = AutoMapperConfiguration.RegisterMappings();
+            container.Register<IMapper>(() => config.CreateMapper(container.GetInstance));
         }
     }
 }

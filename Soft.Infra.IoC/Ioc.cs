@@ -40,34 +40,13 @@ namespace Soft.Infra.IoC
 
         public void Init()
         {
-            Application();
-            Validations();
-            Repositories();
+            Registry.Register(_container);
 
-            //container.RegisterCollection(typeof(ICommandHandler<>), typeof(ICommandHandler<>).Assembly);
-            _container.Register(typeof(ICommandHandler<>), new[] { typeof(ICommandHandler<>).Assembly });
-            _container.Register<ICommandDispatcher, CommandDispatcher>();
+            // Application
+            _container.Register<IProdutoAppService, ProdutoAppService>();
 
-            //container.Register<IDatabase, InMemoryDatabase>(Lifestyle.Singleton);
-            //_container.Verify();
-        }
-
-        private void Repositories()
-        {
-            _container.Register<IClientesRepository, ClientesRepository>();
-            _container.Register<IPedidosRepository, PedidosRepository>();
-            _container.Register<IPeitensRepository, PeitensRepository>();
-            _container.Register<IProdutosRepository, ProdutosRepository>();
-        }
-
-        private void Validations()
-        {
-            _container.Register<IProdutosValidation, ProdutosValidation>();
-        }
-
-        private void Application()
-        {
-            _container.Register<IProdutosAppService, ProdutosAppService>();
+            // Validations
+            _container.Register<IProdutoValidation, ProdutoValidation>();            
         }
 
         public T GetInstance<T>() where T : class
