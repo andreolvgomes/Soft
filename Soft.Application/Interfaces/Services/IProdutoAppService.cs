@@ -17,13 +17,13 @@ namespace Soft.Application.Interfaces.Services
         /// <summary>
         /// Create new produto into database
         /// </summary>
-        /// <param name="produtos"></param>
-        void Create(ProdutoViewModel produtos);
+        /// <param name="produtoViewModel"></param>
+        void Create(ProdutoViewModel produtoViewModel);
         /// <summary>
         /// Update produto in the database
         /// </summary>
-        /// <param name="produtos"></param>
-        void Update(ProdutoViewModel produtos);
+        /// <param name="produtoViewModel"></param>
+        void Update(ProdutoViewModel produtoViewModel);
         /// <summary>
         /// Delete produto in the database
         /// </summary>

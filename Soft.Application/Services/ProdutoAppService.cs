@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Application.Services
 {
-    public class ProdutoAppService : IProdutoAppService//IBaseAppService<Produtos>, IProdutosAppService
+    public class ProdutoAppService : IProdutoAppService
     {
         private readonly IProdutosRepository _produtosRepository = null;
         private readonly IMapper _mapper = null;
@@ -22,9 +22,9 @@ namespace Soft.Application.Services
             _produtosRepository = produtosRepository;
         }
 
-        public void Create(ProdutoViewModel produtos)
+        public void Create(ProdutoViewModel produtoViewModel)
         {
-            _produtosRepository.Insert(_mapper.Map<Produto>(produtos));
+            _produtosRepository.Insert(_mapper.Map<Produto>(produtoViewModel));
         }
 
         public void Remove(long pro_id)
@@ -37,19 +37,14 @@ namespace Soft.Application.Services
             return _mapper.Map<ProdutoViewModel>(_produtosRepository.Find(new { Pro_id = pro_id }));
         }
 
-        public void Update(ProdutoViewModel produtos)
+        public void Update(ProdutoViewModel produtoViewModel)
         {
-            _produtosRepository.Update(_mapper.Map<Produto>(produtos));
+            _produtosRepository.Update(_mapper.Map<Produto>(produtoViewModel));
         }
 
         public IEnumerable<ProdutoViewModel> All()
         {
             return _mapper.Map<IEnumerable<ProdutoViewModel>>(_produtosRepository.All());
         }
-
-        //public void Dispose()
-        //{
-        //    GC.SuppressFinalize(this);
-        //}
     }
 }
