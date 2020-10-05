@@ -3,10 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Soft.Wpf.Views.Cadastros"
-        mc:Ignorable="d"
-        Title="Produtos" Height="450" Width="800">
-    <Grid>
+        xmlns:buttons="clr-namespace:Soft.Wpf.UserControls"
+        Title="MainWindow" Height="450" Width="600" WindowStartupLocation="CenterScreen"
+        >
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         
+        <buttons:Buttons x:Name="buttons" Grid.Column="1"/>
+        
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="ID"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="txtPro_id" Width="75" Text="{Binding Entidade.Pro_id, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Content="Search .." Click="Button_Click_1"/>
+            </StackPanel>
+
+            <TextBlock Text="Código"/>
+            <TextBox x:Name="txtPro_codigo" Text="{Binding Entidade.Pro_codigo, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Text="Descrição"/>
+            <TextBox x:Name="txtPro_descricao" Text="{Binding Entidade.Pro_descricao, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
     </Grid>
 </Window>

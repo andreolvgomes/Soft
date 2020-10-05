@@ -70,7 +70,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Content Include="Links.txt" />
+    <Compile Include="Controllers\Cadastros\ClientesController.cs" />
+    <Compile Include="Controllers\Cadastros\Core\Enums\Operation.cs" />
+    <Compile Include="Controllers\Cadastros\Core\Interfaces\IRegisterActions.cs" />
+    <Compile Include="Controllers\Cadastros\VendedoresController.cs" />
     <Compile Include="Startup.cs" />
+    <Page Include="UserControls\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Cadastros\Produtos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Home.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,7 +92,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\ProdutosController.cs" />
+    <Compile Include="Controllers\Cadastros\ProdutosController.cs" />
+    <Compile Include="Controllers\Cadastros\Core\ControllerRegister.cs" />
+    <Compile Include="UserControls\Buttons.xaml.cs">
+      <DependentUpon>Buttons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cadastros\Produtos.xaml.cs">
+      <DependentUpon>Produtos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -122,6 +142,8 @@
       <Name>Soft.Infra.IoC</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Pedidos\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

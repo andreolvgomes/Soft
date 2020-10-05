@@ -48,7 +48,7 @@
     <Compile Include="AutoMapper\DomainModelToViewModelMapping.cs" />
     <Compile Include="AutoMapper\ViewModelToCommandMapping.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainModelMapping.cs" />
-    <Compile Include="Interfaces\Services\IAppService.cs" />
+    <Compile Include="Interfaces\Services\IRegisterAppService.cs" />
     <Compile Include="Interfaces\Services\IProdutoAppService.cs" />
     <Compile Include="Interfaces\Validations\IProdutoValidation.cs" />
     <Compile Include="Services\BaseAppService.cs" />
@@ -57,6 +57,7 @@
     <Compile Include="Validations\ProdutoValidation.cs" />
     <Compile Include="Validations\ValidationReturn.cs" />
     <Compile Include="ViewModels\ProdutoViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Soft.Domain.Boostrapper\Soft.Domain.Boostrapper.csproj">

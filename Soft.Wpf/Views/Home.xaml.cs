@@ -5,6 +5,7 @@ using Soft.Application.Validations;
 using Soft.Application.ViewModels;
 using Soft.Infra.IoC;
 using Soft.Wpf.Controllers;
+using Soft.Wpf.Controllers.Cadastros;
 using System;
 using System.Collections.Generic;
 using System.Linq;

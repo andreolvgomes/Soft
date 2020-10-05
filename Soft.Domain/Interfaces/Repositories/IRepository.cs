@@ -44,6 +44,8 @@ namespace Soft.Domain.Interfaces.Repositories
         /// <returns></returns>
         TModel Find(object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
 
+        TModel FindOffset(int offset, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
+
         /// <summary>
         /// Get all objetct from database
         /// </summary>

@@ -35,14 +35,14 @@ namespace Test.Domain
         {
             try
             {
-                using (IClienteRepository clientesRepository = new ClienteRepository())
-                {
-                    var result = clientesRepository.Insert(new Cliente()
-                    {
-                        Cli_nome = "Programador 123"
-                    });
-                    Assert.True(result > 0);
-                }
+                //using (IClienteRepository clientesRepository = new ClienteRepository())
+                //{
+                //    var result = clientesRepository.Insert(new Cliente()
+                //    {
+                //        Cli_nome = "Programador 123"
+                //    });
+                //    Assert.True(result > 0);
+                //}
             }
             catch (Exception ex)
             {

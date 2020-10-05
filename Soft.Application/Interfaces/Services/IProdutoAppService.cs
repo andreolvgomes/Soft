@@ -12,23 +12,23 @@ namespace Soft.Application.Interfaces.Services
     /// <summary>
     /// IProdutosAppService
     /// </summary>
-    public interface IProdutoAppService //: IDisposable//: IBaseAppService<Produtos>
+    public interface IProdutoAppService : IRegisterAppService<ProdutoViewModel>//: IDisposable//: IBaseAppService<Produtos>
     {
         /// <summary>
         /// Create new produto into database
         /// </summary>
         /// <param name="produtoViewModel"></param>
-        void Create(ProdutoViewModel produtoViewModel);
+        //void Create(ProdutoViewModel produtoViewModel);
         /// <summary>
         /// Update produto in the database
         /// </summary>
         /// <param name="produtoViewModel"></param>
-        void Update(ProdutoViewModel produtoViewModel);
-        /// <summary>
-        /// Delete produto in the database
-        /// </summary>
-        /// <param name="pro_id"></param>
-        void Remove(Int64 pro_id);
+        //void Update(ProdutoViewModel produtoViewModel);
+        //// <summary>
+        ///// Delete produto in the database
+        ///// </summary>
+        ///// <param name="pro_id"></param>
+        //void Remove(Int64 pro_id);
         /// <summary>
         /// Find produto by id
         /// </summary>

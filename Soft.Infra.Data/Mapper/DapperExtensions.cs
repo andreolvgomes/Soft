@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace Soft.Infra.Data.Mapper
 {
+    //select Pro_codigo, Pro_descricao from Produtos
+    //order by(select null) offset 0 rows fetch next 5 rows only
+
     public static class DapperExtensions
     {
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, string> TypeTableName
@@ -25,6 +28,14 @@ namespace Soft.Infra.Data.Mapper
 
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>> IdentiyProperties
             = new ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>>();
+
+        public static TModel FindOffset<TModel>(this IDbConnection cnn, int offset, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
+        {
+            QueryTest query = GetQuery(false, param, selector);
+            query.Query += "\n";
+            query.Query += $"order by (select null) offset {offset} rows fetch next 1 rows only";
+            return cnn.Query<TModel>(query.Query, query.Param, transaction: transaction).FirstOrDefault();
+        }
 
         public static TModel Find<TModel>(this IDbConnection cnn, object param, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
         {

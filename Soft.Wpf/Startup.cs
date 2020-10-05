@@ -3,6 +3,7 @@ using SimpleInjector;
 using Soft.Application.AutoMapper;
 using Soft.Infra.IoC;
 using Soft.Wpf.Controllers;
+using Soft.Wpf.Controllers.Cadastros;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

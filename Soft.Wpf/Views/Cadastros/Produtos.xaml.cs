@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Soft.Application.Validations;
+using Soft.Infra.IoC;
+using Soft.Wpf.Controllers.Cadastros;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,51 @@ namespace Soft.Wpf.Views.Cadastros
     /// </summary>
     public partial class Produtos : Window
     {
+        private ProdutosController controller = null;
+
         public Produtos()
         {
             InitializeComponent();
+            
+            controller = Ioc.Instance.GetInstance<ProdutosController>();
+            controller.Init();
+
+            this.DataContext = controller;
+            buttons.SetIActions(controller);
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.Valid())
+            {
+                controller.Register();
+                Find();
+            }
+        }
+
+        private bool Valid()
+        {
+            if (!MessageValid(controller.ValidPro_codigo())) return false;
+            if (!MessageValid(controller.ValidPro_descricao())) return false;
+            return true;
+        }
+
+        private bool MessageValid(ValidationReturn result)
+        {
+            if (result.Valid) return true;
+            MessageBox.Show(result.Message);
+            return false;
+        }
+
+        private void Find()
+        {
+            controller.Find();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Find();
         }
     }
 }

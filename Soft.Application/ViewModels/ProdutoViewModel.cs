@@ -8,19 +8,8 @@ using System.Threading.Tasks;
 
 namespace Soft.Application.ViewModels
 {
-    public class ProdutoViewModel : INotifyPropertyChanged
+    public class ProdutoViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
         private Int64 _Pro_id;
 
         public Int64 Pro_id

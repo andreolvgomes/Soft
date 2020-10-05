@@ -109,5 +109,11 @@ namespace Soft.Infra.Data.Repositories
         {
             GC.SuppressFinalize(this);
         }
+
+        public TModel FindOffset(int offset, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null)
+        {
+            using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
+                return cnn.FindOffset<TModel>(offset, param: param, transaction: transaction);
+        }
     }
 }
