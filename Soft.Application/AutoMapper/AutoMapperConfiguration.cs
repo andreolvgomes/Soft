@@ -16,6 +16,7 @@ namespace Soft.Application.AutoMapper
                 cfg.AddProfile(new DomainModelToViewModelMapping());
                 cfg.AddProfile(new ViewModelToCommandMapping());
                 cfg.AddProfile(new ViewModelToDomainModelMapping());
+                cfg.AddProfile(new ExpressionViewModelToExpressionDomainModelMapping());
             });
         }
     }

@@ -8,7 +8,7 @@ namespace Soft.Wpf.Controllers.Cadastros.Core.Interfaces
 {
     public interface IRegisterActions
     {
-        void Novo();
+        void New();
         void Save();
         void Cancel();
         void Delete();

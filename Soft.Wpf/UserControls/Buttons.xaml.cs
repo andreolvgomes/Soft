@@ -36,7 +36,7 @@ namespace Soft.Wpf.UserControls
 
         private void btnNovo_Click(object sender, RoutedEventArgs e)
         {
-            _action.Novo();
+            _action.New();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

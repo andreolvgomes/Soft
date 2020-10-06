@@ -1,4 +1,5 @@
-﻿using Soft.Entities.Models;
+﻿using Soft.Application.ViewModels;
+using Soft.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,40 +10,40 @@ using System.Threading.Tasks;
 
 namespace Soft.Application.Interfaces.Services
 {
-    public interface IServiceAppBase<TModel> where TModel : ModelBase
+    public interface IServiceAppBase<TViewModel> where TViewModel : ViewModelBase
     {
         /// <summary>
         /// Insert object into database
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        long Insert(TModel model, IDbTransaction transaction = null);
+        long Insert(TViewModel model, IDbTransaction transaction = null);
 
         /// <summary>
         /// Update object in the database
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        int Update(TModel model, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
+        int Update(TViewModel model, Expression<Func<TViewModel, object>> selector = null, IDbTransaction transaction = null);
 
         /// <summary>
         /// Delete object from database
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        int Delete(TModel model, IDbTransaction transaction = null);
+        int Delete(TViewModel model, IDbTransaction transaction = null);
 
         /// <summary>
         /// Find object from database
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        TModel Find(object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
+        TViewModel Find(object param = null, Expression<Func<TViewModel, object>> selector = null, IDbTransaction transaction = null);
 
         /// <summary>
         /// Get all objetct from database
         /// </summary>
         /// <returns></returns>
-        IEnumerable<TModel> All(object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
+        IEnumerable<TViewModel> All(object param = null, Expression<Func<TViewModel, object>> selector = null, IDbTransaction transaction = null);
     }
 }

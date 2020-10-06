@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 
 namespace Soft.Application.AutoMapper
 {
-    public class ViewModelToDomainModelMapping : Profile
+    public class ExpressionViewModelToExpressionDomainModelMapping : Profile
     {
-        public ViewModelToDomainModelMapping()
+        public ExpressionViewModelToExpressionDomainModelMapping()
         {
-            CreateMap<ProdutoViewModel, Produto>();
-            //Expression < Func<TModel, object>>
+            CreateMap<Expression<Func<ProdutoViewModel, object>>, Expression<Func<Produto, object>>>();
         }
     }
 }

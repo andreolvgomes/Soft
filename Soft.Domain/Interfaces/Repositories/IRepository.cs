@@ -44,6 +44,14 @@ namespace Soft.Domain.Interfaces.Repositories
         /// <returns></returns>
         TModel Find(object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
 
+        /// <summary>
+        /// FindOffset
+        /// </summary>
+        /// <param name="offset"></param>
+        /// <param name="param"></param>
+        /// <param name="selector"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         TModel FindOffset(int offset, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null);
 
         /// <summary>

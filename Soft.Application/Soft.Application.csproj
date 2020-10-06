@@ -46,15 +46,14 @@
   <ItemGroup>
     <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="AutoMapper\DomainModelToViewModelMapping.cs" />
+    <Compile Include="AutoMapper\ExpressionViewModelToExpressionDomainModelMapping.cs" />
     <Compile Include="AutoMapper\ViewModelToCommandMapping.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainModelMapping.cs" />
-    <Compile Include="Interfaces\Services\IRegisterAppServiceTest.cs" />
     <Compile Include="Interfaces\Services\IRegisterAppService.cs" />
     <Compile Include="Interfaces\Services\IProdutoAppService.cs" />
     <Compile Include="Interfaces\Services\IServiceAppBase.cs" />
     <Compile Include="Interfaces\Validations\IProdutoValidation.cs" />
     <Compile Include="Services\BaseAppService.cs" />
-    <Compile Include="Services\ProdutoAppServiceTest.cs" />
     <Compile Include="Services\ProdutoAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RegisterAppService.cs" />

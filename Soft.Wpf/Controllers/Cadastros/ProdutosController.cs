@@ -29,6 +29,11 @@ namespace Soft.Wpf.Controllers.Cadastros
             _produtosValidation = produtosValidation;
         }
 
+        public void Test()
+        {
+            var produto = _produtosAppService.Find(new { Pro_id = 5 }, s => new { s.Pro_descricao });
+        }
+
         public ValidationReturn ValidPro_codigo()
         {
             return _produtosValidation.ValidPro_codigoThereAreOtherEqual(Entidade.Pro_id, Entidade.Pro_codigo);

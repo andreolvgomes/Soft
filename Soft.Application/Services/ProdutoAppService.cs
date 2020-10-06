@@ -47,7 +47,7 @@ namespace Soft.Application.Services
 
         public ProdutoViewModel Find(object param = null, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<ProdutoViewModel>(_produtosRepository.Find(param: param, selector: _mapper.Map<Expression<Func<Produto, object>>>(selector)));
         }
 
         public IEnumerable<ProdutoViewModel> All()

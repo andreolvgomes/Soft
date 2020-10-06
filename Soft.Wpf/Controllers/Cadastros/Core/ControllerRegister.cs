@@ -1,6 +1,5 @@
 ﻿using Soft.Application.Interfaces.Services;
 using Soft.Application.ViewModels;
-using Soft.Entities.Models;
 using Soft.Wpf.Controllers.Cadastros.Core.Enums;
 using Soft.Wpf.Controllers.Cadastros.Core.Interfaces;
 using System;
@@ -59,7 +58,7 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
             this.First();
         }
 
-        public void Novo()
+        public void New()
         {
             Entidade = (T)Activator.CreateInstance(typeof(T));
             Oper = Operation.New;

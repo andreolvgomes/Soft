@@ -30,7 +30,7 @@ namespace Soft.Wpf.Views.Cadastros
             
             controller = Ioc.Instance.GetInstance<ProdutosController>();
             controller.Init();
-
+            controller.Test();
             this.DataContext = controller;
             buttons.SetIActions(controller);
         }
