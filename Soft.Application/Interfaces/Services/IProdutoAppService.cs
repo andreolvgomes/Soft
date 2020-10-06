@@ -16,8 +16,6 @@ namespace Soft.Application.Interfaces.Services
     /// </summary>
     public interface IProdutoAppService: IRegisterAppService<ProdutoViewModel>
     {
-        ProdutoViewModel Find(object param = null, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null);
-
         /// <summary>
         /// Find produto by id
         /// </summary>

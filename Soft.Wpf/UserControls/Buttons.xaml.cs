@@ -29,7 +29,7 @@ namespace Soft.Wpf.UserControls
 
         private IRegisterActions _action;
 
-        public void SetIActions(IRegisterActions action)
+        public void InjectActions(IRegisterActions action)
         {
             _action = action;
         }

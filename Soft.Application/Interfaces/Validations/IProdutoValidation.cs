@@ -20,6 +20,12 @@ namespace Soft.Application.Interfaces.Validations
         /// <returns></returns>
         ValidationReturn ValidPro_codigo(string pro_codigo);
         /// <summary>
+        /// Validate if product to be ativ
+        /// </summary>
+        /// <param name="pro_codigo"></param>
+        /// <returns></returns>
+        ValidationReturn ValidPro_inativo(string pro_codigo);
+        /// <summary>
         /// Check if there are another pro_codigo equal in the database
         /// </summary>
         /// <param name="pro_id"></param>

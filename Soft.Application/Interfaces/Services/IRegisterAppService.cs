@@ -13,11 +13,13 @@ namespace Soft.Application.Interfaces.Services
 {
     public interface IRegisterAppService<TViewModel> where TViewModel : ViewModelBase
     {
-        void Insert(TViewModel viewModel, IDbTransaction transaction = null);
+        long Insert(TViewModel viewModel, IDbTransaction transaction = null);
 
         void Update(TViewModel viewModel, Expression<Func<TViewModel, object>> selector = null, IDbTransaction transaction = null);
 
         void Delete(TViewModel viewModel, IDbTransaction transaction = null);
+
+        ProdutoViewModel Find(object param = null, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null);
 
         TViewModel FindOffset(int offset, object param = null, IDbTransaction transaction = null);
 

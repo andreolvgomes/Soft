@@ -14,11 +14,20 @@ namespace Soft.Application.Validations
     {
         private readonly IProdutosRepository _produtosRepository = null;
 
+        /// <summary>
+        /// ProdutoValidation
+        /// </summary>
+        /// <param name="produtosRepository"></param>
         public ProdutoValidation(IProdutosRepository produtosRepository)
         {
             _produtosRepository = produtosRepository;
         }
 
+        /// <summary>
+        /// Valida produto, verifica se existe cadastrado
+        /// </summary>
+        /// <param name="pro_codigo"></param>
+        /// <returns></returns>
         public ValidationReturn ValidPro_codigo(string pro_codigo)
         {
             if (pro_codigo.NullOrEmpty())
@@ -28,12 +37,29 @@ namespace Soft.Application.Validations
             if (produto == null)
                 return new ValidationReturn("Produto não cadastrado");
 
+            return ValidPro_inativo(pro_codigo);
+        }
+
+        /// <summary>
+        /// Valida se o produto está ativo
+        /// </summary>
+        /// <param name="pro_codigo"></param>
+        /// <returns></returns>
+        public ValidationReturn ValidPro_inativo(string pro_codigo)
+        {
+            Produto produto = _produtosRepository.Find(new { Pro_codigo = pro_codigo }, s => new { s.Pro_inativo });
             if (produto.Pro_inativo)
                 return new ValidationReturn("Produto consta como inativo");
 
             return new ValidationReturn();
         }
 
+        /// <summary>
+        /// Verifica se já existe outro produto cadastrado com o mesmo código
+        /// </summary>
+        /// <param name="pro_id"></param>
+        /// <param name="pro_codigo"></param>
+        /// <returns></returns>
         public ValidationReturn ValidPro_codigoThereAreOtherEqual(Int64 pro_id, string pro_codigo)
         {
             if (pro_codigo.NullOrEmpty())
@@ -50,6 +76,12 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
+        /// <summary>
+        /// Verifica se já existe outro produto cadastro com a mesma descrição
+        /// </summary>
+        /// <param name="pro_id"></param>
+        /// <param name="pro_descricao"></param>
+        /// <returns></returns>
         public ValidationReturn ValidPro_descricaoThereAreOtherEqual(Int64 pro_id, string pro_descricao)
         {
             if (pro_descricao.NullOrEmpty())
@@ -68,11 +100,21 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
+        /// <summary>
+        /// Verifica se o produto pode ser vendido com quantidade fracionada
+        /// </summary>
+        /// <param name="pro_codigo"></param>
+        /// <returns></returns>
         public ValidationReturn ValidPro_fracionado(string pro_codigo)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Verifica se o preço de venda do cadastro do produto está zerado
+        /// </summary>
+        /// <param name="pro_codigo"></param>
+        /// <returns></returns>
         public ValidationReturn ValidPro_pvenda(string pro_codigo)
         {
             Produto produto = _produtosRepository.Find(new { Pro_codigo = pro_codigo }, s => new { s.Pro_pvenda });

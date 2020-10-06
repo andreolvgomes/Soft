@@ -67,9 +67,15 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
         public void Save()
         {
             if (Oper == Operation.New)
-                _appService.Insert(_entidade);
+            {
+                long id = _appService.Insert(_entidade);
+                n_records = _appService.Count();
+                Last();
+            }
             else
+            {
                 _appService.Update(_entidade);
+            }
             Oper = Operation.Navigate;
         }
 

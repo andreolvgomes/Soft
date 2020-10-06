@@ -51,13 +51,10 @@
     <Compile Include="AutoMapper\ViewModelToDomainModelMapping.cs" />
     <Compile Include="Interfaces\Services\IRegisterAppService.cs" />
     <Compile Include="Interfaces\Services\IProdutoAppService.cs" />
-    <Compile Include="Interfaces\Services\IServiceAppBase.cs" />
     <Compile Include="Interfaces\Validations\IProdutoValidation.cs" />
-    <Compile Include="Services\BaseAppService.cs" />
     <Compile Include="Services\ProdutoAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RegisterAppService.cs" />
-    <Compile Include="Services\ServiceAppBase.cs" />
     <Compile Include="Validations\ProdutoValidation.cs" />
     <Compile Include="Validations\ValidationReturn.cs" />
     <Compile Include="ViewModels\ProdutoViewModel.cs" />

@@ -30,9 +30,9 @@ namespace Soft.Application.Services
             return _mapper.Map<ProdutoViewModel>(_produtosRepository.Find(new { Pro_id = pro_id }));
         }
 
-        public void Insert(ProdutoViewModel viewModel, IDbTransaction transaction = null)
+        public long Insert(ProdutoViewModel viewModel, IDbTransaction transaction = null)
         {
-            _produtosRepository.Insert(_mapper.Map<Produto>(viewModel));
+            return _produtosRepository.Insert(_mapper.Map<Produto>(viewModel));
         }
 
         public void Update(ProdutoViewModel viewModel, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null)
