@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Domain.Models
+namespace Soft.Entities.Models
 {
-    public class Peitem : BaseModel
+    public class Peitem : ModelBase
     {
         public override string TableName
         {

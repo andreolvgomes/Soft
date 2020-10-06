@@ -1,7 +1,7 @@
 ﻿using Soft.Application.Interfaces.Validations;
 using Soft.Domain.Extensions;
 using Soft.Domain.Interfaces.Repositories;
-using Soft.Domain.Models;
+using Soft.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

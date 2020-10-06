@@ -28,47 +28,9 @@ namespace Soft.Wpf
     /// </summary>
     public partial class Home : Window
     {
-        private ProdutosController controller = null;
-
         public Home()
         {
             InitializeComponent();
-            controller = Ioc.Instance.GetInstance<ProdutosController>();
-
-            this.DataContext = controller;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.Valid())
-            {
-                controller.Register();
-                Find();
-            }
-        }
-
-        private bool Valid()
-        {
-            if (!MessageValid(controller.ValidPro_codigo())) return false;
-            if (!MessageValid(controller.ValidPro_descricao())) return false;
-            return true;
-        }
-
-        private bool MessageValid(ValidationReturn result)
-        {
-            if (result.Valid) return true;
-            MessageBox.Show(result.Message);
-            return false;
-        }
-
-        private void Find()
-        {
-            controller.Find();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Find();
         }
     }
 }

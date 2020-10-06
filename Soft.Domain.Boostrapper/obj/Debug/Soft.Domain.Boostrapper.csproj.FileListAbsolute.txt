@@ -19,3 +19,5 @@ C:\Soft\Soft.Domain.Boostrapper\obj\Debug\Soft.Domain.Boostrapper.csproj.CoreCom
 C:\Soft\Soft.Domain.Boostrapper\obj\Debug\Soft.Domain.Boostrapper.csproj.CopyComplete
 C:\Soft\Soft.Domain.Boostrapper\obj\Debug\Soft.Domain.Boostrapper.dll
 C:\Soft\Soft.Domain.Boostrapper\obj\Debug\Soft.Domain.Boostrapper.pdb
+C:\Soft\Soft.Domain.Boostrapper\bin\Debug\Soft.Entities.dll
+C:\Soft\Soft.Domain.Boostrapper\bin\Debug\Soft.Entities.pdb

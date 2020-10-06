@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using Soft.Infra.Data.Mapper;
 using Soft.Domain.Interfaces.Repositories;
-using Soft.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Soft.Entities.Models;
 
 namespace Soft.Infra.Data.Repositories
 {
@@ -17,7 +17,7 @@ namespace Soft.Infra.Data.Repositories
     /// Repository base
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class Repository<TModel> : IRepository<TModel> where TModel : BaseModel
+    public class Repository<TModel> : IRepository<TModel> where TModel : ModelBase
     {
         /// <summary>
         /// Get all objetct from database

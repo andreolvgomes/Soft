@@ -6,12 +6,12 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Domain.Models
+namespace Soft.Entities.Models
 {
     /// <summary>
     /// Model Produtos
     /// </summary>
-    public class Produto : BaseModel
+    public class Produto : ModelBase
     {
         public override string TableName
         {

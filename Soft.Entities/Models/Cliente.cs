@@ -5,9 +5,9 @@ using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Domain.Models
+namespace Soft.Entities.Models
 {
-    public class Cliente : BaseModel
+    public class Cliente : ModelBase
     {
         public override string TableName
         {

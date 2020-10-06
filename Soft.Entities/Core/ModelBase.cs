@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Domain.Models
+namespace Soft.Entities.Models
 {
-    public abstract class BaseModel : INotifyPropertyChanged, ICloneable
+    public abstract class ModelBase : INotifyPropertyChanged, ICloneable
     {
         public abstract string TableName { get; }
 
@@ -22,7 +22,7 @@ namespace Soft.Domain.Models
         [ColumnModel("UpdateAt")]
         public DateTime UpdateAt { get; set; }
 
-        public BaseModel()
+        public ModelBase()
         {
             // teste temporário
             CreateAt = DateTime.Now;

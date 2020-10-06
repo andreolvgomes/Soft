@@ -40,8 +40,6 @@ namespace Soft.Wpf.Views.Cadastros
         {
             if (this.Valid())
             {
-                controller.Register();
-                Find();
             }
         }
 
@@ -59,14 +57,8 @@ namespace Soft.Wpf.Views.Cadastros
             return false;
         }
 
-        private void Find()
-        {
-            controller.Find();
-        }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Find();
         }
     }
 }

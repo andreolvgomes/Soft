@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Domain.Models
+namespace Soft.Entities.Models
 {
-    public class Pedido : BaseModel
+    public class Pedido : ModelBase
     {
         public override string TableName
         {

@@ -1,5 +1,6 @@
 ﻿using Soft.Application.Interfaces.Services;
 using Soft.Application.ViewModels;
+using Soft.Entities.Models;
 using Soft.Wpf.Controllers.Cadastros.Core.Enums;
 using Soft.Wpf.Controllers.Cadastros.Core.Interfaces;
 using System;
@@ -59,14 +60,17 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
         }
 
         public void Novo()
-        {            
+        {
             Entidade = (T)Activator.CreateInstance(typeof(T));
             Oper = Operation.New;
         }
 
         public void Save()
         {
-            _appService.Update(_entidade);
+            if (Oper == Operation.New)
+                _appService.Insert(_entidade);
+            else
+                _appService.Update(_entidade);
             Oper = Operation.Navigate;
         }
 
@@ -87,27 +91,33 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
         {
             if (index > 0)
                 index -= 1;
-            Entidade = Offset(index);
+            SetEntity(Offset(index));
         }
 
         public void Next()
         {
-            if (index < n_records - 1) 
+            if (index < n_records - 1)
                 index++;
-            Entidade = Offset(index);
+            SetEntity(Offset(index));
         }
 
         public void First()
         {
             if (index != 0) index = 0;
-            Entidade = Offset(index);
+            SetEntity(Offset(index));
         }
 
         public void Last()
         {
-            if (index != n_records - 1) 
+            if (n_records > 0 && index != n_records - 1)
                 index = n_records - 1;
-            Entidade = Offset(index);
+            SetEntity(Offset(index));
+        }
+
+        private void SetEntity(T entity)
+        {
+            if (entity != null)
+                Entidade = entity;
         }
 
         private T Offset(int index)

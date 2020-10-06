@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Soft.Domain.Models;
+using Soft.Entities.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace Soft.Infra.Data.Mapper
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>> IdentiyProperties
             = new ConcurrentDictionary<RuntimeTypeHandle, IEnumerable<PropertyInfo>>();
 
-        public static TModel FindOffset<TModel>(this IDbConnection cnn, int offset, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
+        public static TModel FindOffset<TModel>(this IDbConnection cnn, int offset, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : ModelBase
         {
             QueryTest query = GetQuery(false, param, selector);
             query.Query += "\n";
@@ -37,19 +37,19 @@ namespace Soft.Infra.Data.Mapper
             return cnn.Query<TModel>(query.Query, query.Param, transaction: transaction).FirstOrDefault();
         }
 
-        public static TModel Find<TModel>(this IDbConnection cnn, object param, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
+        public static TModel Find<TModel>(this IDbConnection cnn, object param, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : ModelBase
         {
             QueryTest query = GetQuery(true, param, selector);
             return cnn.Query<TModel>(query.Query, query.Param, transaction: transaction).FirstOrDefault();
         }
 
-        public static IEnumerable<TModel> All<TModel>(this IDbConnection cnn, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : BaseModel
+        public static IEnumerable<TModel> All<TModel>(this IDbConnection cnn, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null) where TModel : ModelBase
         {
             QueryTest query = GetQuery<TModel>(false, param as object, selector);
             return cnn.Query<TModel>(query.Query, query.Param, transaction: transaction);
         }
 
-        private static QueryTest GetQuery<TModel>(bool is_topOne, object param = null, Expression<Func<TModel, object>> selector = null) where TModel : BaseModel
+        private static QueryTest GetQuery<TModel>(bool is_topOne, object param = null, Expression<Func<TModel, object>> selector = null) where TModel : ModelBase
         {
             QueryTest query = new QueryTest();
             string _selector = "*";
@@ -97,7 +97,7 @@ namespace Soft.Infra.Data.Mapper
             return query;
         }
 
-        public static long Insert<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : BaseModel
+        public static long Insert<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : ModelBase
         {
             Type type = typeof(TModel);
 
@@ -132,7 +132,7 @@ namespace Soft.Infra.Data.Mapper
             return Insert<TModel>(cnn, model, transaction, GetTableName<TModel>(), sbColumnList.ToString(), sbParameterList.ToString(), fields, field_identity);
         }
 
-        private static long Insert<TModel>(IDbConnection cnn, TModel model, IDbTransaction transaction, String tableName, string columnList, string parameterList, IEnumerable<PropertyInfo> fields, IEnumerable<PropertyInfo> field_identity) where TModel : BaseModel
+        private static long Insert<TModel>(IDbConnection cnn, TModel model, IDbTransaction transaction, String tableName, string columnList, string parameterList, IEnumerable<PropertyInfo> fields, IEnumerable<PropertyInfo> field_identity) where TModel : ModelBase
         {
             string cmd = String.Format("insert into dbo.[{0}] ({1}) values ({2})", tableName, columnList, parameterList);
             cnn.Execute(cmd, model, transaction: transaction);
@@ -148,7 +148,7 @@ namespace Soft.Infra.Data.Mapper
             return 0;
         }
 
-        public static int Update<TModel>(this IDbConnection connection, TModel model, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null, int? commandTimeout = null) where TModel : BaseModel
+        public static int Update<TModel>(this IDbConnection connection, TModel model, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null, int? commandTimeout = null) where TModel : ModelBase
         {
             Type type = typeof(TModel);
 
@@ -200,7 +200,7 @@ namespace Soft.Infra.Data.Mapper
             return connection.Execute(sb.ToString(), model, commandTimeout: commandTimeout, transaction: transaction);
         }
 
-        public static int Delete<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : BaseModel
+        public static int Delete<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : ModelBase
         {
             if (model == null)
                 throw new ArgumentException("Cannot Delete null Object", "model");
@@ -222,12 +222,12 @@ namespace Soft.Infra.Data.Mapper
             return cnn.Execute(sb.ToString(), model, transaction: transaction);
         }
 
-        public static bool Exists<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : BaseModel
+        public static bool Exists<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : ModelBase
         {
             return cnn.Count<TModel>(model, transaction) > 0;
         }
 
-        public static int Count<TModel>(this IDbConnection cnn, object param = null, IDbTransaction transaction = null) where TModel : BaseModel
+        public static int Count<TModel>(this IDbConnection cnn, object param = null, IDbTransaction transaction = null) where TModel : ModelBase
         {
             QueryTest query = GetPredicate<TModel>(param);
 
@@ -238,7 +238,7 @@ namespace Soft.Infra.Data.Mapper
             return cnn.Query<int>(sql, query.Param, transaction: transaction).FirstOrDefault();
         }
 
-        public static int Count<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : BaseModel
+        public static int Count<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : ModelBase
         {
             Type type = typeof(TModel);
 
@@ -264,7 +264,7 @@ namespace Soft.Infra.Data.Mapper
             return cnn.Query<int>(sb.ToString(), model, transaction: transaction).FirstOrDefault();
         }
 
-        private static QueryTest GetPredicate<TModel>(dynamic param) where TModel : BaseModel
+        private static QueryTest GetPredicate<TModel>(dynamic param) where TModel : ModelBase
         {
             QueryTest query = new QueryTest();
 
@@ -346,14 +346,14 @@ namespace Soft.Infra.Data.Mapper
             return "";
         }
 
-        private static string GetTableName<TModel>() where TModel : BaseModel
+        private static string GetTableName<TModel>() where TModel : ModelBase
         {
             Type type = typeof(TModel);
 
             string name = "";
             if (!TypeTableName.TryGetValue(type.TypeHandle, out name))
             {
-                name = ((TModel)Activator.CreateInstance(typeof(TModel)) as BaseModel).TableName;
+                name = ((TModel)Activator.CreateInstance(typeof(TModel)) as ModelBase).TableName;
                 TypeTableName[type.TypeHandle] = name;
             }
             return name;

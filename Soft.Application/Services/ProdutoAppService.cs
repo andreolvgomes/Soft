@@ -3,6 +3,7 @@ using Soft.Application.Interfaces.Services;
 using Soft.Application.ViewModels;
 using Soft.Domain.Interfaces.Repositories;
 using Soft.Domain.Models;
+using Soft.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;

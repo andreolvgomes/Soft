@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Soft.Application.ViewModels;
-using Soft.Domain.Models;
+using Soft.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

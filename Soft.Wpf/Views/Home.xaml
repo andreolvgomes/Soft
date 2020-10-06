@@ -5,18 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow" Height="450" Width="600" WindowStartupLocation="CenterScreen">
     <StackPanel Margin="10">
-        <TextBlock Text="ID"/>
-        <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="txtPro_id" Width="150" Text="{Binding Produto.Pro_id, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Content="Search .." Click="Button_Click_1"/>
-        </StackPanel>
-        
-        <TextBlock Text="Código"/>
-        <TextBox x:Name="txtPro_codigo" Text="{Binding Produto.Pro_codigo, UpdateSourceTrigger=PropertyChanged}"/>
-
-        <TextBlock Text="Descrição"/>
-        <TextBox x:Name="txtPro_descricao" Text="{Binding Produto.Pro_descricao, UpdateSourceTrigger=PropertyChanged}"/>
-
-        <Button Content="Register" Width="150" Click="Button_Click"/>
+       
     </StackPanel>
 </Window>

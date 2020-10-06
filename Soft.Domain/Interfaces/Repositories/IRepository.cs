@@ -1,4 +1,4 @@
-﻿using Soft.Domain.Models;
+﻿using Soft.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +14,7 @@ namespace Soft.Domain.Interfaces.Repositories
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
     //public interface IRepositoryBase<TModel> : IDisposable where TModel : BaseModel
-    public interface IRepository<TModel> where TModel : BaseModel
+    public interface IRepository<TModel> where TModel : ModelBase
     {
         /// <summary>
         /// Insert object into database

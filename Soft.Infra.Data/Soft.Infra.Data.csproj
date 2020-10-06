@@ -73,6 +73,10 @@
       <Project>{baf52f04-07d1-4284-8a37-78a9c77e96a2}</Project>
       <Name>Soft.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Soft.Entities\Soft.Entities.csproj">
+      <Project>{f43913a3-7388-4e58-b0ea-df4df109ec2a}</Project>
+      <Name>Soft.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\tables.sql" />

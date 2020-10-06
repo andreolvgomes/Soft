@@ -19,6 +19,5 @@ namespace Soft.Application.ViewModels
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
     }
 }
