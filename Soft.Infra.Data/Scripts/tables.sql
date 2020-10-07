@@ -37,10 +37,65 @@ create unique index [Ven_nomeUnique] ON Vendedores
 go
 
 --
+-- Categorias
+--
+create table Categorias (
+	Cat_id				bigint			identity(1, 1)	not null
+	,Cat_descricao		bigint			default(0)		not null
+	,Cat_inativo		bit				default(0)		not null
+
+	,CreateUser			varchar(50)		default('')		not null
+	,UpdateUser			varchar(50)		default('')		not null
+	,CreateAt			datetime
+	,UpdateAt			datetime
+	,Uniq				timestamp
+
+	constraint [PK_Grupos] primary key (Cat_id)
+)
+go
+--
+-- Subcategorias
+--
+create table Subcategorias (
+	Sub_id				bigint			identity(1, 1)	not null
+	,Sub_descricao		bigint			default(0)		not null
+	,Sub_inativo		bit				default(0)		not null
+
+	,CreateUser			varchar(50)		default('')		not null
+	,UpdateUser			varchar(50)		default('')		not null
+	,CreateAt			datetime
+	,UpdateAt			datetime
+	,Uniq				timestamp
+
+	constraint [PK_Subcategorias] primary key (Sub_id)
+)
+go
+--
+-- Familiasprod
+--
+create table Familiasprod (
+	Fam_id				bigint			identity(1, 1)	not null
+	,Fam_descricao		bigint			default(0)		not null
+	,Fam_inativo		bit				default(0)		not null
+
+	,CreateUser			varchar(50)		default('')		not null
+	,UpdateUser			varchar(50)		default('')		not null
+	,CreateAt			datetime
+	,UpdateAt			datetime
+	,Uniq				timestamp
+
+	constraint [PK_Familiasprod] primary key (Fam_id)
+)
+go
+
+--
 -- Produtos
 --
 create table Produtos (
 	Pro_id				bigint				not null		identity(1, 1)
+	,Cat_id				bigint			default(0)		not null
+	,Sub_id				bigint			default(0)		not null
+	,Fam_id				bigint			default(0)		not null
 	,Pro_codigo			varchar(20)		default('')		not null
 	,Pro_descricao		varchar(100)	default('')		not null
 	,Pro_pvenda			decimal(10, 2)	default(0)		not null
@@ -52,6 +107,9 @@ create table Produtos (
 	,Uniq				timestamp
 
 	constraint [PK_Produtos] primary key (Pro_id)
+	,constraint [FK_Produtos_Categorias] foreign key ([Cat_id]) references Categorias([Cat_id])
+	,constraint [FK_Produtos_Subcategorias] foreign key ([Sub_id]) references Subcategorias([Sub_id])
+	,constraint [FK_Produtos_Familiasprod] foreign key ([Fam_id]) references Familiasprod([Fam_id])
 )
 go
 
@@ -138,3 +196,4 @@ create table Peitens (
 	,constraint [FK_Peitens_Produtos] foreign key ([Pro_id]) references Produtos([Pro_id])
 )
 go
+
