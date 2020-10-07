@@ -25,34 +25,25 @@ namespace Soft.Application.Services
             _produtosRepository = produtosRepository;
         }
 
-        public ProdutoViewModel FindById(long pro_id)
-        {
-            return _mapper.Map<ProdutoViewModel>(_produtosRepository.Find(new { Pro_id = pro_id }));
-        }
-
         public long Insert(ProdutoViewModel viewModel, IDbTransaction transaction = null)
         {
             return _produtosRepository.Insert(_mapper.Map<Produto>(viewModel));
         }
 
-        public void Update(ProdutoViewModel viewModel, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null)
+        public int Update(ProdutoViewModel viewModel, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            _produtosRepository.Update(_mapper.Map<Produto>(viewModel), transaction: transaction);
+            return _produtosRepository.Update(_mapper.Map<Produto>(viewModel), transaction: transaction);
         }
 
-        public void Delete(ProdutoViewModel viewModel, IDbTransaction transaction = null)
+        public int Delete(ProdutoViewModel viewModel, IDbTransaction transaction = null)
         {
-            _produtosRepository.Delete(_mapper.Map<Produto>(viewModel), transaction: transaction);
+            return _produtosRepository.Delete(_mapper.Map<Produto>(viewModel), transaction: transaction);
         }
 
         public ProdutoViewModel Find(object param = null, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            return _mapper.Map<ProdutoViewModel>(_produtosRepository.Find(param: param, selector: _mapper.Map<Expression<Func<Produto, object>>>(selector)));
-        }
-
-        public IEnumerable<ProdutoViewModel> All()
-        {
-            return _mapper.Map<IEnumerable<ProdutoViewModel>>(_produtosRepository.All());
+            return _mapper.Map<ProdutoViewModel>(_produtosRepository.Find(param: param, selector: 
+                _mapper.Map<Expression<Func<Produto, object>>>(selector), transaction: transaction));
         }
 
         public ProdutoViewModel FindOffset(int offset, object param = null, IDbTransaction transaction = null)
@@ -63,6 +54,12 @@ namespace Soft.Application.Services
         public int Count(object param = null, IDbTransaction transaction = null)
         {
             return _produtosRepository.Count(param: param, transaction: transaction);
+        }
+
+        public IEnumerable<ProdutoViewModel> All(object param = null, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null)
+        {
+            return _mapper.Map<IEnumerable<ProdutoViewModel>>(_produtosRepository.All(param: param,
+                selector: _mapper.Map<Expression<Func<Produto, object>>>(selector), transaction: transaction));
         }
     }
 }

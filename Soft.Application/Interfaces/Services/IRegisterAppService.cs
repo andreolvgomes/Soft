@@ -15,13 +15,15 @@ namespace Soft.Application.Interfaces.Services
     {
         long Insert(TViewModel viewModel, IDbTransaction transaction = null);
 
-        void Update(TViewModel viewModel, Expression<Func<TViewModel, object>> selector = null, IDbTransaction transaction = null);
+        int Update(TViewModel viewModel, Expression<Func<TViewModel, object>> selector = null, IDbTransaction transaction = null);
 
-        void Delete(TViewModel viewModel, IDbTransaction transaction = null);
+        int Delete(TViewModel viewModel, IDbTransaction transaction = null);
 
         ProdutoViewModel Find(object param = null, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null);
 
         TViewModel FindOffset(int offset, object param = null, IDbTransaction transaction = null);
+
+        IEnumerable<TViewModel> All(object param = null, Expression<Func<TViewModel, object>> selector = null, IDbTransaction transaction = null);
 
         int Count(object param = null, IDbTransaction transaction = null);
     }
