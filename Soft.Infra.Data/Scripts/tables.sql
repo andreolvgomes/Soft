@@ -53,6 +53,10 @@ create table Categorias (
 	constraint [PK_Grupos] primary key (Cat_id)
 )
 go
+create unique index [Cat_descricaoUnique] ON Categorias
+       (Cat_descricao) with fillfactor = 90
+go
+
 --
 -- Subcategorias
 --
@@ -70,6 +74,10 @@ create table Subcategorias (
 	constraint [PK_Subcategorias] primary key (Sub_id)
 )
 go
+create unique index [Sub_descricaoUnique] ON Subcategorias
+       (Sub_descricao) with fillfactor = 90
+go
+
 --
 -- Familiasprod
 --
@@ -86,6 +94,9 @@ create table Familiasprod (
 
 	constraint [PK_Familiasprod] primary key (Fam_id)
 )
+go
+create unique index [Fam_descricaoUnique] ON Familiasprod
+       (Fam_descricao) with fillfactor = 90
 go
 
 --

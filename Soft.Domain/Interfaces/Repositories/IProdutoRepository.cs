@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Soft.Domain.Interfaces.Repositories
 {
-    public interface IPedidosRepository : IRepository<Pedido>
+    /// <summary>
+    /// Inteface repository of the Produtos
+    /// </summary>
+    public interface IProdutoRepository : IRepository<Produto>
     {
     }
 }

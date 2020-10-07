@@ -12,13 +12,13 @@ namespace Soft.Application.Validations
 {
     public class ProdutoValidation : IProdutoValidation
     {
-        private readonly IProdutosRepository _produtosRepository = null;
+        private readonly IProdutoRepository _produtosRepository = null;
 
         /// <summary>
         /// ProdutoValidation
         /// </summary>
         /// <param name="produtosRepository"></param>
-        public ProdutoValidation(IProdutosRepository produtosRepository)
+        public ProdutoValidation(IProdutoRepository produtosRepository)
         {
             _produtosRepository = produtosRepository;
         }

@@ -68,12 +68,15 @@
     <Compile Include="Common\Security\Constants.cs" />
     <Compile Include="Common\Security\Crypto.cs" />
     <Compile Include="Extensions\StringExteions.cs" />
-    <Compile Include="Interfaces\Repositories\IClientesRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IPedidosRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ISubcategoriaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFamiliasprodRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPedidoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPeitemRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IProdutosRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IProdutoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IVendedoresRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IVendedorRepository.cs" />
     <Compile Include="Common\ColumnModelAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

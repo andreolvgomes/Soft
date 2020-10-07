@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Domain.Interfaces.Repositories
 {
-    public interface IVendedoresRepository : IRepository<Vendedor>
+    public interface IVendedorRepository : IRepository<Vendedor>
     {
     }
 }

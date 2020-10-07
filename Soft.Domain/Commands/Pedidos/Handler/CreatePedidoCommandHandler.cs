@@ -6,9 +6,9 @@ namespace Soft.Domain.Commands.Pedidos.Handler
 {
     public class CreatePedidoCommandHandler : ICommandHandler<CreatePedidoCommand>
     {
-        private readonly IPedidosRepository _pedidosRepository;
+        private readonly IPedidoRepository _pedidosRepository;
 
-        public CreatePedidoCommandHandler(IPedidosRepository pedidosRepository)
+        public CreatePedidoCommandHandler(IPedidoRepository pedidosRepository)
         {
             _pedidosRepository = pedidosRepository;
         }

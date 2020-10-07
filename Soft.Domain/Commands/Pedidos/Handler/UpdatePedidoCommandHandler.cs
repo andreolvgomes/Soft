@@ -12,9 +12,9 @@ namespace Soft.Domain.Commands.Pedidos.Handler
 {
     public class UpdatePedidoCommandHandler : ICommandHandler<UpdatePedidoCommand>
     {
-        private readonly IPedidosRepository _pedidosRepository;
+        private readonly IPedidoRepository _pedidosRepository;
 
-        public UpdatePedidoCommandHandler(IPedidosRepository pedidosRepository)
+        public UpdatePedidoCommandHandler(IPedidoRepository pedidosRepository)
         {
             _pedidosRepository = pedidosRepository;
         }

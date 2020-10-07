@@ -43,10 +43,13 @@
   <ItemGroup>
     <Compile Include="Core\ModelBase.cs" />
     <Compile Include="Core\ColumnModelAttribute.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Familiasprod.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Peitem.cs" />
     <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Subcategoria.cs" />
     <Compile Include="Models\Vendedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

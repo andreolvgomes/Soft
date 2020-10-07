@@ -11,9 +11,9 @@ namespace Soft.Domain.Commands.Pedidos.Handler
 {
     public class CancelPedidoCommandHandler : ICommandHandler<CancelPedidoCommand>
     {
-        private readonly IPedidosRepository _pedidosRepository;
+        private readonly IPedidoRepository _pedidosRepository;
 
-        public CancelPedidoCommandHandler(IPedidosRepository pedidosRepository)
+        public CancelPedidoCommandHandler(IPedidoRepository pedidosRepository)
         {
             _pedidosRepository = pedidosRepository;
         }

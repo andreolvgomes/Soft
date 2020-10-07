@@ -26,6 +26,26 @@
 
             <TextBlock Text="Descrição"/>
             <TextBox x:Name="txtPro_descricao" Text="{Binding Entidade.Pro_descricao, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Família"/>
+                <TextBox Grid.Row="1" Grid.Column="0"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="Categoria"/>
+                <TextBox Grid.Row="1" Grid.Column="1"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="SubCategoria"/>
+                <TextBox Grid.Row="1" Grid.Column="2"/>
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>

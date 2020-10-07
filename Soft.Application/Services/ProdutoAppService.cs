@@ -16,10 +16,10 @@ namespace Soft.Application.Services
 {
     public class ProdutoAppService : IProdutoAppService
     {
-        private readonly IProdutosRepository _produtosRepository = null;
+        private readonly IProdutoRepository _produtosRepository = null;
         private readonly IMapper _mapper = null;
 
-        public ProdutoAppService(IMapper mapper, IProdutosRepository produtosRepository)
+        public ProdutoAppService(IMapper mapper, IProdutoRepository produtosRepository)
         {
             _mapper = mapper;
             _produtosRepository = produtosRepository;
