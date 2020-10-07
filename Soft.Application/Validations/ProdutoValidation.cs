@@ -23,21 +23,41 @@ namespace Soft.Application.Validations
             _produtosRepository = produtosRepository;
         }
 
+        public ValidationReturn ValidPro_codigoIsNullOrEmpty(string pro_codigo)
+        {
+            if (pro_codigo.NullOrEmpty())
+                return new ValidationReturn("Código do produto não pode ser vazio");
+            return new ValidationReturn();
+        }
+
+        public ValidationReturn ValidPro_descricaoIsNullOrEmpty(string pro_descricao)
+        {
+            if (pro_descricao.NullOrEmpty())
+                return new ValidationReturn("Descrição do produto não pode ser vazia");
+            return new ValidationReturn();
+        }
+
         /// <summary>
         /// Valida produto, verifica se existe cadastrado
         /// </summary>
         /// <param name="pro_codigo"></param>
         /// <returns></returns>
-        public ValidationReturn ValidPro_codigo(string pro_codigo)
+        public ValidationReturn ValidPro_codigoRegistered(string pro_codigo)
         {
-            if (pro_codigo.NullOrEmpty())
-                return new ValidationReturn("Código do produto não pode ser vazio");
-
             Produto produto = _produtosRepository.Find(new { Pro_codigo = pro_codigo }, s => new { s.Pro_inativo });
             if (produto == null)
                 return new ValidationReturn("Produto não cadastrado");
 
-            return ValidPro_inativo(pro_codigo);
+            return new ValidationReturn();
+        }
+
+        public ValidationReturn ValidPro_codigoRegistered(long pro_id)
+        {
+            Produto produto = _produtosRepository.Find(new { Pro_id = pro_id }, s => new { s.Pro_inativo });
+            if (produto == null)
+                return new ValidationReturn("Produto não cadastrado");
+
+            return new ValidationReturn();
         }
 
         /// <summary>
@@ -62,16 +82,13 @@ namespace Soft.Application.Validations
         /// <returns></returns>
         public ValidationReturn ValidPro_codigoThereAreOtherEqual(Int64 pro_id, string pro_codigo)
         {
-            if (pro_codigo.NullOrEmpty())
-                return new ValidationReturn("Código do produto não pode ser vazio");
-
             Produto produto = _produtosRepository.Find(new { Pro_codigo = pro_codigo }, s => new { s.Pro_descricao, s.Pro_id });
             // is null, there are no other
             if (produto == null)
                 return new ValidationReturn();
 
             if (produto.Pro_id != pro_id)
-                return new ValidationReturn("Já existe outro produto com o mesmo código");
+                return new ValidationReturn("Produto já existe cadastrado");
 
             return new ValidationReturn();
         }
@@ -84,9 +101,6 @@ namespace Soft.Application.Validations
         /// <returns></returns>
         public ValidationReturn ValidPro_descricaoThereAreOtherEqual(Int64 pro_id, string pro_descricao)
         {
-            if (pro_descricao.NullOrEmpty())
-                return new ValidationReturn("Descrição do Produto não pode ser vazia");
-
             Produto produto = _produtosRepository.Find(new { Pro_descricao = pro_descricao },
                 s => new { s.Pro_descricao, s.Pro_id });
 
@@ -95,7 +109,7 @@ namespace Soft.Application.Validations
                 return new ValidationReturn();
 
             if (produto.Pro_id != pro_id)
-                return new ValidationReturn("Já existe outro produto com a mesma descrição");
+                return new ValidationReturn("Produto já existe cadastrado");
 
             return new ValidationReturn();
         }
