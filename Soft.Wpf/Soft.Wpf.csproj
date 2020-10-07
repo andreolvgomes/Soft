@@ -75,6 +75,10 @@
     <Compile Include="Controllers\Cadastros\Core\Enums\Operation.cs" />
     <Compile Include="Controllers\Cadastros\Core\Interfaces\IRegisterActions.cs" />
     <Compile Include="Controllers\Cadastros\VendedoresController.cs" />
+    <Compile Include="Controllers\Core\ControllerBase.cs" />
+    <Compile Include="Delegates\RegisterNewEventHandler.cs" />
+    <Compile Include="Delegates\RegisterTreatEventHandler.cs" />
+    <Compile Include="Delegates\RegisterValidationEventHandler.cs" />
     <Compile Include="Startup.cs" />
     <Page Include="UserControls\Buttons.xaml">
       <SubType>Designer</SubType>

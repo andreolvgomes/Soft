@@ -2,6 +2,7 @@
 using Soft.Application.ViewModels;
 using Soft.Wpf.Controllers.Cadastros.Core.Enums;
 using Soft.Wpf.Controllers.Cadastros.Core.Interfaces;
+using Soft.Wpf.Delegates;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,19 +15,40 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
     public class ControllerRegister<T> : INotifyPropertyChanged, IRegisterActions
         where T : ViewModelBase
     {
-        private T _entidade;
-
-        public T Entidade
+        /// <summary>
+        /// Clone
+        /// </summary>
+        private T _entity_clone;
+        private T _entity;
+        /// <summary>
+        /// Entidade ViewModel
+        /// </summary>
+        public T Entity
         {
-            get { return _entidade; }
+            get { return _entity; }
             set
             {
-                if (_entidade != value)
+                if (_entity != value)
                 {
-                    _entidade = value;
-                    this.OnPropertyChanged("Entidade");
+                    if (_entity != null)
+                        _entity.PropertyChanged -= On_EntityPropertyChanged;
+
+                    _entity = value;
+                    OnPropertyChanged("Entity");
+                    OnEventTreatToView(_entity);
+
+                    if (_entity != null)
+                    {
+                        _entity_clone = (T)_entity.Clone();
+                        _entity.PropertyChanged += On_EntityPropertyChanged;
+                    }
                 }
             }
+        }
+
+        private void On_EntityPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -40,58 +62,127 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
             }
         }
 
+        #region Events
+
+        public event RegisterTreatEventHandler<T> EventTreatToDatabase;
+        public event RegisterTreatEventHandler<T> EventTreatToView;
+        public event RegisterNewEventHandler<T> EventNewRegister;
+        public event RegisterValidationEventHandler EventValidation;
+
+        private void OnEventTreatToDatabase()
+        {
+            var handler = EventTreatToDatabase;
+            if (handler != null)
+                handler(this.Entity);
+        }
+
+        private void OnEventTreatToView(T entity)
+        {
+            var handler = EventTreatToView;
+            if (handler != null)
+                handler(entity);
+        }
+
+        private T OnEventNewRegister()
+        {
+            var handler = EventNewRegister;
+            if (handler != null)
+                return handler();
+
+            throw new Exception("Faça a implementação desse event");
+        }
+
+        private bool OnEventValidation()
+        {
+            var handler = EventValidation;
+            if (handler != null)
+                return handler();
+            return true;
+        }
+
+        #endregion
+
         private int index = 0;
         private int n_records = 0;
         private Operation Oper = Operation.Navigate;
 
+        /// <summary>
+        /// Service from layer Services
+        /// </summary>
         private readonly IRegisterAppService<T> _appService = null;
 
+        /// <summary>
+        /// ControllerRegister
+        /// </summary>
+        /// <param name="appService"></param>
         public ControllerRegister(IRegisterAppService<T> appService)
         {
             _appService = appService;
-            Entidade = (T)Activator.CreateInstance(typeof(T));
+            Entity = (T)Activator.CreateInstance(typeof(T));
         }
 
+        /// <summary>
+        /// Start
+        /// </summary>
         public virtual void Init()
         {
             n_records = _appService.Count();
             this.First();
         }
 
+        /// <summary>
+        /// Create new viewmodel
+        /// </summary>
         public void New()
         {
-            Entidade = (T)Activator.CreateInstance(typeof(T));
+            Entity = OnEventNewRegister();
             Oper = Operation.New;
         }
 
+        /// <summary>
+        /// Save viewmodel in the database
+        /// </summary>
         public void Save()
         {
-            if (Oper == Operation.New)
+            if (OnEventValidation())
             {
-                long id = _appService.Insert(_entidade);
-                n_records = _appService.Count();
-                Last();
+                OnEventTreatToDatabase();
+                if (Oper == Operation.New)
+                {
+                    long id = _appService.Insert(_entity);
+                    n_records = _appService.Count();
+                    Last();
+                }
+                else
+                {
+                    _appService.Update(_entity);
+                }
+                Oper = Operation.Navigate;
             }
-            else
-            {
-                _appService.Update(_entidade);
-            }
-            Oper = Operation.Navigate;
         }
 
+        /// <summary>
+        /// Cancel operation of New or Edit
+        /// </summary>
         public void Cancel()
         {
-            Entidade = Offset(index);
+            Entity = Offset(index);
             Oper = Operation.Navigate;
         }
 
+        /// <summary>
+        /// Delete viewmodel in the database
+        /// </summary>
         public void Delete()
         {
-            _appService.Delete(Entidade);
+            _appService.Delete(Entity);
             n_records = _appService.Count();
             First();
         }
 
+        /// <summary>
+        /// Navigate to the previous record
+        /// </summary>
         public void Previous()
         {
             if (index > 0)
@@ -99,6 +190,9 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
             SetEntity(Offset(index));
         }
 
+        /// <summary>
+        /// Navigate to the next record
+        /// </summary>
         public void Next()
         {
             if (index < n_records - 1)
@@ -106,12 +200,18 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
             SetEntity(Offset(index));
         }
 
+        /// <summary>
+        /// Navigate to the first record
+        /// </summary>
         public void First()
         {
             if (index != 0) index = 0;
             SetEntity(Offset(index));
         }
 
+        /// <summary>
+        /// Navigate to the last record
+        /// </summary>
         public void Last()
         {
             if (n_records > 0 && index != n_records - 1)
@@ -119,12 +219,21 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
             SetEntity(Offset(index));
         }
 
+        /// <summary>
+        /// Set viewmodel
+        /// </summary>
+        /// <param name="entity"></param>
         private void SetEntity(T entity)
         {
             if (entity != null)
-                Entidade = entity;
+                Entity = entity;
         }
 
+        /// <summary>
+        /// Navigate record from database by offset
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private T Offset(int index)
         {
             return _appService.FindOffset(index);

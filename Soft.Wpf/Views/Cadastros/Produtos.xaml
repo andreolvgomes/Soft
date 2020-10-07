@@ -17,15 +17,15 @@
         <StackPanel Grid.Row="1">
             <TextBlock Text="ID"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="txtPro_id" Width="75" Text="{Binding Entidade.Pro_id, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="txtPro_id" Width="75" Text="{Binding Entity.Pro_id, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Content="Search .." Click="Button_Click_1"/>
             </StackPanel>
 
             <TextBlock Text="Código"/>
-            <TextBox x:Name="txtPro_codigo" Text="{Binding Entidade.Pro_codigo, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="txtPro_codigo" Text="{Binding Entity.Pro_codigo, UpdateSourceTrigger=PropertyChanged}"/>
 
             <TextBlock Text="Descrição"/>
-            <TextBox x:Name="txtPro_descricao" Text="{Binding Entidade.Pro_descricao, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="txtPro_descricao" Text="{Binding Entity.Pro_descricao, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -38,13 +38,13 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Família"/>
-                <TextBox Grid.Row="1" Grid.Column="0"/>
+                <TextBox Grid.Row="1" Grid.Column="0" Text="1"/>
 
                 <TextBlock Grid.Row="0" Grid.Column="1" Text="Categoria"/>
-                <TextBox Grid.Row="1" Grid.Column="1"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="1"/>
 
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="SubCategoria"/>
-                <TextBox Grid.Row="1" Grid.Column="2"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Text="1"/>
             </Grid>
         </StackPanel>
     </Grid>

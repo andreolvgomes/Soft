@@ -19,7 +19,7 @@ namespace Soft.Application.Interfaces.Services
 
         int Delete(TViewModel viewModel, IDbTransaction transaction = null);
 
-        ProdutoViewModel Find(object param = null, Expression<Func<ProdutoViewModel, object>> selector = null, IDbTransaction transaction = null);
+        TViewModel Find(object param = null, Expression<Func<TViewModel, object>> selector = null, IDbTransaction transaction = null);
 
         TViewModel FindOffset(int offset, object param = null, IDbTransaction transaction = null);
 

@@ -44,6 +44,9 @@ namespace Soft.Infra.IoC
 
             // Application
             _container.Register<IProdutoAppService, ProdutoAppService>();
+            _container.Register<ICategoriaAppService, CategoriaAppService>();
+            _container.Register<ISubcategoriaAppService, SubcategoriaAppService>();
+            _container.Register<IFamiliasprodAppService, FamiliasprodAppService>();
 
             // Validations
             _container.Register<IProdutoValidation, ProdutoValidation>();            

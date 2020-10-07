@@ -1,6 +1,8 @@
 ﻿using Soft.Application.Validations;
+using Soft.Application.ViewModels;
 using Soft.Infra.IoC;
 using Soft.Wpf.Controllers.Cadastros;
+using Soft.Wpf.Delegates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +31,17 @@ namespace Soft.Wpf.Views.Cadastros
             InitializeComponent();
             
             controller = Ioc.Instance.GetInstance<ProdutosController>();
+            controller.EventNewRegister += new RegisterNewEventHandler<ProdutoViewModel>(NewRecord);
             controller.Init();
 
             this.DataContext = controller;
             buttons.InjectActions(controller);
         }
 
+        private ProdutoViewModel NewRecord()
+        {
+            return new ProdutoViewModel();
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

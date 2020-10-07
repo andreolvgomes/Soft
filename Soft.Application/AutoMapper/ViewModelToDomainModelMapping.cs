@@ -16,6 +16,9 @@ namespace Soft.Application.AutoMapper
         {
             CreateMap<ProdutoViewModel, Produto>();
             //Expression < Func<TModel, object>>
+            CreateMap<CategoriaViewModel, Categoria>();
+            CreateMap<SubcategoriaViewModel, Subcategoria>();
+            CreateMap<FamiliasprodViewModel, Familiasprod>();
         }
     }
 }

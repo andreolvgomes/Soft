@@ -31,5 +31,11 @@ namespace Soft.Entities.Models
         public decimal Pro_pvenda { get; set; }
         [ColumnModel("Pro_inativo")]
         public bool Pro_inativo { get; set; }
+        [ColumnModel("Cat_id")]
+        public Int64 Cat_id { get; set; }
+        [ColumnModel("Fam_id")]
+        public Int64 Fam_id { get; set; }
+        [ColumnModel("Sub_id")]
+        public Int64 Sub_id { get; set; }
     }
 }

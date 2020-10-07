@@ -41,7 +41,7 @@ go
 --
 create table Categorias (
 	Cat_id				bigint			identity(1, 1)	not null
-	,Cat_descricao		bigint			default(0)		not null
+	,Cat_descricao		varchar(50)		default('')		not null
 	,Cat_inativo		bit				default(0)		not null
 
 	,CreateUser			varchar(50)		default('')		not null
@@ -62,7 +62,7 @@ go
 --
 create table Subcategorias (
 	Sub_id				bigint			identity(1, 1)	not null
-	,Sub_descricao		bigint			default(0)		not null
+	,Sub_descricao		varchar(20)		default('')		not null
 	,Sub_inativo		bit				default(0)		not null
 
 	,CreateUser			varchar(50)		default('')		not null
@@ -83,7 +83,7 @@ go
 --
 create table Familiasprod (
 	Fam_id				bigint			identity(1, 1)	not null
-	,Fam_descricao		bigint			default(0)		not null
+	,Fam_descricao		varchar(50)		default('')		not null
 	,Fam_inativo		bit				default(0)		not null
 
 	,CreateUser			varchar(50)		default('')		not null

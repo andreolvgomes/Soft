@@ -14,6 +14,9 @@ namespace Soft.Application.AutoMapper
         public DomainModelToViewModelMapping()
         {
             CreateMap<Produto, ProdutoViewModel>();
+            CreateMap<Categoria, CategoriaViewModel>();
+            CreateMap<Subcategoria, SubcategoriaViewModel>();
+            CreateMap<Familiasprod, FamiliasprodViewModel>();
         }
     }
 }

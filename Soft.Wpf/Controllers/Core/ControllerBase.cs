@@ -5,16 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Application.ViewModels
+namespace Soft.Wpf.Controllers.Core
 {
-    public class ViewModelBase : INotifyPropertyChanged, ICloneable
+    public class ControllerBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
 
         protected void OnPropertyChanged(string propertyName)
         {

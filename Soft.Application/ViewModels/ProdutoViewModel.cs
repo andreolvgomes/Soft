@@ -10,6 +10,10 @@ namespace Soft.Application.ViewModels
 {
     public class ProdutoViewModel : ViewModelBase
     {
+        public Int64 Cat_id { get; set; }
+        public Int64 Fam_id { get; set; }
+        public Int64 Sub_id { get; set; }
+
         private Int64 _Pro_id;
 
         public Int64 Pro_id

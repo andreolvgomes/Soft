@@ -15,6 +15,9 @@ namespace Soft.Application.AutoMapper
         public ExpressionViewModelToExpressionDomainModelMapping()
         {
             CreateMap<Expression<Func<ProdutoViewModel, object>>, Expression<Func<Produto, object>>>();
+            CreateMap<Expression<Func<CategoriaViewModel, object>>, Expression<Func<Categoria, object>>>();
+            CreateMap<Expression<Func<SubcategoriaViewModel, object>>, Expression<Func<Subcategoria, object>>>();
+            CreateMap<Expression<Func<FamiliasprodViewModel, object>>, Expression<Func<Familiasprod, object>>>();
         }
     }
 }
