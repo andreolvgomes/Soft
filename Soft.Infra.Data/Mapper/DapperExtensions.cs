@@ -222,9 +222,14 @@ namespace Soft.Infra.Data.Mapper
             return cnn.Execute(sb.ToString(), model, transaction: transaction);
         }
 
-        public static bool Exists<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : ModelBase
+        //public static bool Exists<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : ModelBase
+        //{
+        //    return cnn.Count<TModel>(model, transaction) > 0;
+        //}
+
+        public static bool Exists<TModel>(this IDbConnection cnn, object param = null, IDbTransaction transaction = null) where TModel : ModelBase
         {
-            return cnn.Count<TModel>(model, transaction) > 0;
+            return cnn.Count<TModel>(param, transaction) > 0;
         }
 
         public static int Count<TModel>(this IDbConnection cnn, object param = null, IDbTransaction transaction = null) where TModel : ModelBase
@@ -238,31 +243,31 @@ namespace Soft.Infra.Data.Mapper
             return cnn.Query<int>(sql, query.Param, transaction: transaction).FirstOrDefault();
         }
 
-        public static int Count<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : ModelBase
-        {
-            Type type = typeof(TModel);
+        //public static int Count<TModel>(this IDbConnection cnn, TModel model, IDbTransaction transaction = null) where TModel : ModelBase
+        //{
+        //    Type type = typeof(TModel);
 
-            IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(type);
-            if (keyProperties.Count() == 0)
-                throw new ArgumentException("O modelo deve ter pelo menos uma propriedade [Key]");
+        //    IEnumerable<PropertyInfo> keyProperties = KeyPropertiesCache(type);
+        //    if (keyProperties.Count() == 0)
+        //        throw new ArgumentException("O modelo deve ter pelo menos uma propriedade [Key]");
 
-            StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("select top 1 count(1) from dbo.[{0}] where ", GetTableName<TModel>());
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.AppendFormat("select top 1 count(1) from dbo.[{0}] where ", GetTableName<TModel>());
 
-            for (var i = 0; i < keyProperties.Count(); i++)
-            {
-                PropertyInfo property = keyProperties.ElementAt(i);
+        //    for (var i = 0; i < keyProperties.Count(); i++)
+        //    {
+        //        PropertyInfo property = keyProperties.ElementAt(i);
 
-                object value = property.GetValue(model, null);
-                if (value == null || string.IsNullOrEmpty(value.ToString()))
-                    throw new Exception(string.Format("Uma das propriedades definida como [Key] está no formato incorreto. Value = Null ou Empty: \"{0}\"", property.Name));
+        //        object value = property.GetValue(model, null);
+        //        if (value == null || string.IsNullOrEmpty(value.ToString()))
+        //            throw new Exception(string.Format("Uma das propriedades definida como [Key] está no formato incorreto. Value = Null ou Empty: \"{0}\"", property.Name));
 
-                sb.AppendFormat("[{0}] = @{0}", Name(property));
-                if (i < keyProperties.Count() - 1)
-                    sb.AppendFormat(" and ");
-            }
-            return cnn.Query<int>(sb.ToString(), model, transaction: transaction).FirstOrDefault();
-        }
+        //        sb.AppendFormat("[{0}] = @{0}", Name(property));
+        //        if (i < keyProperties.Count() - 1)
+        //            sb.AppendFormat(" and ");
+        //    }
+        //    return cnn.Query<int>(sb.ToString(), model, transaction: transaction).FirstOrDefault();
+        //}
 
         private static QueryTest GetPredicate<TModel>(dynamic param) where TModel : ModelBase
         {

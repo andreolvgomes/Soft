@@ -87,11 +87,11 @@ namespace Soft.Infra.Data.Repositories
         /// <param name="model"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public bool Exists(TModel model, IDbTransaction transaction = null)
-        {
-            using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
-                return cnn.Exists<TModel>(model, transaction: transaction);
-        }
+        //public bool Exists(TModel model, IDbTransaction transaction = null)
+        //{
+        //    using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
+        //        return cnn.Exists<TModel>(model, transaction: transaction);
+        //}
 
         /// <summary>
         /// Returns the number of records
@@ -110,10 +110,30 @@ namespace Soft.Infra.Data.Repositories
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Find record by offset
+        /// </summary>
+        /// <param name="offset"></param>
+        /// <param name="param"></param>
+        /// <param name="selector"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public TModel FindOffset(int offset, object param = null, Expression<Func<TModel, object>> selector = null, IDbTransaction transaction = null)
         {
             using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
                 return cnn.FindOffset<TModel>(offset, param: param, transaction: transaction);
+        }
+
+        /// <summary>
+        /// Check if there is a recored in the database
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public bool Exists(object param = null, IDbTransaction transaction = null)
+        {
+            using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
+                return cnn.Exists<TModel>(param: param, transaction: transaction);
         }
     }
 }

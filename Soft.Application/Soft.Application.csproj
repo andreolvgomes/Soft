@@ -65,7 +65,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RegisterAppService.cs" />
     <Compile Include="Validations\CategoriaValidation.cs" />
+    <Compile Include="Validations\FamiliasprodValidation.cs" />
     <Compile Include="Validations\ProdutoValidation.cs" />
+    <Compile Include="Validations\SubcategoriaValidation.cs" />
     <Compile Include="Validations\ValidationReturn.cs" />
     <Compile Include="ViewModels\CategoriaViewModel.cs" />
     <Compile Include="ViewModels\SubcategoriaViewModel.cs" />

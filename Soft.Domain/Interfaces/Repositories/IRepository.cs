@@ -66,7 +66,9 @@ namespace Soft.Domain.Interfaces.Repositories
         /// <param name="model"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        bool Exists(TModel model, IDbTransaction transaction = null);
+        //bool Exists(TModel model, IDbTransaction transaction = null);
+
+        bool Exists(object param = null, IDbTransaction transaction = null);
 
         /// <summary>
         /// Returns the number of records
