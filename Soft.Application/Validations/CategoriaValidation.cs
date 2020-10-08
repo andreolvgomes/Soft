@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Soft.Application.Interfaces.Validations;
-using Soft.Domain.Extensions;
 using Soft.Domain.Interfaces.Repositories;
 using Soft.Entities.Models;
 
