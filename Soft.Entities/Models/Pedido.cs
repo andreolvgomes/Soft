@@ -40,5 +40,7 @@ namespace Soft.Entities.Models
         public decimal Ped_desc_acresc_serv { get; set; }
         [ColumnModel("Ped_desc_acres_tipo_serv")]
         public decimal Ped_desc_acres_tipo_serv { get; set; }
+        [ColumnModel("Ped_canc")]
+        public bool Ped_canc { get; set; }
     }
 }

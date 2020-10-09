@@ -13,3 +13,7 @@ Soft.Domain.Boostrapper/bin/
 Soft.Infra.Data/bin/
 Soft.Infra.IoC/bin/
 Test.Domain/bin/
+Soft.Wpf/bin/Debug/*
+
+#Exeções
+!SIC/PDV/bin/Debug/*.sql

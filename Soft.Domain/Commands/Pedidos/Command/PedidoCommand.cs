@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Domain.Commands.Pedidos.Command
 {
-    public class PedidoCommand : CommandCore
+    public abstract class PedidoCommand : CommandCore
     {
         public Int64 Ped_id { get; set; }
         public Int64 Cli_id { get; set; }
