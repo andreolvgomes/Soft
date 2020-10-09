@@ -70,6 +70,7 @@
     <Compile Include="Validations\SubcategoriaValidation.cs" />
     <Compile Include="Validations\ValidationReturn.cs" />
     <Compile Include="ViewModels\CategoriaViewModel.cs" />
+    <Compile Include="ViewModels\PedidoViewModel.cs" />
     <Compile Include="ViewModels\SubcategoriaViewModel.cs" />
     <Compile Include="ViewModels\FamiliasprodViewModel.cs" />
     <Compile Include="ViewModels\ProdutoViewModel.cs" />

@@ -18,6 +18,7 @@ namespace Soft.Application.AutoMapper
             CreateMap<Expression<Func<CategoriaViewModel, object>>, Expression<Func<Categoria, object>>>();
             CreateMap<Expression<Func<SubcategoriaViewModel, object>>, Expression<Func<Subcategoria, object>>>();
             CreateMap<Expression<Func<FamiliasprodViewModel, object>>, Expression<Func<Familiasprod, object>>>();
+            CreateMap<Expression<Func<PedidoViewModel, object>>, Expression<Func<Pedido, object>>>();
         }
     }
 }

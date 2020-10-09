@@ -13,8 +13,9 @@ namespace Soft.Application.AutoMapper
     {
         public ViewModelToCommandMapping()
         {
-            CreateMap<ProdutoViewModel, CreatePedidoCommand>();
-            CreateMap<ProdutoViewModel, UpdatePedidoCommand>();
+            CreateMap<PedidoViewModel, CreatePedidoCommand>();
+            CreateMap<PedidoViewModel, UpdatePedidoCommand>();
+            CreateMap<PedidoViewModel, CancelPedidoCommand>();
         }
     }
 }
