@@ -42,7 +42,7 @@ namespace Soft.Application.Services
 
         public CategoriaViewModel Find(object param = null, Expression<Func<CategoriaViewModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            return _mapper.Map<CategoriaViewModel>(_categoriaRepository.Find(param: param, selector: 
+            return _mapper.Map<CategoriaViewModel>(_categoriaRepository.Find(param: param, selector:
                 _mapper.Map<Expression<Func<Categoria, object>>>(selector), transaction: transaction));
         }
 
@@ -60,6 +60,11 @@ namespace Soft.Application.Services
         {
             return _mapper.Map<IEnumerable<CategoriaViewModel>>(_categoriaRepository.All(param: param,
                 selector: _mapper.Map<Expression<Func<Categoria, object>>>(selector), transaction: transaction));
+        }
+
+        public long GetCat_idByCat_descricao(string cat_descricao)
+        {
+            return _categoriaRepository.Value<Int64>(new { Cat_descricao = cat_descricao }, s => new { s.Cat_id });
         }
     }
 }

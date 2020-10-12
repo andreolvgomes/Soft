@@ -26,12 +26,19 @@ namespace Soft.Wpf.Controllers.Cadastros
         private readonly IFamiliasprodAppService _familiasprodAppService;
 
         private readonly IProdutoValidation _produtosValidation;
+        private readonly ICategoriaValidation _categoriaValidation;
+        private readonly ISubcategoriaValidation _subcategoriaValidation;
+        private readonly IFamiliasprodValidation _familiasprodValidation;
 
         public ProdutosController(IProdutoAppService produtosAppService,
             ICategoriaAppService categoriaAppService,
             ISubcategoriaAppService subcategoriaAppService,
             IFamiliasprodAppService familiasprodAppService,
-            IProdutoValidation produtosValidation) : base(produtosAppService)
+            IProdutoValidation produtosValidation,
+            ICategoriaValidation categoriaValidation,
+            ISubcategoriaValidation subcategoriaValidation,
+            IFamiliasprodValidation familiasprodValidation
+            ) : base(produtosAppService)
         {
             _produtosAppService = produtosAppService;
             _categoriaAppService = categoriaAppService;
@@ -39,10 +46,34 @@ namespace Soft.Wpf.Controllers.Cadastros
             _familiasprodAppService = familiasprodAppService;
 
             _produtosValidation = produtosValidation;
+            _categoriaValidation = categoriaValidation;
+            _subcategoriaValidation = subcategoriaValidation;
+            _familiasprodValidation = familiasprodValidation;
 
             this.EventTreatToDatabase += new RegisterTreatEventHandler<ProdutoViewModel>(TreatToDatabase);
+            this.EventTreatToView += new RegisterTreatEventHandler<ProdutoViewModel>(TreatToView);
         }
 
+        /// <summary>
+        /// Prepara os dados para serem exibidos na View
+        /// </summary>
+        /// <param name="viewmodel"></param>
+        private void TreatToView(ProdutoViewModel viewmodel)
+        {
+            CategoriaViewModel cat = _categoriaAppService.Find(new { Cat_id = viewmodel.Cat_id });
+            viewmodel.Cat_descricaoView = cat.Cat_descricao;
+
+            SubcategoriaViewModel sub = _subcategoriaAppService.Find(new { Sub_id = viewmodel.Sub_id });
+            viewmodel.Sub_descricaoView = sub.Sub_descricao;
+
+            FamiliasprodViewModel familiaprod = _familiasprodAppService.Find(new { Fam_id = viewmodel.Fam_id });
+            viewmodel.Fam_descricaoView = familiaprod.Fam_descricao;
+        }
+
+        /// <summary>
+        /// Prepara os dados para serem gravados na base de dados
+        /// </summary>
+        /// <param name="viewmodel"></param>
         private void TreatToDatabase(ProdutoViewModel viewmodel)
         {
             CategoriaViewModel categoria = _categoriaAppService.Find();
@@ -70,14 +101,79 @@ namespace Soft.Wpf.Controllers.Cadastros
             viewmodel.Fam_id = familiaprod.Fam_id;
         }
 
+        /// <summary>
+        /// Valdia código do Produto
+        /// </summary>
+        /// <returns></returns>
         public ValidationReturn ValidPro_codigo()
         {
-            return _produtosValidation.ValidPro_codigoThereAreOtherEqual(Entity.Pro_id, Entity.Pro_codigo);
+            return _produtosValidation.CheckPro_codigoThereAreOtherEqual(Entity.Pro_id, Entity.Pro_codigo);
         }
 
+        /// <summary>
+        /// Valida descrição do Produto
+        /// </summary>
+        /// <returns></returns>
         public ValidationReturn ValidPro_descricao()
         {
-            return _produtosValidation.ValidPro_descricaoThereAreOtherEqual(Entity.Pro_id, Entity.Pro_descricao);
+            return _produtosValidation.CheckPro_descricaoThereAreOtherEqual(Entity.Pro_id, Entity.Pro_descricao);
+        }
+
+        /// <summary>
+        /// Valida Categoria
+        /// </summary>
+        /// <returns></returns>
+        public ValidationReturn ValidCategoria()
+        {
+            // check if textbox is null or empty
+            ValidationReturn valid = _categoriaValidation.CheckCat_descricaoIsNullOrEmpty(Entity.Cat_descricaoView);
+            if (!valid.Valid) return valid;
+
+            // check if exists
+            valid = _categoriaValidation.CheckCat_descricaoRegistered(Entity.Cat_descricaoView);
+            if (!valid.Valid) return valid;
+
+            // check if to be ativ
+            valid = _categoriaValidation.CheckCat_inativo(_categoriaAppService.GetCat_idByCat_descricao(Entity.Cat_descricaoView));
+            if (!valid.Valid) return valid;
+
+            return new ValidationReturn();
+        }
+
+        /// <summary>
+        /// Valida Subcategoria
+        /// </summary>
+        /// <returns></returns>
+        public ValidationReturn ValidSubcategoria()
+        {
+            ValidationReturn valid = _subcategoriaValidation.CheckSub_descricaoIsNullOrEmpty(Entity.Sub_descricaoView);
+            if (!valid.Valid) return valid;
+
+            valid = _subcategoriaValidation.CheckSub_descricaoRegistered(_subcategoriaAppService.GetSub_idBySub_descricao(Entity.Sub_descricaoView));
+            if (!valid.Valid) return valid;
+
+            valid = _subcategoriaValidation.CheckSub_inativo(_subcategoriaAppService.GetSub_idBySub_descricao(Entity.Sub_descricaoView));
+            if (!valid.Valid) return valid;
+
+            return new ValidationReturn();
+        }
+
+        /// <summary>
+        /// Valida Familiapro
+        /// </summary>
+        /// <returns></returns>
+        public ValidationReturn ValidFamiliaprod()
+        {
+            ValidationReturn valid = _familiasprodValidation.CheckFam_descricaoIsNullOrEmpty(Entity.Fam_descricaoView);
+            if (!valid.Valid) return valid;
+
+            valid = _familiasprodValidation.CheckFam_descricaoRegistered(Entity.Fam_descricaoView);
+            if (!valid.Valid) return valid;
+
+            valid = _familiasprodValidation.CheckFam_inativo(_familiasprodAppService.GetFam_idByFam_descricao(Entity.Fam_descricaoView));
+            if (!valid.Valid) return valid;
+
+            return new ValidationReturn();
         }
     }
 }

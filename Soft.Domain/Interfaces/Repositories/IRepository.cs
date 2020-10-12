@@ -77,5 +77,7 @@ namespace Soft.Domain.Interfaces.Repositories
         /// <param name="transaction"></param>
         /// <returns></returns>
         int Count(object param = null, IDbTransaction transaction = null);
+
+        TResult Value<TResult>(object param, Expression<Func<TModel, object>> selector, IDbTransaction transaction = null);
     }
 }

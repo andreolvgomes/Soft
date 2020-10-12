@@ -269,6 +269,12 @@ namespace Soft.Infra.Data.Mapper
         //    return cnn.Query<int>(sb.ToString(), model, transaction: transaction).FirstOrDefault();
         //}
 
+        public static TResult Value<TModel, TResult>(this IDbConnection connection, object param, Expression<Func<TModel, object>> selector, IDbTransaction transaction = null) where TModel : ModelBase
+        {
+            QueryTest query = GetQuery(true, param, selector);
+            return connection.Query<TResult>(query.Query, query.Param, transaction: transaction).FirstOrDefault();
+        }
+
         private static QueryTest GetPredicate<TModel>(dynamic param) where TModel : ModelBase
         {
             QueryTest query = new QueryTest();

@@ -9,6 +9,7 @@ namespace Soft.Wpf.Controllers.Cadastros.Core.Enums
     public enum Operation
     {
         New,
-        Navigate
+        Navigate,
+        Edit
     }
 }

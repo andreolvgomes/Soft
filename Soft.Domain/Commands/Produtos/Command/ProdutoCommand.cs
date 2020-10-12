@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Domain.Commands.Produtos.Command
 {
-    public class ProdutoCommand : CommandCore
+    public class ProdutoCommand : ICommand
     {
     }
 }

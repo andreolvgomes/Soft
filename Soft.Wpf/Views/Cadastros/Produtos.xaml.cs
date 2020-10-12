@@ -32,10 +32,20 @@ namespace Soft.Wpf.Views.Cadastros
             
             controller = Ioc.Instance.GetInstance<ProdutosController>();
             controller.EventNewRegister += new RegisterNewEventHandler<ProdutoViewModel>(NewRecord);
+            controller.EventValidation += new RegisterValidationEventHandler(IsValid);
             controller.Init();
 
             this.DataContext = controller;
             buttons.InjectActions(controller);
+        }
+
+        private bool IsValid()
+        {
+            if (!MessageValid(controller.ValidPro_codigo())) return false;
+            if (!MessageValid(controller.ValidPro_descricao())) return false;
+            if (!MessageValid(controller.ValidCategoria())) return false;
+            if (!MessageValid(controller.ValidSubcategoria())) return false;
+            return true;
         }
 
         private ProdutoViewModel NewRecord()
@@ -43,29 +53,11 @@ namespace Soft.Wpf.Views.Cadastros
             return new ProdutoViewModel();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.Valid())
-            {
-            }
-        }
-
-        private bool Valid()
-        {
-            if (!MessageValid(controller.ValidPro_codigo())) return false;
-            if (!MessageValid(controller.ValidPro_descricao())) return false;
-            return true;
-        }
-
         private bool MessageValid(ValidationReturn result)
         {
             if (result.Valid) return true;
             MessageBox.Show(result.Message);
             return false;
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

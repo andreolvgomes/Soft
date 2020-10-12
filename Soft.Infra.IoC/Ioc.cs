@@ -49,7 +49,10 @@ namespace Soft.Infra.IoC
             _container.Register<IFamiliasprodAppService, FamiliasprodAppService>();
 
             // Validations
-            _container.Register<IProdutoValidation, ProdutoValidation>();            
+            _container.Register<ICategoriaValidation, CategoriaValidation>();
+            _container.Register<IFamiliasprodValidation, FamiliasprodValidation>();
+            _container.Register<IProdutoValidation, ProdutoValidation>();
+            _container.Register<ISubcategoriaValidation, SubcategoriaValidation>();
         }
 
         public T GetInstance<T>() where T : class

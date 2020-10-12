@@ -17,7 +17,7 @@ namespace Soft.Domain.Boostrapper
             _container = container;
         }
 
-        public void Dispatch<T>(T command)
+        public void Dispatch<T>(T command) where T : ICommand
         {
             //var handler = _container.GetAllInstances<ICommandHandler<T>>().Single();
             var handler = _container.GetInstance<ICommandHandler<T>>();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Soft.Domain.Commands.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Soft.Domain.Boostrapper
 {
     public interface ICommandDispatcher
     {
-        void Dispatch<T>(T command);
+        void Dispatch<T>(T command) where T : ICommand;
     }
 }

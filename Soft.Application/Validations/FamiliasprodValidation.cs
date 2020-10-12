@@ -20,14 +20,14 @@ namespace Soft.Application.Validations
             _familiasprodRepository = familiasprodRepository;
         }
 
-        public ValidationReturn ValidFam_descricaoIsNullOrEmpty(string fam_descricao)
+        public ValidationReturn CheckFam_descricaoIsNullOrEmpty(string fam_descricao)
         {
             if (fam_descricao.NullOrEmpty())
                 return new ValidationReturn("A descrição da família de produtos não pode ser vazia");
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidFam_descricaoRegistered(string fam_descricao)
+        public ValidationReturn CheckFam_descricaoRegistered(string fam_descricao)
         {
             Familiasprod fam = _familiasprodRepository.Find(new { Fam_descricao = fam_descricao }, s => new { s.Fam_inativo });
             if (fam == null)
@@ -35,7 +35,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidFam_descricaoRegistered(long fam_id)
+        public ValidationReturn CheckFam_descricaoRegistered(long fam_id)
         {
             Familiasprod fam = _familiasprodRepository.Find(new { Fam_id = fam_id }, s => new { s.Fam_inativo });
             if (fam == null)
@@ -43,7 +43,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidFam_descricaoThereAreOtherEqual(long fam_id, string fam_descricao)
+        public ValidationReturn CheckFam_descricaoThereAreOtherEqual(long fam_id, string fam_descricao)
         {
             Familiasprod fam = _familiasprodRepository.Find(new { Fam_descricao = fam_descricao }, s => new { s.Fam_inativo });
             if (fam == null)
@@ -53,7 +53,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidFam_inativo(long fam_id)
+        public ValidationReturn CheckFam_inativo(long fam_id)
         {
             Familiasprod fam = _familiasprodRepository.Find(new { Fam_id = fam_id }, s => new { s.Fam_inativo });
             if (fam.Fam_inativo)

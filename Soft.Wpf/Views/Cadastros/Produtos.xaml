@@ -18,7 +18,6 @@
             <TextBlock Text="ID"/>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="txtPro_id" Width="75" Text="{Binding Entity.Pro_id, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button Content="Search .." Click="Button_Click_1"/>
             </StackPanel>
 
             <TextBlock Text="Código"/>
@@ -38,13 +37,13 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Família"/>
-                <TextBox Grid.Row="1" Grid.Column="0" Text="1"/>
+                <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding Entity.Cat_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <TextBlock Grid.Row="0" Grid.Column="1" Text="Categoria"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="1"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="SubCategoria"/>
-                <TextBox Grid.Row="1" Grid.Column="2" Text="1"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Entity.Sub_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </StackPanel>
     </Grid>

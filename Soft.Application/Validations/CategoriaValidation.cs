@@ -18,14 +18,14 @@ namespace Soft.Application.Validations
             _categoriaRepository = categoriaRepository;
         }
 
-        public ValidationReturn ValidCat_descricaoIsNullOrEmpty(string cat_descricao)
+        public ValidationReturn CheckCat_descricaoIsNullOrEmpty(string cat_descricao)
         {
             if (cat_descricao.NullOrEmpty())
                 return new ValidationReturn("Descrição da Categoria não pode ser vazia");
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidCat_descricaoRegistered(string cat_descricao)
+        public ValidationReturn CheckCat_descricaoRegistered(string cat_descricao)
         {
             Categoria cat = _categoriaRepository.Find(new { Cat_descricao = cat_descricao }, s => new { s.Cat_id });
             if (cat == null)
@@ -33,7 +33,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidCat_descricaoRegistered(long cat_id)
+        public ValidationReturn CheckCat_descricaoRegistered(long cat_id)
         {
             Categoria cat = _categoriaRepository.Find(new { Cat_id = cat_id }, s => new { s.Cat_id });
             if (cat == null)
@@ -41,7 +41,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidCat_descricaoThereAreOtherEqual(long cat_id, string cat_descricao)
+        public ValidationReturn CheckCat_descricaoThereAreOtherEqual(long cat_id, string cat_descricao)
         {
             Categoria cat = _categoriaRepository.Find(new { Cat_descricao = cat_descricao }, s => new { s.Cat_id });
 
@@ -55,7 +55,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidCat_inativo(long cat_id)
+        public ValidationReturn CheckCat_inativo(long cat_id)
         {
             Categoria cat = _categoriaRepository.Find(new { Cat_id = cat_id }, s => new { s.Cat_id });
             if (cat.Cat_inativo)

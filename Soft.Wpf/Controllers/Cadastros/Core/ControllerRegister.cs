@@ -48,7 +48,11 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
 
         private void On_EntityPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-
+            if (Oper == Operation.Navigate)
+            {
+                Oper = Operation.Edit;
+                //this.BloqueiaBotoes();
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

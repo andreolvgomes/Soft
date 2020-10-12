@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Soft.Domain.Commands.Base
 {
-    public interface ICommandHandler<in T>
+    public interface ICommandHandler<in TCommand> where TCommand : ICommand
     {
-        void Handle(T command);
+        void Handle(TCommand command);
+    }
+
+    public interface ICommandHandler<in TCommand, TResult> where TCommand : ICommand
+    {
+        void Handle(TCommand command);
     }
 }

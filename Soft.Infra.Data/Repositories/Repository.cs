@@ -135,5 +135,19 @@ namespace Soft.Infra.Data.Repositories
             using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
                 return cnn.Exists<TModel>(param: param, transaction: transaction);
         }
+
+        /// <summary>
+        /// Return value from database
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="param"></param>
+        /// <param name="selector"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public TResult Value<TResult>(object param, Expression<Func<TModel, object>> selector, IDbTransaction transaction = null)
+        {
+            using (SqlConnection cnn = new SqlConnection(Settings.ConnectionString))
+                return cnn.Value<TModel, TResult>(param: param, selector: selector, transaction: transaction);
+        }
     }
 }

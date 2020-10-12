@@ -58,5 +58,50 @@ namespace Soft.Application.ViewModels
                 }
             }
         }
+
+        private string _Cat_descricaoView;
+
+        public string Cat_descricaoView
+        {
+            get { return _Cat_descricaoView; }
+            set
+            {
+                if (_Cat_descricaoView != value)
+                {
+                    _Cat_descricaoView = value;
+                    OnPropertyChanged("Cat_descricaoView");
+                }
+            }
+        }
+
+        private string _Fam_descricaoView;
+
+        public string Fam_descricaoView
+        {
+            get { return _Fam_descricaoView; }
+            set
+            {
+                if (_Fam_descricaoView != value)
+                {
+                    _Fam_descricaoView = value;
+                    OnPropertyChanged("Fam_descricaoView");
+                }
+            }
+        }
+
+        private string _Sub_descricaoView;
+
+        public string Sub_descricaoView
+        {
+            get { return _Sub_descricaoView; }
+            set
+            {
+                if (_Sub_descricaoView != value)
+                {
+                    _Sub_descricaoView = value;
+                    OnPropertyChanged("Sub_descricaoView");
+                }
+            }
+        }
     }
 }

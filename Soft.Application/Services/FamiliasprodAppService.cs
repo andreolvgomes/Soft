@@ -16,50 +16,55 @@ namespace Soft.Application.Services
 {
     public class FamiliasprodAppService : IFamiliasprodAppService
     {
-        private readonly IFamiliasprodRepository familiasprodRepository = null;
+        private readonly IFamiliasprodRepository _familiasprodRepository = null;
         private readonly IMapper _mapper = null;
 
         public FamiliasprodAppService(IMapper mapper, IFamiliasprodRepository familiasprodRepository)
         {
             _mapper = mapper;
-            this.familiasprodRepository = familiasprodRepository;
+            this._familiasprodRepository = familiasprodRepository;
         }
 
         public long Insert(FamiliasprodViewModel viewModel, IDbTransaction transaction = null)
         {
-            return familiasprodRepository.Insert(_mapper.Map<Familiasprod>(viewModel));
+            return _familiasprodRepository.Insert(_mapper.Map<Familiasprod>(viewModel));
         }
 
         public int Update(FamiliasprodViewModel viewModel, Expression<Func<FamiliasprodViewModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            return familiasprodRepository.Update(_mapper.Map<Familiasprod>(viewModel), transaction: transaction);
+            return _familiasprodRepository.Update(_mapper.Map<Familiasprod>(viewModel), transaction: transaction);
         }
 
         public int Delete(FamiliasprodViewModel viewModel, IDbTransaction transaction = null)
         {
-            return familiasprodRepository.Delete(_mapper.Map<Familiasprod>(viewModel), transaction: transaction);
+            return _familiasprodRepository.Delete(_mapper.Map<Familiasprod>(viewModel), transaction: transaction);
         }
 
         public FamiliasprodViewModel Find(object param = null, Expression<Func<FamiliasprodViewModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            return _mapper.Map<FamiliasprodViewModel>(familiasprodRepository.Find(param: param, selector: 
+            return _mapper.Map<FamiliasprodViewModel>(_familiasprodRepository.Find(param: param, selector:
                 _mapper.Map<Expression<Func<Familiasprod, object>>>(selector), transaction: transaction));
         }
 
         public FamiliasprodViewModel FindOffset(int offset, object param = null, IDbTransaction transaction = null)
         {
-            return _mapper.Map<FamiliasprodViewModel>(familiasprodRepository.FindOffset(offset, param: param, transaction: transaction));
+            return _mapper.Map<FamiliasprodViewModel>(_familiasprodRepository.FindOffset(offset, param: param, transaction: transaction));
         }
 
         public int Count(object param = null, IDbTransaction transaction = null)
         {
-            return familiasprodRepository.Count(param: param, transaction: transaction);
+            return _familiasprodRepository.Count(param: param, transaction: transaction);
         }
 
         public IEnumerable<FamiliasprodViewModel> All(object param = null, Expression<Func<FamiliasprodViewModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            return _mapper.Map<IEnumerable<FamiliasprodViewModel>>(familiasprodRepository.All(param: param,
+            return _mapper.Map<IEnumerable<FamiliasprodViewModel>>(_familiasprodRepository.All(param: param,
                 selector: _mapper.Map<Expression<Func<Familiasprod, object>>>(selector), transaction: transaction));
+        }
+
+        public long GetFam_idByFam_descricao(string fam_descricao)
+        {
+            return _familiasprodRepository.Value<Int64>(new { Fam_descricao = fam_descricao }, s => new { s.Fam_id });
         }
     }
 }

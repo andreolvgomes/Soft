@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Base\CommandCore.cs" />
+    <Compile Include="Commands\Base\ICommand.cs" />
     <Compile Include="Commands\Base\ICommandHandler.cs" />
     <Compile Include="Commands\Pedidos\Command\CancelPedidoCommand.cs" />
     <Compile Include="Commands\Pedidos\Command\PedidoCommand.cs" />

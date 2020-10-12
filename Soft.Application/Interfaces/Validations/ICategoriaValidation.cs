@@ -9,10 +9,10 @@ namespace Soft.Application.Interfaces.Validations
 {
     public interface ICategoriaValidation
     {
-        ValidationReturn ValidCat_descricaoRegistered(string cat_descricao);
-        ValidationReturn ValidCat_descricaoRegistered(Int64 cat_id);
-        ValidationReturn ValidCat_descricaoIsNullOrEmpty(string cat_descricao);
-        ValidationReturn ValidCat_descricaoThereAreOtherEqual(Int64 cat_id, string cat_descricao);
-        ValidationReturn ValidCat_inativo(Int64 cat_id);
+        ValidationReturn CheckCat_descricaoRegistered(string cat_descricao);
+        ValidationReturn CheckCat_descricaoRegistered(Int64 cat_id);
+        ValidationReturn CheckCat_descricaoIsNullOrEmpty(string cat_descricao);
+        ValidationReturn CheckCat_descricaoThereAreOtherEqual(Int64 cat_id, string cat_descricao);
+        ValidationReturn CheckCat_inativo(Int64 cat_id);
     }
 }

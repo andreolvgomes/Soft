@@ -20,14 +20,14 @@ namespace Soft.Application.Validations
             _subcategoriaRepository = subcategoriaRepository;
         }
 
-        public ValidationReturn ValidSub_descricaoIsNullOrEmpty(string sub_descricao)
+        public ValidationReturn CheckSub_descricaoIsNullOrEmpty(string sub_descricao)
         {
             if (sub_descricao.NullOrEmpty())
                 return new ValidationReturn("Descrição da subcategoria não pode ser vazia");
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidSub_descricaoRegistered(string sub_descricao)
+        public ValidationReturn CheckSub_descricaoRegistered(string sub_descricao)
         {
             Subcategoria sub = _subcategoriaRepository.Find(new { sub_descricao = sub_descricao }, s => new { s.Sub_id });
             if (sub == null)
@@ -35,7 +35,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidSub_descricaoRegistered(long sub_id)
+        public ValidationReturn CheckSub_descricaoRegistered(long sub_id)
         {
             Subcategoria sub = _subcategoriaRepository.Find(new { Sub_id = sub_id }, s => new { s.Sub_id });
             if (sub == null)
@@ -43,7 +43,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidSub_descricaoThereAreOtherEqual(Int64 sub_id, string sub_descricao)
+        public ValidationReturn CheckSub_descricaoThereAreOtherEqual(Int64 sub_id, string sub_descricao)
         {
             Subcategoria sub = _subcategoriaRepository.Find(new { Sub_descricao = sub_descricao }, s => new { s.Sub_id });
             if (sub == null)
@@ -53,7 +53,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidSub_inativo(long sub_id)
+        public ValidationReturn CheckSub_inativo(long sub_id)
         {
             Subcategoria sub = _subcategoriaRepository.Find(new { Sub_id = sub_id }, s => new { s.Sub_inativo });
             if (sub.Sub_inativo)

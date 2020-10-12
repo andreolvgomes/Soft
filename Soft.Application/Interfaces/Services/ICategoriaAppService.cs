@@ -16,5 +16,6 @@ namespace Soft.Application.Interfaces.Services
     /// </summary>
     public interface ICategoriaAppService : IRegisterAppService<CategoriaViewModel>
     {
+        Int64 GetCat_idByCat_descricao(string cat_descricao);
     }
 }

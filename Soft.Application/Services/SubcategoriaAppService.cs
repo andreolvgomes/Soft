@@ -42,7 +42,7 @@ namespace Soft.Application.Services
 
         public SubcategoriaViewModel Find(object param = null, Expression<Func<SubcategoriaViewModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            return _mapper.Map<SubcategoriaViewModel>(_subcategoriaRepository.Find(param: param, selector: 
+            return _mapper.Map<SubcategoriaViewModel>(_subcategoriaRepository.Find(param: param, selector:
                 _mapper.Map<Expression<Func<Subcategoria, object>>>(selector), transaction: transaction));
         }
 
@@ -60,6 +60,11 @@ namespace Soft.Application.Services
         {
             return _mapper.Map<IEnumerable<SubcategoriaViewModel>>(_subcategoriaRepository.All(param: param,
                 selector: _mapper.Map<Expression<Func<Subcategoria, object>>>(selector), transaction: transaction));
+        }
+
+        public long GetSub_idBySub_descricao(string sub_descricao)
+        {
+            return _subcategoriaRepository.Value<Int64>(new { Sub_descricao = sub_descricao }, s => new { s.Sub_id });
         }
     }
 }

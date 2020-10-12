@@ -22,14 +22,14 @@ namespace Soft.Application.Validations
             _produtosRepository = produtosRepository;
         }
 
-        public ValidationReturn ValidPro_codigoIsNullOrEmpty(string pro_codigo)
+        public ValidationReturn CheckPro_codigoIsNullOrEmpty(string pro_codigo)
         {
             if (pro_codigo.NullOrEmpty())
                 return new ValidationReturn("Código do produto não pode ser vazio");
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidPro_descricaoIsNullOrEmpty(string pro_descricao)
+        public ValidationReturn CheckPro_descricaoIsNullOrEmpty(string pro_descricao)
         {
             if (pro_descricao.NullOrEmpty())
                 return new ValidationReturn("Descrição do produto não pode ser vazia");
@@ -41,7 +41,7 @@ namespace Soft.Application.Validations
         /// </summary>
         /// <param name="pro_codigo"></param>
         /// <returns></returns>
-        public ValidationReturn ValidPro_codigoRegistered(string pro_codigo)
+        public ValidationReturn CheckPro_codigoRegistered(string pro_codigo)
         {
             Produto produto = _produtosRepository.Find(new { Pro_codigo = pro_codigo }, s => new { s.Pro_inativo });
             if (produto == null)
@@ -50,7 +50,7 @@ namespace Soft.Application.Validations
             return new ValidationReturn();
         }
 
-        public ValidationReturn ValidPro_codigoRegistered(long pro_id)
+        public ValidationReturn CheckPro_codigoRegistered(long pro_id)
         {
             Produto produto = _produtosRepository.Find(new { Pro_id = pro_id }, s => new { s.Pro_inativo });
             if (produto == null)
@@ -64,7 +64,7 @@ namespace Soft.Application.Validations
         /// </summary>
         /// <param name="pro_codigo"></param>
         /// <returns></returns>
-        public ValidationReturn ValidPro_inativo(string pro_codigo)
+        public ValidationReturn CheckPro_inativo(string pro_codigo)
         {
             Produto produto = _produtosRepository.Find(new { Pro_codigo = pro_codigo }, s => new { s.Pro_inativo });
             if (produto.Pro_inativo)
@@ -79,7 +79,7 @@ namespace Soft.Application.Validations
         /// <param name="pro_id"></param>
         /// <param name="pro_codigo"></param>
         /// <returns></returns>
-        public ValidationReturn ValidPro_codigoThereAreOtherEqual(Int64 pro_id, string pro_codigo)
+        public ValidationReturn CheckPro_codigoThereAreOtherEqual(Int64 pro_id, string pro_codigo)
         {
             Produto produto = _produtosRepository.Find(new { Pro_codigo = pro_codigo }, s => new { s.Pro_descricao, s.Pro_id });
             // is null, there are no other
@@ -98,7 +98,7 @@ namespace Soft.Application.Validations
         /// <param name="pro_id"></param>
         /// <param name="pro_descricao"></param>
         /// <returns></returns>
-        public ValidationReturn ValidPro_descricaoThereAreOtherEqual(Int64 pro_id, string pro_descricao)
+        public ValidationReturn CheckPro_descricaoThereAreOtherEqual(Int64 pro_id, string pro_descricao)
         {
             Produto produto = _produtosRepository.Find(new { Pro_descricao = pro_descricao },
                 s => new { s.Pro_descricao, s.Pro_id });
@@ -118,7 +118,7 @@ namespace Soft.Application.Validations
         /// </summary>
         /// <param name="pro_codigo"></param>
         /// <returns></returns>
-        public ValidationReturn ValidPro_fracionado(string pro_codigo)
+        public ValidationReturn CheckPro_fracionado(string pro_codigo)
         {
             throw new NotImplementedException();
         }
@@ -128,7 +128,7 @@ namespace Soft.Application.Validations
         /// </summary>
         /// <param name="pro_codigo"></param>
         /// <returns></returns>
-        public ValidationReturn ValidPro_pvenda(string pro_codigo)
+        public ValidationReturn CheckPro_pvenda(string pro_codigo)
         {
             Produto produto = _produtosRepository.Find(new { Pro_codigo = pro_codigo }, s => new { s.Pro_pvenda });
             if (produto.Pro_pvenda < 0)

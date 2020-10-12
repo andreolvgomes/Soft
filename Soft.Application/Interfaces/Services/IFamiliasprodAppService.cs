@@ -16,5 +16,6 @@ namespace Soft.Application.Interfaces.Services
     /// </summary>
     public interface IFamiliasprodAppService : IRegisterAppService<FamiliasprodViewModel>
     {
+        Int64 GetFam_idByFam_descricao(string fam_descricao);
     }
 }

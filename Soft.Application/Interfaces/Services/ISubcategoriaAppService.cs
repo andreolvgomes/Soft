@@ -16,5 +16,6 @@ namespace Soft.Application.Interfaces.Services
     /// </summary>
     public interface ISubcategoriaAppService : IRegisterAppService<SubcategoriaViewModel>
     {
+        Int64 GetSub_idBySub_descricao(string sub_descricao);
     }
 }
