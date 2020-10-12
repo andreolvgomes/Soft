@@ -49,6 +49,11 @@ namespace Soft.Wpf.UserControls
             _action.Delete();
         }
 
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            _action.Cancel();
+        }
+
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             _action.Next();
@@ -57,12 +62,7 @@ namespace Soft.Wpf.UserControls
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
             _action.Previous();
-        }
-
-        private void btnCancelar_Click(object sender, RoutedEventArgs e)
-        {
-            _action.Cancel();
-        }
+        }        
 
         private void btnLast_Click(object sender, RoutedEventArgs e)
         {

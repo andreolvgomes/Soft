@@ -31,22 +31,24 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
                 if (_entity != value)
                 {
                     if (_entity != null)
-                        _entity.PropertyChanged -= On_EntityPropertyChanged;
+                        _entity.PropertyChanged -= OnEntityPropertyChanged;
 
                     _entity = value;
                     OnPropertyChanged("Entity");
-                    OnEventTreatToView(_entity);
+
+                    if (Oper != Operation.New)
+                        OnEventTreatToView(_entity);
 
                     if (_entity != null)
                     {
                         _entity_clone = (T)_entity.Clone();
-                        _entity.PropertyChanged += On_EntityPropertyChanged;
+                        _entity.PropertyChanged += OnEntityPropertyChanged;
                     }
                 }
             }
         }
 
-        private void On_EntityPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnEntityPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (Oper == Operation.Navigate)
             {
@@ -137,16 +139,17 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
         /// <summary>
         /// Create new viewmodel
         /// </summary>
-        public void New()
+        public bool New()
         {
-            Entity = OnEventNewRegister();
             Oper = Operation.New;
+            Entity = OnEventNewRegister();
+            return true;
         }
 
         /// <summary>
         /// Save viewmodel in the database
         /// </summary>
-        public void Save()
+        public bool Save()
         {
             if (OnEventValidation())
             {
@@ -162,26 +165,30 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
                     _appService.Update(_entity);
                 }
                 Oper = Operation.Navigate;
+                return true;
             }
+            return false;
         }
 
         /// <summary>
         /// Cancel operation of New or Edit
         /// </summary>
-        public void Cancel()
+        public bool Cancel()
         {
             Entity = Offset(index);
             Oper = Operation.Navigate;
+            return true;
         }
 
         /// <summary>
         /// Delete viewmodel in the database
         /// </summary>
-        public void Delete()
+        public bool Delete()
         {
             _appService.Delete(Entity);
             n_records = _appService.Count();
             First();
+            return true;
         }
 
         /// <summary>

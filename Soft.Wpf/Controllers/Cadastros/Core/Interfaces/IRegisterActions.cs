@@ -8,10 +8,10 @@ namespace Soft.Wpf.Controllers.Cadastros.Core.Interfaces
 {
     public interface IRegisterActions
     {
-        void New();
-        void Save();
-        void Cancel();
-        void Delete();
+        bool New();
+        bool Save();
+        bool Cancel();
+        bool Delete();
         void Previous();
         void Next();
         void First();
