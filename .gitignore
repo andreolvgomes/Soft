@@ -5,10 +5,12 @@ Soft.Infra.IoC/obj/
 Test.Domain/obj/
 Soft.Wpf/obj/
 Soft.Entities/obj/
+
 .vs/
 
 Soft.Application/bin/
 Soft.Entities/bin/
+
 Soft.Domain.Boostrapper/bin/
 Soft.Infra.Data/bin/
 Soft.Infra.IoC/bin/

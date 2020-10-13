@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Pipes;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -102,12 +103,18 @@ namespace Soft.Wpf.Controllers.Cadastros
         }
 
         /// <summary>
-        /// Valdia código do Produto
+        /// Valida código do Produto
         /// </summary>
         /// <returns></returns>
         public ValidationReturn ValidPro_codigo()
         {
-            return _produtosValidation.CheckPro_codigoThereAreOtherEqual(Entity.Pro_id, Entity.Pro_codigo);
+            ValidationReturn valid = _produtosValidation.CheckPro_codigoIsNullOrEmpty(Entity.Pro_codigo);
+            if (!valid.Valid) return valid;
+
+            valid = _produtosValidation.CheckPro_codigoThereAreOtherEqual(Entity.Pro_id, Entity.Pro_codigo);
+            if (!valid.Valid) return valid;
+
+            return new ValidationReturn();
         }
 
         /// <summary>
@@ -116,7 +123,13 @@ namespace Soft.Wpf.Controllers.Cadastros
         /// <returns></returns>
         public ValidationReturn ValidPro_descricao()
         {
-            return _produtosValidation.CheckPro_descricaoThereAreOtherEqual(Entity.Pro_id, Entity.Pro_descricao);
+            ValidationReturn valid = _produtosValidation.CheckPro_codigoIsNullOrEmpty(Entity.Pro_descricao);
+            if (!valid.Valid) return valid;
+            
+            valid = _produtosValidation.CheckPro_descricaoThereAreOtherEqual(Entity.Pro_id, Entity.Pro_descricao);
+            if (!valid.Valid) return valid;
+
+            return new ValidationReturn();
         }
 
         /// <summary>
