@@ -80,7 +80,7 @@ namespace Soft.Wpf.Controllers.Cadastros
             CategoriaViewModel categoria = _categoriaAppService.Find();
             if (categoria == null)
             {
-                viewmodel.Cat_id = _categoriaAppService.Insert(new CategoriaViewModel() { Cat_descricao = "CATEGORIA PADRAO" });
+                viewmodel.Cat_id = _categoriaAppService.Insert(new CategoriaViewModel() { Cat_descricao = "CATEGORIA PADRÃO" });
                 categoria = _categoriaAppService.Find();
             }
             viewmodel.Cat_id = categoria.Cat_id;
@@ -88,7 +88,7 @@ namespace Soft.Wpf.Controllers.Cadastros
             SubcategoriaViewModel subcategoria = _subcategoriaAppService.Find();
             if (subcategoria == null)
             {
-                viewmodel.Sub_id = _subcategoriaAppService.Insert(new SubcategoriaViewModel() { Sub_descricao = "SUBCATEGORIA PADRAO" });
+                viewmodel.Sub_id = _subcategoriaAppService.Insert(new SubcategoriaViewModel() { Sub_descricao = "SUBCATEGORIA PADRÃO" });
                 subcategoria = _subcategoriaAppService.Find();
             }
             viewmodel.Sub_id = subcategoria.Sub_id;
@@ -96,7 +96,7 @@ namespace Soft.Wpf.Controllers.Cadastros
             FamiliasprodViewModel familiaprod = _familiasprodAppService.Find();
             if (familiaprod == null)
             {
-                viewmodel.Fam_id = _familiasprodAppService.Insert(new FamiliasprodViewModel() { Fam_descricao = "FAMILIA PADRAO" });
+                viewmodel.Fam_id = _familiasprodAppService.Insert(new FamiliasprodViewModel() { Fam_descricao = "FAMÍLIA PADRÃO" });
                 familiaprod = _familiasprodAppService.Find();
             }
             viewmodel.Fam_id = familiaprod.Fam_id;
