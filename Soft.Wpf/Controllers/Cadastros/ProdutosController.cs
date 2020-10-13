@@ -146,7 +146,7 @@ namespace Soft.Wpf.Controllers.Cadastros
             valid = _categoriaValidation.CheckCat_descricaoRegistered(Entity.Cat_descricaoView);
             if (!valid.Valid) return valid;
 
-            // check if to be ativ
+            // make sure it is active
             valid = _categoriaValidation.CheckCat_inativo(_categoriaAppService.GetCat_idByCat_descricao(Entity.Cat_descricaoView));
             if (!valid.Valid) return valid;
 
