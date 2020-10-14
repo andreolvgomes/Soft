@@ -13,5 +13,9 @@ namespace Soft.Infra.Data.Repositories
     /// </summary>
     public class CategoriaRepository : Repository<Categoria>, ICategoriaRepository
     {
+        public long GetCat_idByCat_descricao(string cat_descricao)
+        {
+            return Value<Int64>(new { Cat_descricao = cat_descricao }, s => new { s.Cat_id });
+        }
     }
 }

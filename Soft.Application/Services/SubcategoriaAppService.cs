@@ -64,7 +64,7 @@ namespace Soft.Application.Services
 
         public long GetSub_idBySub_descricao(string sub_descricao)
         {
-            return _subcategoriaRepository.Value<Int64>(new { Sub_descricao = sub_descricao }, s => new { s.Sub_id });
+            return _subcategoriaRepository.GetSub_idBySub_descricao(sub_descricao);
         }
     }
 }

@@ -10,5 +10,9 @@ namespace Soft.Infra.Data.Repositories
 {
     public class FamiliasprodRepository : Repository<Familiasprod>, IFamiliasprodRepository
     {
+        public long GetFam_idByFam_descricao(string fam_descricao)
+        {
+            return Value<Int64>(new { Fam_descricao = fam_descricao }, s => new { s.Fam_id });
+        }
     }
 }

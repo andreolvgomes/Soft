@@ -64,7 +64,7 @@ namespace Soft.Application.Services
 
         public long GetCat_idByCat_descricao(string cat_descricao)
         {
-            return _categoriaRepository.Value<Int64>(new { Cat_descricao = cat_descricao }, s => new { s.Cat_id });
+            return _categoriaRepository.GetCat_idByCat_descricao(cat_descricao);
         }
     }
 }

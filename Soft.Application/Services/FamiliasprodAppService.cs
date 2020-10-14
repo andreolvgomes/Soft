@@ -64,7 +64,7 @@ namespace Soft.Application.Services
 
         public long GetFam_idByFam_descricao(string fam_descricao)
         {
-            return _familiasprodRepository.Value<Int64>(new { Fam_descricao = fam_descricao }, s => new { s.Fam_id });
+            return _familiasprodRepository.GetFam_idByFam_descricao(fam_descricao);
         }
     }
 }
