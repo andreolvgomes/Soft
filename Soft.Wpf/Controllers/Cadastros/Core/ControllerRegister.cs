@@ -49,6 +49,11 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
             }
         }
 
+        /// <summary>
+        /// On change properties
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnEntityPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (OperationCurrent == Operation.Navigate)
@@ -132,34 +137,39 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
         /// <summary>
         /// Start
         /// </summary>
-        public void Init()
+        public void Init(IButtons buttons)
         {
+            InjectButtons(buttons);
             n_records = _appService.Count();
             this.First();
         }
 
-        public void DefinesButton(IButtons buttons)
+        /// <summary>
+        /// Inject buttons into this controller
+        /// </summary>
+        /// <param name="buttons"></param>
+        private void InjectButtons(IButtons buttons)
         {
             _buttons = buttons;
+            _buttons.InjectController(this);
             _buttons.UnblockButtons();
         }
 
         /// <summary>
         /// Create new viewmodel
         /// </summary>
-        public bool New()
+        public void New()
         {
             OperationCurrent = Operation.New;
             _buttons.BlockButtons();
 
             Entity = OnEventNewRegister();
-            return true;
         }
 
         /// <summary>
         /// Save viewmodel in the database
         /// </summary>
-        public bool Save()
+        public void Save()
         {
             if (OnEventValidation())
             {
@@ -179,32 +189,28 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
                 }
                 OperationCurrent = Operation.Navigate;
                 _buttons.UnblockButtons();
-                return true;
             }
-            return false;
         }
 
         /// <summary>
         /// Cancel operation of New or Edit
         /// </summary>
-        public bool Cancel()
+        public void Cancel()
         {
             OperationCurrent = Operation.Navigate;
 
             Entity = Offset(index);            
             _buttons.UnblockButtons();
-            return true;
         }
 
         /// <summary>
         /// Delete viewmodel in the database
         /// </summary>
-        public bool Delete()
+        public void Delete()
         {
             _appService.Delete(Entity);
             n_records = _appService.Count();
             First();
-            return true;
         }
 
         /// <summary>

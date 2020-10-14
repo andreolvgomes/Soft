@@ -37,14 +37,12 @@ namespace Soft.Wpf.Views.Cadastros
             InitializeComponent();
             
             controller = Ioc.Instance.GetInstance<ProdutosController>();
-            controller.EventNewRegister += new RegisterNewEventHandler<ProdutoViewModel>(NewRecord);
-            controller.EventValidation += new RegisterValidationEventHandler(IsValid);
-
-            controller.Init();
-            controller.DefinesButton(buttons);
-
+            controller.Init(buttons);
             this.DataContext = controller;
-            buttons.InjectController(controller);
+
+            // events
+            controller.EventNewRegister += new RegisterNewEventHandler<ProdutoViewModel>(NewRecord);
+            controller.EventValidation += new RegisterValidationEventHandler(IsValid);                        
         }
 
         /// <summary>

@@ -15,22 +15,22 @@ namespace Soft.Wpf.Controllers.Cadastros.Core.Interfaces
         /// New record
         /// </summary>
         /// <returns></returns>
-        bool New();
+        void New();
         /// <summary>
         /// Save record
         /// </summary>
         /// <returns></returns>
-        bool Save();
+        void Save();
         /// <summary>
         /// Cancela edition or new record
         /// </summary>
         /// <returns></returns>
-        bool Cancel();
+        void Cancel();
         /// <summary>
         /// Delete record
         /// </summary>
         /// <returns></returns>
-        bool Delete();
+        void Delete();
         /// <summary>
         /// Go to the previous record
         /// </summary>
