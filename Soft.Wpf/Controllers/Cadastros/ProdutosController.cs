@@ -61,14 +61,9 @@ namespace Soft.Wpf.Controllers.Cadastros
         /// <param name="viewmodel"></param>
         private void TreatToView(ProdutoViewModel viewmodel)
         {
-            CategoriaViewModel cat = _categoriaAppService.Find(new { Cat_id = viewmodel.Cat_id });
-            viewmodel.Cat_descricaoView = cat.Cat_descricao;
-
-            SubcategoriaViewModel sub = _subcategoriaAppService.Find(new { Sub_id = viewmodel.Sub_id });
-            viewmodel.Sub_descricaoView = sub.Sub_descricao;
-
-            FamiliasprodViewModel familiaprod = _familiasprodAppService.Find(new { Fam_id = viewmodel.Fam_id });
-            viewmodel.Fam_descricaoView = familiaprod.Fam_descricao;
+            viewmodel.Cat_descricaoView = _categoriaAppService.Find(new { Cat_id = viewmodel.Cat_id }).Cat_descricao;
+            viewmodel.Sub_descricaoView = _subcategoriaAppService.Find(new { Sub_id = viewmodel.Sub_id }).Sub_descricao;
+            viewmodel.Fam_descricaoView = _familiasprodAppService.Find(new { Fam_id = viewmodel.Fam_id }).Fam_descricao;
         }
 
         /// <summary>
@@ -77,29 +72,9 @@ namespace Soft.Wpf.Controllers.Cadastros
         /// <param name="viewmodel"></param>
         private void TreatToDatabase(ProdutoViewModel viewmodel)
         {
-            CategoriaViewModel categoria = _categoriaAppService.Find();
-            if (categoria == null)
-            {
-                viewmodel.Cat_id = _categoriaAppService.Insert(new CategoriaViewModel() { Cat_descricao = "CATEGORIA PADRÃO" });
-                categoria = _categoriaAppService.Find();
-            }
-            viewmodel.Cat_id = categoria.Cat_id;
-
-            SubcategoriaViewModel subcategoria = _subcategoriaAppService.Find();
-            if (subcategoria == null)
-            {
-                viewmodel.Sub_id = _subcategoriaAppService.Insert(new SubcategoriaViewModel() { Sub_descricao = "SUBCATEGORIA PADRÃO" });
-                subcategoria = _subcategoriaAppService.Find();
-            }
-            viewmodel.Sub_id = subcategoria.Sub_id;
-
-            FamiliasprodViewModel familiaprod = _familiasprodAppService.Find();
-            if (familiaprod == null)
-            {
-                viewmodel.Fam_id = _familiasprodAppService.Insert(new FamiliasprodViewModel() { Fam_descricao = "FAMÍLIA PADRÃO" });
-                familiaprod = _familiasprodAppService.Find();
-            }
-            viewmodel.Fam_id = familiaprod.Fam_id;
+            viewmodel.Cat_id = _categoriaAppService.GetCat_idByCat_descricao(Entity.Cat_descricaoView);
+            viewmodel.Sub_id = _subcategoriaAppService.GetSub_idBySub_descricao(Entity.Sub_descricaoView);
+            viewmodel.Fam_id = _familiasprodAppService.GetFam_idByFam_descricao(Entity.Fam_descricaoView);
         }
 
         /// <summary>
@@ -125,7 +100,7 @@ namespace Soft.Wpf.Controllers.Cadastros
         {
             ValidationReturn valid = _produtosValidation.CheckPro_codigoIsNullOrEmpty(Entity.Pro_descricao);
             if (!valid.Valid) return valid;
-            
+
             valid = _produtosValidation.CheckPro_descricaoThereAreOtherEqual(Entity.Pro_id, Entity.Pro_descricao);
             if (!valid.Valid) return valid;
 

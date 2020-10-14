@@ -24,8 +24,14 @@ namespace Soft.Wpf.Views.Cadastros
     /// </summary>
     public partial class Produtos : Window
     {
+        /// <summary>
+        /// Controller Produtos
+        /// </summary>
         private ProdutosController controller = null;
 
+        /// <summary>
+        /// Constructor of view Produtos
+        /// </summary>
         public Produtos()
         {
             InitializeComponent();
@@ -33,12 +39,18 @@ namespace Soft.Wpf.Views.Cadastros
             controller = Ioc.Instance.GetInstance<ProdutosController>();
             controller.EventNewRegister += new RegisterNewEventHandler<ProdutoViewModel>(NewRecord);
             controller.EventValidation += new RegisterValidationEventHandler(IsValid);
+
             controller.Init();
+            controller.DefinesButton(buttons);
 
             this.DataContext = controller;
-            buttons.InjectActions(controller);
+            buttons.InjectController(controller);
         }
 
+        /// <summary>
+        /// Check validations
+        /// </summary>
+        /// <returns></returns>
         private bool IsValid()
         {
             if (!MessageValid(controller.ValidPro_codigo())) return false;
@@ -48,11 +60,24 @@ namespace Soft.Wpf.Views.Cadastros
             return true;
         }
 
+        /// <summary>
+        /// Execute new record
+        /// </summary>
+        /// <returns></returns>
         private ProdutoViewModel NewRecord()
         {
-            return new ProdutoViewModel();
+            ProdutoViewModel produto = new ProdutoViewModel();
+            produto.Cat_descricaoView = "CATEGORIA PADRÃO";
+            produto.Fam_descricaoView = "FAMÍLIA PADRÃO";
+            produto.Sub_descricaoView = "SUBCATEGORIA PADRÃO";
+            return produto;
         }
 
+        /// <summary>
+        /// Show message from validation
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
         private bool MessageValid(ValidationReturn result)
         {
             if (result.Valid) return true;

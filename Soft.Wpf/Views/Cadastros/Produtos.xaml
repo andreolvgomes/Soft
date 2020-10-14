@@ -36,14 +36,14 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Família"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Categoria"/>
                 <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding Entity.Cat_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="Categoria"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="SubCategoria"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Entity.Sub_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBlock Grid.Row="0" Grid.Column="2" Text="SubCategoria"/>
-                <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Entity.Sub_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="Família"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </StackPanel>
     </Grid>

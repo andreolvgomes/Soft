@@ -3,6 +3,7 @@ using Soft.Application.ViewModels;
 using Soft.Wpf.Controllers.Cadastros.Core.Enums;
 using Soft.Wpf.Controllers.Cadastros.Core.Interfaces;
 using Soft.Wpf.Delegates;
+using Soft.Wpf.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Soft.Wpf.Controllers.Cadastros.Core
 {
-    public class ControllerRegister<T> : INotifyPropertyChanged, IRegisterActions
+    public class ControllerRegister<T> : INotifyPropertyChanged, IControllerRegister
         where T : ViewModelBase
     {
         /// <summary>
@@ -36,7 +37,7 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
                     _entity = value;
                     OnPropertyChanged("Entity");
 
-                    if (Oper != Operation.New)
+                    if (OperationCurrent != Operation.New)
                         OnEventTreatToView(_entity);
 
                     if (_entity != null)
@@ -50,10 +51,10 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
 
         private void OnEntityPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (Oper == Operation.Navigate)
+            if (OperationCurrent == Operation.Navigate)
             {
-                Oper = Operation.Edit;
-                //this.BloqueiaBotoes();
+                OperationCurrent = Operation.Edit;
+                _buttons.BlockButtons();
             }
         }
 
@@ -110,12 +111,13 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
 
         private int index = 0;
         private int n_records = 0;
-        private Operation Oper = Operation.Navigate;
+        private Operation OperationCurrent = Operation.Navigate;
 
         /// <summary>
         /// Service from layer Services
         /// </summary>
         private readonly IRegisterAppService<T> _appService = null;
+        private IButtons _buttons = null;
 
         /// <summary>
         /// ControllerRegister
@@ -125,15 +127,21 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
         {
             _appService = appService;
             Entity = (T)Activator.CreateInstance(typeof(T));
-        }
+        }        
 
         /// <summary>
         /// Start
         /// </summary>
-        public virtual void Init()
+        public void Init()
         {
             n_records = _appService.Count();
             this.First();
+        }
+
+        public void DefinesButton(IButtons buttons)
+        {
+            _buttons = buttons;
+            _buttons.UnblockButtons();
         }
 
         /// <summary>
@@ -141,7 +149,9 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
         /// </summary>
         public bool New()
         {
-            Oper = Operation.New;
+            OperationCurrent = Operation.New;
+            _buttons.BlockButtons();
+
             Entity = OnEventNewRegister();
             return true;
         }
@@ -154,17 +164,21 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
             if (OnEventValidation())
             {
                 OnEventTreatToDatabase();
-                if (Oper == Operation.New)
+                if (OperationCurrent == Operation.New)
                 {
                     long id = _appService.Insert(_entity);
                     n_records = _appService.Count();
+
+                    // go to last record
                     Last();
+                    OnEventTreatToView(_entity);
                 }
                 else
                 {
                     _appService.Update(_entity);
                 }
-                Oper = Operation.Navigate;
+                OperationCurrent = Operation.Navigate;
+                _buttons.UnblockButtons();
                 return true;
             }
             return false;
@@ -175,8 +189,10 @@ namespace Soft.Wpf.Controllers.Cadastros.Core
         /// </summary>
         public bool Cancel()
         {
-            Entity = Offset(index);
-            Oper = Operation.Navigate;
+            OperationCurrent = Operation.Navigate;
+
+            Entity = Offset(index);            
+            _buttons.UnblockButtons();
             return true;
         }
 

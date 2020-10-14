@@ -82,6 +82,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\insert_default.sql" />
     <Content Include="Scripts\tables.sql" />
   </ItemGroup>
   <ItemGroup>

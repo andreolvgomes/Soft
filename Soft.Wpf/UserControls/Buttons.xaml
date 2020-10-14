@@ -6,10 +6,10 @@
              >
     <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1,0,0,0" Width="100" Padding="1,0,0,0">
         <StackPanel>
-            <Button Content="Novo" Click="btnNovo_Click"/>
-            <Button Content="Salvar" Click="btnSave_Click"/>
-            <Button Content="Excluir" Click="btnDelete_Click"/>
-            <Button Content="Cancelar" Click="btnCancelar_Click"/>
+            <Button x:Name="btnNew" Content="Novo" Click="btnNovo_Click"/>
+            <Button x:Name="btnSave" Content="Salvar" Click="btnSave_Click"/>
+            <Button x:Name="btnExcluir" Content="Excluir" Click="btnDelete_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" Click="btnCancelar_Click"/>
 
             <!--buttons navigations-->
             <Grid>
@@ -23,14 +23,14 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Column="0" Grid.Row="0" Content="&lt;&lt;" Click="btnPrevious_Click"/>
-                <Button Grid.Column="1" Grid.Row="0" Content="&gt;&gt;" Click="btnNext_Click"/>
+                <Button x:Name="btnPrevious" Grid.Column="0" Grid.Row="0" Content="&lt;&lt;" Click="btnPrevious_Click"/>
+                <Button x:Name="btnNext" Grid.Column="1" Grid.Row="0" Content="&gt;&gt;" Click="btnNext_Click"/>
 
-                <Button Grid.Column="0" Grid.Row="1" Content="|&lt;" Click="btnFirst_Click"/>
-                <Button Grid.Column="1" Grid.Row="1" Content="&gt;|" Click="btnLast_Click"/>
+                <Button x:Name="btnFirst" Grid.Column="0" Grid.Row="1" Content="|&lt;" Click="btnFirst_Click"/>
+                <Button x:Name="btnLast" Grid.Column="1" Grid.Row="1" Content="&gt;|" Click="btnLast_Click"/>
             </Grid>
 
-            <Button Content="Pesquisar"/>
+            <!--<Button Content="Pesquisar"/>-->
         </StackPanel>
     </Border>
 </UserControl>

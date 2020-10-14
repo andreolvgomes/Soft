@@ -20,16 +20,16 @@ namespace Soft.Wpf.UserControls
     /// <summary>
     /// Interaction logic for Buttons.xaml
     /// </summary>
-    public partial class Buttons : UserControl
+    public partial class Buttons : UserControl, IButtons
     {
+        private IControllerRegister _action;
+
         public Buttons()
         {
             InitializeComponent();
         }
 
-        private IRegisterActions _action;
-
-        public void InjectActions(IRegisterActions action)
+        public void InjectController(IControllerRegister action)
         {
             _action = action;
         }
@@ -62,7 +62,7 @@ namespace Soft.Wpf.UserControls
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
             _action.Previous();
-        }        
+        }
 
         private void btnLast_Click(object sender, RoutedEventArgs e)
         {
@@ -72,6 +72,32 @@ namespace Soft.Wpf.UserControls
         private void btnFirst_Click(object sender, RoutedEventArgs e)
         {
             _action.First();
+        }
+
+        public void BlockButtons()
+        {
+            btnCancelar.Visibility = System.Windows.Visibility.Visible;
+            btnSave.Visibility = System.Windows.Visibility.Visible;
+
+            btnNext.Visibility = System.Windows.Visibility.Collapsed;
+            btnExcluir.Visibility = System.Windows.Visibility.Collapsed;
+            btnFirst.Visibility = System.Windows.Visibility.Collapsed;
+            btnLast.Visibility = System.Windows.Visibility.Collapsed;
+            btnNext.Visibility = System.Windows.Visibility.Collapsed;
+            btnPrevious.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
+        public void UnblockButtons()
+        {
+            btnCancelar.Visibility = System.Windows.Visibility.Collapsed;
+            btnSave.Visibility = System.Windows.Visibility.Collapsed;
+
+            btnNew.Visibility = System.Windows.Visibility.Visible;
+            btnExcluir.Visibility = System.Windows.Visibility.Visible;
+            btnFirst.Visibility = System.Windows.Visibility.Visible;
+            btnLast.Visibility = System.Windows.Visibility.Visible;
+            btnPrevious.Visibility = System.Windows.Visibility.Visible;
+            btnNext.Visibility = System.Windows.Visibility.Visible;
         }
     }
 }

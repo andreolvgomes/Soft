@@ -73,7 +73,7 @@
     <Content Include="Links.txt" />
     <Compile Include="Controllers\Cadastros\ClientesController.cs" />
     <Compile Include="Controllers\Cadastros\Core\Enums\Operation.cs" />
-    <Compile Include="Controllers\Cadastros\Core\Interfaces\IRegisterActions.cs" />
+    <Compile Include="Controllers\Cadastros\Core\Interfaces\IControllerRegister.cs" />
     <Compile Include="Controllers\Cadastros\VendedoresController.cs" />
     <Compile Include="Controllers\Core\ControllerBase.cs" />
     <Compile Include="Delegates\RegisterNewEventHandler.cs" />
@@ -101,6 +101,7 @@
     <Compile Include="UserControls\Buttons.xaml.cs">
       <DependentUpon>Buttons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\IButtons.cs" />
     <Compile Include="Views\Cadastros\Produtos.xaml.cs">
       <DependentUpon>Produtos.xaml</DependentUpon>
     </Compile>
