@@ -16,6 +16,11 @@ namespace Soft.Application.Interfaces.Services
     /// </summary>
     public interface IFamiliasprodAppService : IRegisterAppService<FamiliasprodViewModel>
     {
+        /// <summary>
+        /// Get id by descrition Fam_descricao
+        /// </summary>
+        /// <param name="fam_descricao"></param>
+        /// <returns></returns>
         Int64 GetFam_idByFam_descricao(string fam_descricao);
     }
 }
