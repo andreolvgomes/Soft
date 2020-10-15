@@ -84,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\TextBoxSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Cadastros\Produtos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +106,9 @@
       <DependentUpon>Buttons.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\IButtons.cs" />
+    <Compile Include="UserControls\TextBoxSearch.xaml.cs">
+      <DependentUpon>TextBoxSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cadastros\Produtos.xaml.cs">
       <DependentUpon>Produtos.xaml</DependentUpon>
     </Compile>

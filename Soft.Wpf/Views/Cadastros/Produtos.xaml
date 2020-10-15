@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:buttons="clr-namespace:Soft.Wpf.UserControls"
+        xmlns:usercontrols="clr-namespace:Soft.Wpf.UserControls"
         Title="MainWindow" Height="450" Width="600" WindowStartupLocation="CenterScreen"
         >
     <Grid Margin="10">
@@ -11,8 +11,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        
-        <buttons:Buttons x:Name="buttons" Grid.Column="1"/>
+
+        <usercontrols:Buttons x:Name="buttons" Grid.Column="1"/>
         
         <StackPanel Grid.Row="1">
             <TextBlock Text="ID"/>
@@ -45,6 +45,17 @@
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="Família"/>
                 <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
+
+            <!--<Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <usercontrols:TextBoxSearch Label="Categoria" Grid.Column="0" Value="{Binding Entity.Cat_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
+                <usercontrols:TextBoxSearch Label="SubCategoria" Grid.Column="1" Value="{Binding Entity.Sub_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
+                <usercontrols:TextBoxSearch Label="Família" Grid.Column="2" Value="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>-->
         </StackPanel>
     </Grid>
 </Window>
