@@ -17,7 +17,7 @@
         <StackPanel Grid.Row="1">
             <TextBlock Text="ID"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="txtPro_id" Width="75" Text="{Binding Entity.Pro_id, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="txtPro_id" Width="75" Text="{Binding Entity.Pro_id, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
             </StackPanel>
 
             <TextBlock Text="Código"/>

@@ -85,6 +85,7 @@ namespace Soft.Wpf.UserControls
             btnLast.Visibility = System.Windows.Visibility.Collapsed;
             btnNext.Visibility = System.Windows.Visibility.Collapsed;
             btnPrevious.Visibility = System.Windows.Visibility.Collapsed;
+            btnNew.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         public void UnblockButtons()

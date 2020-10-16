@@ -18,7 +18,11 @@ namespace Soft.Wpf
             Ioc.Instance.Init();
 
             Container container = Ioc.Instance.Container();
+            
+            // controllers
             container.Register<ProdutosController>();
+            container.Register<SubCategoriasController>();
+            container.Register<CategoriasController>();
 
             // register automapper
             MapperConfiguration config = AutoMapperConfiguration.RegisterMappings();
