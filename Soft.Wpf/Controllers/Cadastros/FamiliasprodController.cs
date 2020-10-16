@@ -16,7 +16,6 @@ namespace Soft.Wpf.Controllers.Cadastros
     /// </summary>
     public class FamiliasprodController : ControllerRegister<FamiliasprodViewModel>
     {
-        private readonly IFamiliasprodAppService _familiasprodAppService;
         private readonly IFamiliasprodValidation _familiasprodValidation;
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Soft.Wpf.Controllers.Cadastros
         public FamiliasprodController(IFamiliasprodAppService familiasprodAppService,
             IFamiliasprodValidation familiasprodValidation) : base(familiasprodAppService)
         {
-            _familiasprodAppService = familiasprodAppService;
             _familiasprodValidation = familiasprodValidation;
         }
 
