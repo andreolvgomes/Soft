@@ -45,7 +45,7 @@ namespace Soft.Application.Validations
 
         public ValidationReturn CheckFam_descricaoThereAreOtherEqual(long fam_id, string fam_descricao)
         {
-            Familiasprod fam = _familiasprodRepository.Find(new { Fam_descricao = fam_descricao }, s => new { s.Fam_inativo });
+            Familiasprod fam = _familiasprodRepository.Find(new { Fam_descricao = fam_descricao }, s => new { s.Fam_id });
             if (fam == null)
                 return new ValidationReturn();
             if (fam.Fam_id != fam_id)
