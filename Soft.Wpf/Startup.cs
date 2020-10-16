@@ -23,7 +23,8 @@ namespace Soft.Wpf
             container.Register<ProdutosController>();
             container.Register<SubCategoriasController>();
             container.Register<CategoriasController>();
-
+            container.Register<FamiliasprodController>();
+            
             // register automapper
             MapperConfiguration config = AutoMapperConfiguration.RegisterMappings();
             container.Register<IMapper>(() => config.CreateMapper(container.GetInstance));
