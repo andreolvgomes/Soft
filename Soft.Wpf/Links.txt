@@ -3,3 +3,6 @@
 DDD_FINANCEIRO_v_1_0_4
 https://drive.google.com/file/d/19GUDuRvSmx08tjEzmJyTxSizwkxC5K2q/view
 https://www.youtube.com/watch?v=MjnO2mcE-AQ&ab_channel=DEVNETCOREValdirFerreira
+
+TEXTBOX COM LABEL
+https://social.msdn.microsoft.com/Forums/vstudio/en-US/67b170d6-f1e3-4c4c-a5c8-b39332a99fef/text-box-custom-control-to-display-a-label-within-a-textbox?forum=wpf
