@@ -20,7 +20,7 @@ namespace Soft.Wpf.Controllers.Cadastros
         private readonly ICategoriaValidation _categoriaValidation;
 
         /// <summary>
-        /// Constructor of CategoriasController
+        /// Constructor of Categorias Controller
         /// </summary>
         /// <param name="categoriaAppService"></param>
         /// <param name="categoriaValidation"></param>

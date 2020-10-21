@@ -31,8 +31,7 @@ namespace Soft.Wpf.UserControls
             DependencyProperty.Register("Label", typeof(string), typeof(TextBoxSearch), new PropertyMetadata("Label"));
 
 
-
-        public string Value
+        public string Text
         {
             get { return (string)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
@@ -40,15 +39,12 @@ namespace Soft.Wpf.UserControls
 
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(string), typeof(TextBoxSearch));
-
+            DependencyProperty.Register("Text", typeof(string), typeof(TextBoxSearch));
 
 
         public TextBoxSearch()
         {
             InitializeComponent();
-
-            this.DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

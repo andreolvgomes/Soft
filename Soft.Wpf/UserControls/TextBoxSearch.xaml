@@ -3,16 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Soft.Wpf.UserControls">
+             xmlns:local="clr-namespace:Soft.Wpf.UserControls"
+             x:Name="txtsearch">
     <StackPanel>
-        <TextBlock Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="{Binding ElementName=txtsearch, Path=Label, UpdateSourceTrigger=PropertyChanged}"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBox Grid.Column="0" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBox Grid.Column="0" Text="{Binding ElementName=txtsearch, Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Grid.Column="1" Content="..." Height="18" Click="Button_Click"/>
         </Grid>
     </StackPanel>

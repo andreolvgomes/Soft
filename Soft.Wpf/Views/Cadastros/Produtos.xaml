@@ -26,7 +26,7 @@
             <TextBlock Text="Descrição"/>
             <TextBox x:Name="txtPro_descricao" Text="{Binding Entity.Pro_descricao, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Grid>
+            <!--<Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -44,18 +44,18 @@
 
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="Família"/>
                 <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
-            </Grid>
+            </Grid>-->
 
-            <!--<Grid>
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <usercontrols:TextBoxSearch Label="Categoria" Grid.Column="0" Value="{Binding Entity.Cat_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
-                <usercontrols:TextBoxSearch Label="SubCategoria" Grid.Column="1" Value="{Binding Entity.Sub_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
-                <usercontrols:TextBoxSearch Label="Família" Grid.Column="2" Value="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
-            </Grid>-->
+                <usercontrols:TextBoxSearch Label="Categoria" Grid.Column="0" Text="{Binding Entity.Cat_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
+                <usercontrols:TextBoxSearch Label="SubCategoria" Grid.Column="1" Text="{Binding Entity.Sub_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
+                <usercontrols:TextBoxSearch Label="Família" Grid.Column="2" Text="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>
