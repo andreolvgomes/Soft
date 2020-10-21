@@ -16,7 +16,6 @@ namespace Soft.Wpf.Controllers.Cadastros
     /// </summary>
     public class SubCategoriasController : ControllerRegister<SubcategoriaViewModel>
     {
-        private readonly ISubcategoriaAppService _subcategoriaAppService;
         private readonly ISubcategoriaValidation _subcategoriaValidation;
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Soft.Wpf.Controllers.Cadastros
             ISubcategoriaValidation subcategoriaValidation)
             : base(subcategoriaAppService)
         {
-            _subcategoriaAppService = subcategoriaAppService;
             _subcategoriaValidation = subcategoriaValidation;
         }
 
