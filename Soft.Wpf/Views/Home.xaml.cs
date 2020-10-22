@@ -6,6 +6,7 @@ using Soft.Application.ViewModels;
 using Soft.Infra.IoC;
 using Soft.Wpf.Controllers;
 using Soft.Wpf.Controllers.Cadastros;
+using Soft.Wpf.Views.Cadastros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Soft.Wpf
+namespace Soft.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -31,6 +32,30 @@ namespace Soft.Wpf
         public Home()
         {
             InitializeComponent();
+        }
+
+        private void CadProdutos_Click(object sender, RoutedEventArgs e)
+        {
+            Produtos pro = new Produtos();
+            pro.ShowDialog();
+        }
+
+        private void CadFamilia_Click(object sender, RoutedEventArgs e)
+        {
+            Familiasprod pro = new Familiasprod();
+            pro.ShowDialog();
+        }
+
+        private void CadSubCategorias_Click(object sender, RoutedEventArgs e)
+        {
+            SubCategorias pro = new SubCategorias();
+            pro.ShowDialog();
+        }
+
+        private void CadCategorias_Click(object sender, RoutedEventArgs e)
+        {
+            Categorias pro = new Categorias();
+            pro.ShowDialog();
         }
     }
 }
