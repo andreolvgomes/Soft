@@ -1,4 +1,4 @@
-﻿using Soft.Domain.Commands.Base;
+﻿using Soft.Domain.Commands.Core;
 using Soft.Domain.Commands.Pedidos.Command;
 using Soft.Domain.Interfaces.Repositories;
 using Soft.Domain.Models;

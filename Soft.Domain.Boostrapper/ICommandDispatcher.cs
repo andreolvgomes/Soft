@@ -1,14 +1,14 @@
-﻿using Soft.Domain.Commands.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using Soft.Domain.Commands.Base;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace Soft.Domain.Boostrapper
-{
-    public interface ICommandDispatcher
-    {
-        void Dispatch<T>(T command) where T : ICommand;
-    }
-}
+//namespace Soft.Domain.Boostrapper
+//{
+//    public interface ICommandDispatcher
+//    {
+//        void Dispatch<T>(T command) where T : ICommand;
+//    }
+//}

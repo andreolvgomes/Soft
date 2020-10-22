@@ -4,8 +4,6 @@ using Soft.Application.Interfaces.Services;
 using Soft.Application.Interfaces.Validations;
 using Soft.Application.Services;
 using Soft.Application.Validations;
-using Soft.Domain.Boostrapper;
-using Soft.Domain.Commands.Base;
 using Soft.Domain.Interfaces.Repositories;
 using Soft.Infra.Data.Repositories;
 using System;
@@ -40,21 +38,10 @@ namespace Soft.Infra.IoC
 
         public void Init()
         {
-            Registry.Register(_container);
-
-            // Application
-            _container.Register<IProdutoAppService, ProdutoAppService>();
-            _container.Register<ICategoriaAppService, CategoriaAppService>();
-            _container.Register<ISubcategoriaAppService, SubcategoriaAppService>();
-            _container.Register<IFamiliasprodAppService, FamiliasprodAppService>();
-            _container.Register<IVendedorAppService, VendedorAppService>();
-
-            // Validations
-            _container.Register<IVendedorValidation, VendedorValidation>();
-            _container.Register<ICategoriaValidation, CategoriaValidation>();
-            _container.Register<IFamiliasprodValidation, FamiliasprodValidation>();
-            _container.Register<IProdutoValidation, ProdutoValidation>();
-            _container.Register<ISubcategoriaValidation, SubcategoriaValidation>();
+            _container.RegisterAppServices();
+            _container.RegisterAppValidations();
+            _container.RegisterRepositories();
+            _container.RegisterCommands();
         }
 
         public T GetInstance<T>() where T : class

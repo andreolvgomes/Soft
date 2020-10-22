@@ -53,8 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Base\ICommand.cs" />
-    <Compile Include="Commands\Base\ICommandHandler.cs" />
+    <Compile Include="Commands\Core\ICommand.cs" />
+    <Compile Include="Commands\Core\ICommandHandler.cs" />
     <Compile Include="Commands\Pedidos\Command\CancelPedidoCommand.cs" />
     <Compile Include="Commands\Pedidos\Command\PedidoCommand.cs" />
     <Compile Include="Commands\Pedidos\Command\UpdatePedidoCommand.cs" />
@@ -67,7 +67,9 @@
     <Compile Include="Commands\Produtos\Command\UpdateProdutoCommand.cs" />
     <Compile Include="Common\Security\Constants.cs" />
     <Compile Include="Common\Security\Crypto.cs" />
-    <Compile Include="Extensions\StringExteions.cs" />
+    <Compile Include="Commands\Core\Dispatcher\CommandDispatcher.cs" />
+    <Compile Include="Commands\Core\Dispatcher\ICommandDispatcher.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Interfaces\Repositories\ISubcategoriaRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />

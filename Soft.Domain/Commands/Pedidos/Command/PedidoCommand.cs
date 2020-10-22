@@ -1,4 +1,4 @@
-﻿using Soft.Domain.Commands.Base;
+﻿using Soft.Domain.Commands.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

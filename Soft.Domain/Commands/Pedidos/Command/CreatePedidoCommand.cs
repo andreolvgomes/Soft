@@ -1,5 +1,4 @@
-﻿using Soft.Domain.Commands.Base;
-using Soft.Domain.Models;
+﻿using Soft.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
