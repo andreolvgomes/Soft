@@ -20,6 +20,7 @@ namespace Soft.Application.AutoMapper
             CreateMap<SubcategoriaViewModel, Subcategoria>();
             CreateMap<FamiliasprodViewModel, Familiasprod>();
             CreateMap<PedidoViewModel, Pedido>();
+            CreateMap<VendedorViewModel, Vendedor>();
         }
     }
 }

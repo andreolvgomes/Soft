@@ -20,5 +20,7 @@ namespace Soft.Entities.Models
         public Int64 Ven_id { get; set; }
         [ColumnModel("Ven_nome")]
         public string Ven_nome { get; set; }
+        [ColumnModel("Ven_inativo")]
+        public bool Ven_inativo { get; set; }
     }
 }

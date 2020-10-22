@@ -32,7 +32,8 @@ namespace Soft.Application.Services
 
         public int Update(CategoriaViewModel viewModel, Expression<Func<CategoriaViewModel, object>> selector = null, IDbTransaction transaction = null)
         {
-            return _categoriaRepository.Update(_mapper.Map<Categoria>(viewModel), transaction: transaction);
+            return _categoriaRepository.Update(_mapper.Map<Categoria>(viewModel), 
+                selector: _mapper.Map<Expression<Func<Categoria, object>>>(selector), transaction: transaction);
         }
 
         public int Delete(CategoriaViewModel viewModel, IDbTransaction transaction = null)

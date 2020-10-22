@@ -47,8 +47,10 @@ namespace Soft.Infra.IoC
             _container.Register<ICategoriaAppService, CategoriaAppService>();
             _container.Register<ISubcategoriaAppService, SubcategoriaAppService>();
             _container.Register<IFamiliasprodAppService, FamiliasprodAppService>();
+            _container.Register<IVendedorAppService, VendedorAppService>();
 
             // Validations
+            _container.Register<IVendedorValidation, VendedorValidation>();
             _container.Register<ICategoriaValidation, CategoriaValidation>();
             _container.Register<IFamiliasprodValidation, FamiliasprodValidation>();
             _container.Register<IProdutoValidation, ProdutoValidation>();

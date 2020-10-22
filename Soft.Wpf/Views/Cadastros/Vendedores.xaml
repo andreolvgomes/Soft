@@ -1,0 +1,29 @@
+﻿<Window x:Class="Soft.Wpf.Views.Cadastros.Vendedores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:usercontrols="clr-namespace:Soft.Wpf.UserControls"
+        Title="MainWindow" Height="251.25" Width="572.812" WindowStartupLocation="CenterScreen"
+        >
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <usercontrols:Buttons x:Name="buttons" Grid.Column="1"/>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="ID"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="75" Text="{Binding Entity.Ven_id, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+            </StackPanel>
+
+            <TextBlock Text="Nome"/>
+            <TextBox x:Name="txtVen_nome" Text="{Binding Entity.Ven_nome, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <CheckBox Content="Inativo" IsChecked="{Binding Entity.Ven_inativo, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+    </Grid>
+</Window>

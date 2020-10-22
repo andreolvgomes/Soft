@@ -14,7 +14,7 @@ namespace Soft.Application.Interfaces.Services
     /// <summary>
     /// IProdutosAppService
     /// </summary>
-    public interface IProdutoAppService: IRegisterAppService<ProdutoViewModel>
+    public interface IProdutoAppService : IRegisterAppService<ProdutoViewModel>
     {
     }
 }

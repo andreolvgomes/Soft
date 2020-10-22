@@ -11,6 +11,7 @@
                 <MenuItem Header="Categorias" Click="CadCategorias_Click"/>
                 <MenuItem Header="SubCategorias" Click="CadSubCategorias_Click"/>
                 <MenuItem Header="Família" Click="CadFamilia_Click"/>
+                <MenuItem Header="Vendedores" Click="CadVendedores_Click"/>
             </MenuItem>
         </Menu>
     </StackPanel>

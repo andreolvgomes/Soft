@@ -22,6 +22,7 @@ namespace Soft.Domain.Boostrapper
             container.Register<ICategoriaRepository, CategoriaRepository>();
             container.Register<ISubcategoriaRepository, SubcategoriaRepository>();
             container.Register<IFamiliasprodRepository, FamiliasprodRepository>();
+            container.Register<IVendedorRepository, VendedorRepository>();
 
             container.Register(typeof(ICommandHandler<>), new[] { typeof(ICommandHandler<>).Assembly });
             container.Register<ICommandDispatcher, CommandDispatcher>();

@@ -77,6 +77,7 @@
     <Compile Include="Controllers\Cadastros\CategoriasController.cs" />
     <Compile Include="Controllers\Cadastros\FamiliasprodController.cs" />
     <Compile Include="Controllers\Cadastros\SubCategoriasController.cs" />
+    <Compile Include="Controllers\Cadastros\VendedoresController.cs" />
     <Compile Include="Controllers\Core\ControllerBase.cs" />
     <Compile Include="Delegates\RegisterNewEventHandler.cs" />
     <Compile Include="Delegates\RegisterTreatEventHandler.cs" />
@@ -103,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Cadastros\SubCategorias.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Cadastros\Vendedores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,6 +139,9 @@
     </Compile>
     <Compile Include="Views\Cadastros\SubCategorias.xaml.cs">
       <DependentUpon>SubCategorias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cadastros\Vendedores.xaml.cs">
+      <DependentUpon>Vendedores.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>

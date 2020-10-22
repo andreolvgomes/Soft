@@ -57,5 +57,11 @@ namespace Soft.Wpf.Views
             Categorias pro = new Categorias();
             pro.ShowDialog();
         }
+
+        private void CadVendedores_Click(object sender, RoutedEventArgs e)
+        {
+            Vendedores pro = new Vendedores();
+            pro.ShowDialog();
+        }
     }
 }
