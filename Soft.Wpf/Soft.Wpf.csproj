@@ -82,6 +82,7 @@
     <Compile Include="Delegates\RegisterNewEventHandler.cs" />
     <Compile Include="Delegates\RegisterTreatEventHandler.cs" />
     <Compile Include="Delegates\RegisterValidationEventHandler.cs" />
+    <Compile Include="Extenders\TextBoxLabel.cs" />
     <Compile Include="Startup.cs" />
     <Page Include="UserControls\Buttons.xaml">
       <SubType>Designer</SubType>
