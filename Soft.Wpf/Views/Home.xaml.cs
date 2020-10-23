@@ -7,6 +7,7 @@ using Soft.Infra.IoC;
 using Soft.Wpf.Controllers;
 using Soft.Wpf.Controllers.Cadastros;
 using Soft.Wpf.Views.Cadastros;
+using Soft.Wpf.Views.Pedidos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,12 @@ namespace Soft.Wpf.Views
         {
             Clientes cli = new Clientes();
             cli.ShowDialog();
+        }
+
+        private void Pedidos_Click(object sender, RoutedEventArgs e)
+        {
+            PedidoView ped = new PedidoView();
+            ped.ShowDialog();
         }
     }
 }

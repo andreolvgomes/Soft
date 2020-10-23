@@ -1,0 +1,44 @@
+﻿<Window x:Class="Soft.Wpf.Views.Pedidos.PedidoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:extenders="clr-namespace:Soft.Wpf.Extenders"
+        Title="MainWindow" Height="450" Width="600" WindowStartupLocation="CenterScreen"
+        >
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <extenders:TextBoxLabel Label="Vendedor" Style="{StaticResource TextSearch}"/>
+            <extenders:TextBoxLabel Label="Cliente" Style="{StaticResource TextSearch}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <extenders:TextBoxLabel Label="Produto" Grid.Column="0" Width="100" Style="{StaticResource TextSearch}"/>
+                <TextBlock Text="NOTEBOOK DELL 5GB 500HD" Grid.Column="1" VerticalAlignment="Bottom" Margin="2,0,0,0"/>
+                <extenders:TextBoxLabel Label="Quantidade" Grid.Column="2" Width="100"/>
+                <extenders:TextBoxLabel Label="VL. Unit" Grid.Column="3" Width="100"/>
+            </Grid>
+            
+            <DataGrid Grid.Row="1" Margin="0,2,0,0">
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

@@ -70,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\Pedidos\PedidoView.xaml.cs">
+      <DependentUpon>PedidoView.xaml</DependentUpon>
+    </Compile>
+    <Resource Include="Icons\icon-search.png" />
     <Content Include="Links.txt" />
     <Compile Include="Controllers\Cadastros\ClientesController.cs" />
     <Compile Include="Controllers\Cadastros\Core\Enums\Operation.cs" />
@@ -155,6 +159,10 @@
       <DependentUpon>Home.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Pedidos\PedidoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -193,8 +201,6 @@
       <Name>Soft.Infra.IoC</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Pedidos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
