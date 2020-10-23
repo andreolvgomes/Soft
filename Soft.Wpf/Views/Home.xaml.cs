@@ -63,5 +63,11 @@ namespace Soft.Wpf.Views
             Vendedores pro = new Vendedores();
             pro.ShowDialog();
         }
+
+        private void CadClientes_Click(object sender, RoutedEventArgs e)
+        {
+            Clientes cli = new Clientes();
+            cli.ShowDialog();
+        }
     }
 }

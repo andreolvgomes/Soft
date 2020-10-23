@@ -17,6 +17,7 @@ namespace SimpleInjector
             container.Register<IFamiliasprodValidation, FamiliasprodValidation>();
             container.Register<IProdutoValidation, ProdutoValidation>();
             container.Register<ISubcategoriaValidation, SubcategoriaValidation>();
+            container.Register<IClienteValidation, ClienteValidation>();
         }
     }
 }

@@ -21,5 +21,7 @@ namespace Soft.Entities.Models
         public Int64 Cli_id { get; set; }
         [ColumnModel("Cli_nome")]
         public string Cli_nome { get; set; }
+        [ColumnModel("Cli_inativo")]
+        public bool Cli_inativo { get; set; }
     }
 }

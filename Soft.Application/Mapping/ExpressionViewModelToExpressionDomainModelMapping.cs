@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Application.AutoMapper
+namespace Soft.Application.Mapping
 {
     public class ExpressionViewModelToExpressionDomainModelMapping : Profile
     {
@@ -20,6 +20,7 @@ namespace Soft.Application.AutoMapper
             CreateMap<Expression<Func<FamiliasprodViewModel, object>>, Expression<Func<Familiasprod, object>>>();
             CreateMap<Expression<Func<PedidoViewModel, object>>, Expression<Func<Pedido, object>>>();
             CreateMap<Expression<Func<VendedorViewModel, object>>, Expression<Func<Vendedor, object>>>();
+            CreateMap<Expression<Func<ClienteViewModel, object>>, Expression<Func<Cliente, object>>>();
         }
     }
 }

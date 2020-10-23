@@ -96,6 +96,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Cadastros\Clientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Cadastros\Familiasprod.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,6 +135,9 @@
     </Compile>
     <Compile Include="Views\Cadastros\Categorias.xaml.cs">
       <DependentUpon>Categorias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cadastros\Clientes.xaml.cs">
+      <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Cadastros\Familiasprod.xaml.cs">
       <DependentUpon>Familiasprod.xaml</DependentUpon>

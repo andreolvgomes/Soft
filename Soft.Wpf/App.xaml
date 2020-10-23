@@ -10,9 +10,9 @@
             <Setter Property="Width" Value="50"/>
         </Style>-->
 
-        <Style TargetType="{x:Type TextBox}">
+        <!--<Style TargetType="{x:Type TextBox}">
             <Setter Property="CharacterCasing" Value="Upper"/>
-        </Style>
+        </Style>-->
 
         <Style x:Key="{x:Type extenders:TextBoxLabel}" TargetType="{x:Type extenders:TextBoxLabel}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">

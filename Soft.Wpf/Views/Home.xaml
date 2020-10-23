@@ -7,11 +7,16 @@
     <StackPanel Margin="10">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Cadatros">
-                <MenuItem Header="Produtos" Click="CadProdutos_Click"/>
-                <MenuItem Header="Categorias" Click="CadCategorias_Click"/>
-                <MenuItem Header="SubCategorias" Click="CadSubCategorias_Click"/>
-                <MenuItem Header="Família" Click="CadFamilia_Click"/>
-                <MenuItem Header="Vendedores" Click="CadVendedores_Click"/>
+                <MenuItem Header="Produtos">
+                    <MenuItem Header="Produtos" Click="CadProdutos_Click"/>
+                    <MenuItem Header="Categorias" Click="CadCategorias_Click"/>
+                    <MenuItem Header="SubCategorias" Click="CadSubCategorias_Click"/>
+                    <MenuItem Header="Família" Click="CadFamilia_Click"/>
+                    <MenuItem Header="Vendedores" Click="CadVendedores_Click"/>
+                </MenuItem>
+                <MenuItem Header="Clientes">
+                    <MenuItem Header="Clientes" Click="CadClientes_Click"/>
+                </MenuItem>
             </MenuItem>
         </Menu>
     </StackPanel>

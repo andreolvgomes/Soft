@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:usercontrols="clr-namespace:Soft.Wpf.UserControls"
+        xmlns:extenders="clr-namespace:Soft.Wpf.Extenders"
         Title="MainWindow" Height="450" Width="600" WindowStartupLocation="CenterScreen"
         >
     <Grid Margin="10">
@@ -26,35 +27,15 @@
             <TextBlock Text="Descrição"/>
             <TextBox x:Name="txtPro_descricao" Text="{Binding Entity.Pro_descricao, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <!--<Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Categoria"/>
-                <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding Entity.Cat_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
-
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="SubCategoria"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Entity.Sub_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
-
-                <TextBlock Grid.Row="0" Grid.Column="2" Text="Família"/>
-                <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
-            </Grid>-->
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <usercontrols:TextBoxSearch Label="Categoria" Grid.Column="0" Text="{Binding Entity.Cat_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
-                <usercontrols:TextBoxSearch Label="SubCategoria" Grid.Column="1" Text="{Binding Entity.Sub_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
-                <usercontrols:TextBoxSearch Label="Família" Grid.Column="2" Text="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}"/>
+                <extenders:TextBoxLabel Label="Categoria" Grid.Column="0" Text="{Binding Entity.Cat_descricaoView, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextSearch}"/>
+                <extenders:TextBoxLabel Label="SubCategoria" Grid.Column="1" Text="{Binding Entity.Sub_descricaoView, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextSearch}"/>
+                <extenders:TextBoxLabel Label="Família" Grid.Column="2" Text="{Binding Entity.Fam_descricaoView, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextSearch}"/>
             </Grid>
         </StackPanel>
     </Grid>

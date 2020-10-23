@@ -44,22 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
-    <Compile Include="AutoMapper\DomainModelToViewModelMapping.cs" />
-    <Compile Include="AutoMapper\ExpressionViewModelToExpressionDomainModelMapping.cs" />
-    <Compile Include="AutoMapper\ViewModelToCommandMapping.cs" />
-    <Compile Include="AutoMapper\ViewModelToDomainModelMapping.cs" />
+    <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Mapping\DomainModelToViewModelMapping.cs" />
+    <Compile Include="Mapping\ExpressionViewModelToExpressionDomainModelMapping.cs" />
+    <Compile Include="Mapping\ViewModelToCommandMapping.cs" />
+    <Compile Include="Mapping\ViewModelToDomainModelMapping.cs" />
+    <Compile Include="Interfaces\Services\ClienteAppService.cs" />
     <Compile Include="Interfaces\Services\ICategoriaAppService.cs" />
     <Compile Include="Interfaces\Services\IFamiliasprodAppService.cs" />
     <Compile Include="Interfaces\Services\ISubcategoriaAppService.cs" />
     <Compile Include="Interfaces\Services\IRegisterAppService.cs" />
     <Compile Include="Interfaces\Services\IProdutoAppService.cs" />
     <Compile Include="Interfaces\Services\IVendedorAppService.cs" />
+    <Compile Include="Interfaces\Validations\IClienteValidation.cs" />
     <Compile Include="Interfaces\Validations\ISubcategoriaValidation.cs" />
     <Compile Include="Interfaces\Validations\IFamiliasprodValidation.cs" />
     <Compile Include="Interfaces\Validations\ICategoriaValidation.cs" />
     <Compile Include="Interfaces\Validations\IProdutoValidation.cs" />
     <Compile Include="Interfaces\Validations\IVendedorValidation.cs" />
+    <Compile Include="Services\ClienteAppService.cs" />
     <Compile Include="Services\FamiliasprodAppService.cs" />
     <Compile Include="Services\SubcategoriaAppService.cs" />
     <Compile Include="Services\CategoriaAppService.cs" />
@@ -68,12 +71,14 @@
     <Compile Include="Services\RegisterAppService.cs" />
     <Compile Include="Services\VendedorAppService.cs" />
     <Compile Include="Validations\CategoriaValidation.cs" />
+    <Compile Include="Validations\ClienteValidation.cs" />
     <Compile Include="Validations\FamiliasprodValidation.cs" />
     <Compile Include="Validations\ProdutoValidation.cs" />
     <Compile Include="Validations\SubcategoriaValidation.cs" />
     <Compile Include="Validations\ValidationReturn.cs" />
     <Compile Include="Validations\VendedorValidation.cs" />
     <Compile Include="ViewModels\CategoriaViewModel.cs" />
+    <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\PedidoViewModel.cs" />
     <Compile Include="ViewModels\SubcategoriaViewModel.cs" />
     <Compile Include="ViewModels\FamiliasprodViewModel.cs" />

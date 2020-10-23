@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Application.AutoMapper
+namespace Soft.Application.Mapping
 {
     public class DomainModelToViewModelMapping : Profile
     {
@@ -19,6 +19,7 @@ namespace Soft.Application.AutoMapper
             CreateMap<Familiasprod, FamiliasprodViewModel>();
             CreateMap<Pedido, PedidoViewModel>();
             CreateMap<Vendedor, VendedorViewModel>();
+            CreateMap<Cliente, ClienteViewModel>();
         }
     }
 }

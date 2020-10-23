@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Application.AutoMapper
+namespace Soft.Application.Mapping
 {
     public class ViewModelToDomainModelMapping : Profile
     {
@@ -21,6 +21,7 @@ namespace Soft.Application.AutoMapper
             CreateMap<FamiliasprodViewModel, Familiasprod>();
             CreateMap<PedidoViewModel, Pedido>();
             CreateMap<VendedorViewModel, Vendedor>();
+            CreateMap<ClienteViewModel, Cliente>();
         }
     }
 }

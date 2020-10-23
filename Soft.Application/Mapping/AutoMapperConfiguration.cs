@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Application.AutoMapper
+namespace Soft.Application.Mapping
 {
     public class AutoMapperConfiguration
     {

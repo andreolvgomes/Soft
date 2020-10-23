@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SimpleInjector;
-using Soft.Application.AutoMapper;
+using Soft.Application.Mapping;
 using Soft.Infra.IoC;
 using Soft.Wpf.Controllers;
 using Soft.Wpf.Controllers.Cadastros;
@@ -25,6 +25,7 @@ namespace Soft.Wpf
             container.Register<CategoriasController>();
             container.Register<FamiliasprodController>();
             container.Register<VendedoresController>();
+            container.Register<ClientesController>();
 
             // register automapper
             MapperConfiguration config = AutoMapperConfiguration.RegisterMappings();
