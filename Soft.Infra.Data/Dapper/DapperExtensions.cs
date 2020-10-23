@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Soft.Entities.Models;
+using Soft.Infra.Data.Dapper;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Soft.Infra.Data.Mapper
+namespace Dapper
 {
     //select Pro_codigo, Pro_descricao from Produtos
     //order by(select null) offset 0 rows fetch next 5 rows only

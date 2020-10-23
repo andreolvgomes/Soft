@@ -64,9 +64,9 @@
     <Compile Include="Repositories\PeitemRepository.cs" />
     <Compile Include="Repositories\VendedorRepository.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="Mapper\DapperExtensions.cs" />
-    <Compile Include="Mapper\ExpressionToSql.cs" />
-    <Compile Include="Mapper\QueryTest.cs" />
+    <Compile Include="Dapper\DapperExtensions.cs" />
+    <Compile Include="Dapper\ExpressionToSql.cs" />
+    <Compile Include="Dapper\QueryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ProdutoRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />

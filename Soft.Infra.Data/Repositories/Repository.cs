@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Soft.Infra.Data.Mapper;
 using Soft.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
