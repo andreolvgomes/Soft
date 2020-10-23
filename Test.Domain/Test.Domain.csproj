@@ -79,10 +79,6 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Soft.Domain.Boostrapper\Soft.Domain.Boostrapper.csproj">
-      <Project>{680c9e03-1ea3-4a60-be7a-136236297772}</Project>
-      <Name>Soft.Domain.Boostrapper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Soft.Domain\Soft.Domain.csproj">
       <Project>{baf52f04-07d1-4284-8a37-78a9c77e96a2}</Project>
       <Name>Soft.Domain</Name>
