@@ -14,6 +14,7 @@ namespace SimpleInjector
             container.Register<IFamiliasprodAppService, FamiliasprodAppService>();
             container.Register<IVendedorAppService, VendedorAppService>();
             container.Register<IClienteAppService, ClienteAppService>();
+            container.Register<IPedidoAppService, PedidoAppService>();
         }
     }
 }

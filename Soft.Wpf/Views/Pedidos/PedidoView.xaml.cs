@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Soft.Infra.IoC;
+using Soft.Wpf.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,13 @@ namespace Soft.Wpf.Views.Pedidos
     /// </summary>
     public partial class PedidoView : Window
     {
+        private PedidosController controller;
+
         public PedidoView()
         {
             InitializeComponent();
+            controller = Ioc.Instance.GetInstance<PedidosController>();
+            this.DataContext = controller;
         }
     }
 }

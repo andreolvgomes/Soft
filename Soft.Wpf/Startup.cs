@@ -26,6 +26,7 @@ namespace Soft.Wpf
             container.Register<FamiliasprodController>();
             container.Register<VendedoresController>();
             container.Register<ClientesController>();
+            container.Register<PedidosController>();
 
             // register automapper
             MapperConfiguration config = AutoMapperConfiguration.RegisterMappings();

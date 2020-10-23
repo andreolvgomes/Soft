@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\PedidosController.cs" />
     <Compile Include="Views\Pedidos\PedidoView.xaml.cs">
       <DependentUpon>PedidoView.xaml</DependentUpon>
     </Compile>

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Services\IPedidoAppService.cs" />
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Mapping\DomainModelToViewModelMapping.cs" />
     <Compile Include="Mapping\ExpressionViewModelToExpressionDomainModelMapping.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Interfaces\Validations\IVendedorValidation.cs" />
     <Compile Include="Services\ClienteAppService.cs" />
     <Compile Include="Services\FamiliasprodAppService.cs" />
+    <Compile Include="Services\PedidoAppService.cs" />
     <Compile Include="Services\SubcategoriaAppService.cs" />
     <Compile Include="Services\CategoriaAppService.cs" />
     <Compile Include="Services\ProdutoAppService.cs" />
