@@ -12,3 +12,6 @@ https://medium.com/@adlerpagliarini/c-net-core-criando-uma-aplica%C3%A7%C3%A3o-u
 
 Dapper.FastCRUD
 https://github.com/MoonStorm/Dapper.FastCRUD
+
+Dapper.SimpleCRUD
+https://github.com/ericdc1/Dapper.SimpleCRUD
