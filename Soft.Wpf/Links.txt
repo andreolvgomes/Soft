@@ -9,3 +9,6 @@ https://social.msdn.microsoft.com/Forums/vstudio/en-US/67b170d6-f1e3-4c4c-a5c8-b
 
 C# .Net Core — Criando uma aplicação utilizando Repository Pattern com dois ORMs diferentes Dapper e Entity Framework Core
 https://medium.com/@adlerpagliarini/c-net-core-criando-uma-aplica%C3%A7%C3%A3o-utilizando-repository-pattern-com-dois-orms-diferentes-dapper-97e8aa6ca35
+
+Dapper.FastCRUD
+https://github.com/MoonStorm/Dapper.FastCRUD
